@@ -7,7 +7,7 @@ function Navbar() {
         <div className="container-fluid d-flex">
           <Logo />
           <div className="justify-content-start">
-          <a className="navbar-brand" href="#" id="navbarTitle">Zarea de Risco</a>
+          <a className="navbar-brand" href="#" id="navbarTitle">Latidos & Ronrons</a>
           </div>
           <Links />
         </div>

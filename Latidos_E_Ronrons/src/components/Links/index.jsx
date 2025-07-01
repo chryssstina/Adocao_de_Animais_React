@@ -6,9 +6,6 @@ function Links() {
       className="collapse navbar-collapse justify-content-between"
       id="navbarLinks"
     >
-      <button type="button" className="btn">Base class</button>
-
-
       <ul className="navbar-nav mb-2 mb-lg-0 flex-grow-1 justify-content-center">
         <li className="nav-item">
           <button
@@ -16,7 +13,7 @@ function Links() {
             className="nav-link aIndex me-5"
             id=""
           >
-            Home
+            Sobre
           </button>
         </li>
         <li className="nav-item">
@@ -25,7 +22,7 @@ function Links() {
             className="nav-link aIndex me-5"
             id=""
           >
-            Destaques
+            Programação
           </button>
         </li>
         <li className="nav-item">
@@ -34,7 +31,7 @@ function Links() {
             className="nav-link aIndex me-5"
             id=""
           >
-            Bairros
+            Inscrição
           </button>
         </li>
         <li className="nav-item">
@@ -43,7 +40,7 @@ function Links() {
             className="nav-link aIndex me-5"
             id=""
           >
-            Recentes
+            Galeria
           </button>
         </li>
       </ul>

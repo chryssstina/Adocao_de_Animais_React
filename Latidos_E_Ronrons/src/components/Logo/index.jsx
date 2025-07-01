@@ -2,7 +2,7 @@ function Logo() {
   return (
     <a className="navbar-brand" href="#">
       <img
-        src="/imgs/AZAREA.png"
+        src="/imgs/Logos/Logo5.png"
         alt="Logotipo"
         id="imglogo"
         className="img-fluid m-0 m-md-3 ms-md-3"
