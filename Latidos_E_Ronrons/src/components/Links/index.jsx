@@ -6,6 +6,9 @@ function Links() {
       className="collapse navbar-collapse justify-content-between"
       id="navbarLinks"
     >
+      <button type="button" className="btn">Base class</button>
+
+
       <ul className="navbar-nav mb-2 mb-lg-0 flex-grow-1 justify-content-center">
         <li className="nav-item">
           <button
