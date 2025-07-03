@@ -1,68 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    --azul-primario: #2E607C;
+    --azul-medio: #4A90B2;
+    --azul-acinzentado: #4B5563;
+    --cinza-claro: #F7F7F7;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+body{
+    font-family: "Poppins", sans-serif;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.navbar{
+    background-color: #FEFEFA;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.navbar-nav{
+    column-gap: 40px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.container-fluid{
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.navbar-img{
+    height: 100px;
+    width: auto;
 }
+
+.nav-link{
+    color: #2C5772;
+    font-weight: 600;
+    font-size: 20px;
+}
+.logo-pequena {
+    display: none;
+}
+
+/* Mostra a logo pequena e esconde a grande em telas menores */
+@media (max-width: 620px) {
+    .logo-grande {
+        display: none;
+    }
+
+    .logo-pequena {
+        display: block;
+        height: 80px; 
+        width: auto;
+    }
+    
+
+    .home-section-img{
+        width: 20vw;
+        height: auto;
+    }
+}
+
+
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    row-gap: 40px;
+}
+
+/* ---------- HOME SECTION --------------*/
+.home-section{
+    background-image: linear-gradient(#A4D8F0, #FFFFFF);
+    display: flex;
+    width: 100%;
+}
+
+.home-section-text{
+    color: var(--azul-primario);
+    padding-top: 10%;
+    padding-left: 10%;
+}
+
+.home-section-text h1 {
+    font-weight: bold;
+}
+
+.home-section-img{
+    width: 50%;
+    height: auto;
+}
+
+.btn-adotar{
+    background-color: var(--azul-medio);
+    color: #D2ECF7;
+}
+
+.btn-adotar a{
+    color: #D2ECF7;
+    text-decoration: none;
+}
+
+.btn-adotar:hover{
+    background-color: var(--azul-primario);
+    color: #FFFFFF;
+}
+
+
+
+/* ---------- SECTION SOBRE - ACCORDION --------------*/
+.about-section{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+}
+
+.accordion-button, .about-section h3{
+    color: var(--azul-primario);
+    font-weight: bold;
+}
+
+.accordion{
+    width: 70%;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #FEFEFA;
+}
+
+
+/* ---------- SECTION PROGRAMAÇÃO - CARDS --------------*/
+.programming-section{
+    background-color: var(--cinza-claro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.programming-section-text{
+    text-align: center;
+    width: 50%;
+    padding: 40px;
+}
+.programming-section-text h3{
+    color: var(--azul-primario);
+    font-weight: bold;
+}
+.cards-conteiner{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding-bottom: 40px;
+}
+.card{
+    border-color: var(--azul-medio);
+    border-left: solid 4px var(--azul-medio);
+    height: 20rem;
+    width: 30rem;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* sombra leve inicial */
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sombra mais forte no hover */
+}
+
+.material-symbols-outlined{
+    color: var(--azul-medio);
+}
+.card-title{
+    color: var(--azul-primario);
+    font-weight: bold;
+}
+
+.card-subtitle{
+    color: var(--azul-acinzentado);
+    font-weight: 300;
+}
+
+.card-text{
+    color: var(--azul-acinzentado);
+}
+
+
+/* ---------- SECTION FORMULÁRIO DE INSCRIÇÃO --------------*/
+.form-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-section-text{
+    text-align: center;
+    width: 50%;
+    padding: 40px;
+}
+
+.form-section-text h3{
+    color: var(--azul-primario);
+    font-weight: bold;
+}
+
+
+/* ---------- SECTION GALERIA DE FOTOS --------------*/
+
+
+.photo-gallery-section{
+    background-color: var(--cinza-claro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.photo-gallery-section-text{
+    text-align: center;
+    width: 50%;
+    padding: 40px;
+}
+
+.photo-gallery-section-text h3{
+    color: var(--azul-primario);
+    font-weight: bold;
+}
+
+.card-gallery-container{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+.card-gallery{
+    width: 30%;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-gallery:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sombra mais forte no hover */
+}
+.card-img-top{
+    height: auto;
+    width: 100%;
+}
+
+.card-gallery .card-body{
+    padding: 10px;
+}
+
+/* ---------- SECTION FOOTER --------------*/
+#footer{
+    background-color: #2C5772;
+    color: #FEFEFA;
+}
+
+#LogoFooter{
+    width: 30vh ;
+} 
