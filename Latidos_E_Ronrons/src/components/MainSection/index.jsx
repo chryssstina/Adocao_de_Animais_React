@@ -1,3 +1,4 @@
+import Animals from "../../../public/imgs/Miscellaneous/animals.png";
 
 function MainSection() {
   return (
@@ -8,7 +9,7 @@ function MainSection() {
         <button type="button" className="btn btn-lg btn-adotar"> <a href="#form-section"> Quero adotar </a> </button>
 
       </div>
-      <img className="home-section-img mt-3 me-3" src="./assets/Miscellaneous/Images.png" alt="Logo Latidos&Ronrons" />
+      <img className="home-section-img mt-3 me-3" src={Animals} alt="Logo Latidos&Ronrons" />
     </section>
   );
 }

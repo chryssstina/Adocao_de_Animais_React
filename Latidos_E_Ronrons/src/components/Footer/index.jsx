@@ -1,3 +1,11 @@
+import LogoTitle from "../../../public/imgs/LogoTitulo/LogoTitle.png";
+import EmailLogo from "../../../public/imgs/Miscellaneous/email.png";
+import TelefoneLogo from "../../../public/imgs/Miscellaneous/telefone.png";
+import LocalLogo from "../../../public/imgs/Miscellaneous/local.png";
+import FacebookLogo from "../../../public/imgs/Miscellaneous/facebook.png";
+import InstagramLogo from "../../../public/imgs/Miscellaneous/instagram.png";
+import TwitterLogo from "../../../public/imgs/Miscellaneous/twitter.png";
+
 function Footer() {
   return (
     <div className="container-fluid" id="footer">
@@ -6,7 +14,7 @@ function Footer() {
           <div className="row">
             <div className="col-md-4 mb-4">
               <img
-                src="imgs/LogoTitulo/LogoTitle.png"
+                src={LogoTitle}
                 alt="Latidos & Ronrons"
                 className="mb-2"
                 id="LogoFooter"
@@ -21,19 +29,19 @@ function Footer() {
               <ul className="list-unstyled">
                 <li>
                   <i className="bi bi-envelope">
-                    <img src="imgs/Miscellaneous/email.png" />
+                    <img src={EmailLogo} />
                   </i>{" "}
                   contato@latidoseronrons.org
                 </li>
                 <li>
                   <i className="bi bi-telephone">
-                    <img src="imgs/Miscellaneous/telefone.png" />
+                    <img src={TelefoneLogo} />
                   </i>{" "}
                   (00) 1234-5678
                 </li>
                 <li>
                   <i className="bi bi-geo-alt">
-                    <img src="imgs/Miscellaneous/local.png" />
+                    <img src={LocalLogo} />
                   </i>{" "}
                   Rua dos Animais, 123 - Bairro Feliz
                 </li>
@@ -43,13 +51,13 @@ function Footer() {
             <div className="col-md-4 mb-4">
               <h5>Rede Sociais</h5>
               <a href="#" className="me-3">
-                <img src="imgs/Miscellaneous/facebook.png" />
+                <img src={FacebookLogo} />
               </a>
               <a href="#" className="me-3">
-                <img src="imgs/Miscellaneous/instagram.png" />
+                <img src={InstagramLogo} />
               </a>
               <a href="#" className="me-3">
-                <img src="imgs/Miscellaneous/twitter.png" />
+                <img src={TwitterLogo} />
               </a>
             </div>
           </div>
