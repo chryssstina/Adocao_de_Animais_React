@@ -1,39 +1,77 @@
+import LogoTitle from "../../../public/imgs/LogoTitulo/LogoTitle.png";
+import EmailLogo from "../../../public/imgs/Miscellaneous/email.png";
+import TelefoneLogo from "../../../public/imgs/Miscellaneous/telefone.png";
+import LocalLogo from "../../../public/imgs/Miscellaneous/local.png";
+import FacebookLogo from "../../../public/imgs/Miscellaneous/facebook.png";
+import InstagramLogo from "../../../public/imgs/Miscellaneous/instagram.png";
+import TwitterLogo from "../../../public/imgs/Miscellaneous/twitter.png";
+
 function Footer() {
   return (
     <div className="container-fluid" id="footer">
-    <footer className="py-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4 mb-4">
-            <img src="imgs/LogoTitulo/LogoTitle.png" alt="Latidos & Ronrons" className="mb-2" id="LogoFooter" />
-            <p>Promovendo o bem-estar animal e a adoção responsável de pets.</p>
+      <footer className="py-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4 mb-4">
+              <img
+                src={LogoTitle}
+                alt="Latidos & Ronrons"
+                className="mb-2"
+                id="LogoFooter"
+              />
+              <p>
+                Promovendo o bem-estar animal e a adoção responsável de pets.
+              </p>
+            </div>
+
+            <div className="col-md-4 mb-4">
+              <h5>Contato</h5>
+              <ul className="list-unstyled">
+                <li>
+                  <i className="bi bi-envelope">
+                    <img src={EmailLogo} />
+                  </i>{" "}
+                  contato@latidoseronrons.org
+                </li>
+                <li>
+                  <i className="bi bi-telephone">
+                    <img src={TelefoneLogo} />
+                  </i>{" "}
+                  (00) 1234-5678
+                </li>
+                <li>
+                  <i className="bi bi-geo-alt">
+                    <img src={LocalLogo} />
+                  </i>{" "}
+                  Rua dos Animais, 123 - Bairro Feliz
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-md-4 mb-4">
+              <h5>Rede Sociais</h5>
+              <a href="#" className="me-3">
+                <img src={FacebookLogo} />
+              </a>
+              <a href="#" className="me-3">
+                <img src={InstagramLogo} />
+              </a>
+              <a href="#" className="me-3">
+                <img src={TwitterLogo} />
+              </a>
+            </div>
           </div>
-  
-          <div className="col-md-4 mb-4">
-            <h5>Contato</h5>
-            <ul className="list-unstyled">
-              <li><i className="bi bi-envelope"><img src="imgs/Miscellaneous/email.png"/></i> contato@latidoseronrons.org</li>
-              <li><i className="bi bi-telephone"><img src="imgs/Miscellaneous/telefone.png"/></i> (00) 1234-5678</li>
-              <li><i className="bi bi-geo-alt"><img src="imgs/Miscellaneous/local.png"/></i> Rua dos Animais, 123 - Bairro Feliz</li>
-            </ul>
-          </div>
-  
-          <div className="col-md-4 mb-4">
-            <h5>Rede Sociais</h5>
-            <a href="#" className="me-3"><img src="imgs/Miscellaneous/facebook.png"/></a>
-            <a href="#" className="me-3"><img src="imgs/Miscellaneous/instagram.png"/></a>
-            <a href="#" className="me-3"><img src="imgs/Miscellaneous/twitter.png"/></a>
+
+          <hr class="border-white" />
+
+          <div class="text-center pt-3">
+            <small>
+              © 2025 Latidos & Ronrons. Todos os direitos reservados.
+            </small>
           </div>
         </div>
-  
-        <hr class="border-white" />
-  
-        <div class="text-center pt-3">
-          <small>© 2025 Latidos & Ronrons. Todos os direitos reservados.</small>
-        </div>
-      </div>
-    </footer>
-  </div>
+      </footer>
+    </div>
   );
 }
 
