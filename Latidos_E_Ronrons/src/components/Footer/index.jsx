@@ -1,47 +1,39 @@
 function Footer() {
   return (
-    <div className="container">
-      <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p className="col-md-4 mb-0 text-muted">© 2025 Zarea De Risco, Inc</p>
-
-        <a
-          href="/"
-          className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
-        >
-          <svg className="bi me-2" width="40" height="32">
-            <use xlinkHref="#bootstrap"></use>
-          </svg>
-        </a>
-
-        <ul className="nav col-md-4 justify-content-end">
-          <li className="nav-item">
-            <a href="#" className="nav-link px-2 text-muted">
-              Home
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link px-2 text-muted">
-              Features
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link px-2 text-muted">
-              Pricing
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link px-2 text-muted">
-              FAQs
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link px-2 text-muted">
-              About
-            </a>
-          </li>
-        </ul>
-      </footer>
-    </div>
+    <div className="container-fluid" id="footer">
+    <footer className="py-5">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4 mb-4">
+            <img src="imgs/LogoTitulo/LogoTitle.png" alt="Latidos & Ronrons" className="mb-2" id="LogoFooter" />
+            <p>Promovendo o bem-estar animal e a adoção responsável de pets.</p>
+          </div>
+  
+          <div className="col-md-4 mb-4">
+            <h5>Contato</h5>
+            <ul className="list-unstyled">
+              <li><i className="bi bi-envelope"><img src="imgs/Miscellaneous/email.png"/></i> contato@latidoseronrons.org</li>
+              <li><i className="bi bi-telephone"><img src="imgs/Miscellaneous/telefone.png"/></i> (00) 1234-5678</li>
+              <li><i className="bi bi-geo-alt"><img src="imgs/Miscellaneous/local.png"/></i> Rua dos Animais, 123 - Bairro Feliz</li>
+            </ul>
+          </div>
+  
+          <div className="col-md-4 mb-4">
+            <h5>Rede Sociais</h5>
+            <a href="#" className="me-3"><img src="imgs/Miscellaneous/facebook.png"/></a>
+            <a href="#" className="me-3"><img src="imgs/Miscellaneous/instagram.png"/></a>
+            <a href="#" className="me-3"><img src="imgs/Miscellaneous/twitter.png"/></a>
+          </div>
+        </div>
+  
+        <hr class="border-white" />
+  
+        <div class="text-center pt-3">
+          <small>© 2025 Latidos & Ronrons. Todos os direitos reservados.</small>
+        </div>
+      </div>
+    </footer>
+  </div>
   );
 }
 
