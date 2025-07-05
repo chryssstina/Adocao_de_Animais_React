@@ -1,0 +1,15 @@
+.custom-title{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.custom-title h1{
+    color: var(--azul-primario);
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.animal-adoption-main{
+    background-color: var(--cinza-claro);
+    padding: 1rem 7rem;
+}
