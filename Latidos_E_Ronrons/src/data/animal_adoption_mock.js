@@ -33,5 +33,21 @@ export const animal_adoption = [
         animalWeight: "10Kg",
         favoriteFood: "Sardinha",
         photo: Rufus
+    },
+    {
+        id: 5,
+        animalName: "Lulu",
+        animalAge: 1,
+        animalWeight: "2Kg",
+        favoriteFood: "Sardinha",
+        photo: Rufus
+    },
+    {
+        id: 6,
+        animalName: "Luna",
+        animalAge: 4,
+        animalWeight: "10Kg",
+        favoriteFood: "Sardinha",
+        photo: Rufus
     }
 ];

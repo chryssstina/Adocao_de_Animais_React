@@ -1,46 +1,54 @@
 import { useState, useEffect } from "react";
+import './AnimalAdoption.css'
 import AnimalCardsForAdoption from "../../components/AnimalCardsForAdoption/AnimalCardsForAdoption";
 import { animal_adoption as mockData } from "../../data/animal_adoption_mock";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
-function AnimalAdoption(){
+function AnimalAdoption() {
 
     const [animals, setAnimals] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() =>{
+    useEffect(() => {
         // em 1seg, a página deixa de carregar e os dados mockados são atribuídos a animals paras serem usados
-        setTimeout(()=>{
+        setTimeout(() => {
             setAnimals(mockData);
             setLoading(false);
         }, 1000);
 
-    },[]);
+    }, []);
 
 
-    return(
+    return (
         <>
-            <main>
-                <div>
+            <Navbar />
+            <main className="animal-adoption-main">
+                <div className="custom-title">
                     <h1>Pets para adoção</h1>
-                    <h2>Conheça alguns dos nossos amigos de quatro patas que estão disponíveis para adoção.</h2>
+                    <p>Conheça alguns dos nossos amigos de quatro patas que estão disponíveis para adoção.</p>
                 </div>
-                <div>
-                    {loading ? (<p>Carregando animais disponíveis</p>) : (
-                        animals.map(animal => (
-                            <AnimalCardsForAdoption
-                                key={animal.id}
-                                animalName={animal.animalName}
-                                animalAge={animal.animalAge}
-                                animalWeight={animal.animalWeight}
-                                favoriteFood={animal.favoriteFood}
-                                photo={animal.photo}
-                            />
+                <div className="row custom-row-animal-adoption justify-content-center">
+                    {loading ? (
+                        <p>Carregando animais disponíveis</p>
+                    ) : (
+                        animals.map((animal) => (
+                            <div className="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center" key={animal.id}>
+                                <AnimalCardsForAdoption
+                                    animalName={animal.animalName}
+                                    animalAge={animal.animalAge}
+                                    animalWeight={animal.animalWeight}
+                                    favoriteFood={animal.favoriteFood}
+                                    photo={animal.photo}
+                                />
+                            </div>
                         ))
                     )}
                 </div>
             </main>
+            <Footer />
         </>
-        
+
 
 
     );
