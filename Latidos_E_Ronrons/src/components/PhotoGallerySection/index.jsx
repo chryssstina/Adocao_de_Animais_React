@@ -1,9 +1,10 @@
-import Rufus from "../../../public/imgs/PhotoGallery/rufus_gato_laranja.jpg";
-import Nina from "../../../public/imgs/PhotoGallery/nina_gata_cinza.jpg";
-import Thor from "../../../public/imgs/PhotoGallery/thor_porte_medio.jpg";
-import FeiraAdocao from "../../../public/imgs/PhotoGallery/dog_feira_adocao.jpg";
-import CampanhaVacinacao from "../../../public/imgs/PhotoGallery/campanha_vacinacao.jpg";
-import LimpezaManutencao from "../../../public/imgs/PhotoGallery/limpeza_manutencao.jpg";
+import Rufus from "../../assets/PhotoGallery/rufus_gato_laranja.jpg";
+import Nina from "../../assets/PhotoGallery/nina_gata_cinza.jpg";
+import Thor from "../../assets/PhotoGallery/thor_porte_medio.jpg";
+import FeiraAdocao from "../../assets/PhotoGallery/dog_feira_adocao.jpg";
+import CampanhaVacinacao from "../../assets/PhotoGallery/campanha_vacinacao.jpg";
+import LimpezaManutencao from "../../assets/PhotoGallery/limpeza_manutencao.jpg";
+
 
 function PhotoGallerySection() {
   return (

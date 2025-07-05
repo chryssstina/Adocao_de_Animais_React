@@ -8,7 +8,7 @@
 }
 
 body{
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif !important;
 }
 
 .navbar{
@@ -25,29 +25,29 @@ body{
 }
 
 .navbar-img{
-    height: 100px;
-    width: auto;
+    height: 100px !important;
+    width: auto !important;
 }
 
 .nav-link{
-    color: #2C5772;
-    font-weight: 600;
-    font-size: 20px;
+    color: #2C5772 !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
 }
 .logo-pequena {
-    display: none;
+    display: none !important;
 }
 
 /* Mostra a logo pequena e esconde a grande em telas menores */
 @media (max-width: 620px) {
     .logo-grande {
-        display: none;
+        display: none !important;
     }
 
     .logo-pequena {
-        display: block;
-        height: 80px; 
-        width: auto;
+        display: block !important;
+        height: 80px !important; 
+        width: auto !important;
     }
     
 
@@ -56,8 +56,6 @@ body{
         height: auto;
     }
 }
-
-
 
 
 main{
@@ -91,18 +89,18 @@ main{
 }
 
 .btn-adotar{
-    background-color: var(--azul-medio);
-    color: #D2ECF7;
+    background-color: var(--azul-medio) !important;
+    color: #D2ECF7 !important;
 }
 
 .btn-adotar a{
-    color: #D2ECF7;
-    text-decoration: none;
+    color: #D2ECF7 !important;
+    text-decoration: none !important;
 }
 
 .btn-adotar:hover{
-    background-color: var(--azul-primario);
-    color: #FFFFFF;
+    background-color: var(--azul-primario) !important;
+    color: #FFFFFF !important;
 }
 
 
@@ -118,8 +116,8 @@ main{
 }
 
 .accordion-button, .about-section h3{
-    color: var(--azul-primario);
-    font-weight: bold;
+    color: var(--azul-primario) !important; 
+    font-weight: bold !important;
 }
 
 .accordion{
@@ -127,7 +125,7 @@ main{
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: #FEFEFA;
+    background-color: #FEFEFA !important;
 }
 
 
@@ -147,8 +145,8 @@ main{
     padding: 40px;
 }
 .programming-section-text h3{
-    color: var(--azul-primario);
-    font-weight: bold;
+    color: var(--azul-primario) !important;
+    font-weight: bold !important;
 }
 .cards-conteiner{
     width: 80%;
@@ -160,23 +158,23 @@ main{
     padding-bottom: 40px;
 }
 .card{
-    border-color: var(--azul-medio);
-    border-left: solid 4px var(--azul-medio);
+    border-color: var(--azul-medio) !important;
+    border-left: solid 4px var(--azul-medio) !important;
     height: 20rem;
     width: 30rem;
     transition: box-shadow 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* sombra leve inicial */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important; /* sombra leve inicial */
 }
 
 .card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sombra mais forte no hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important; /* sombra mais forte no hover */
 }
 
 .material-symbols-outlined{
     color: var(--azul-medio);
 }
 .card-title{
-    color: var(--azul-primario);
+    color: var(--azul-primario) !important;
     font-weight: bold;
 }
 
@@ -230,8 +228,8 @@ main{
 }
 
 .photo-gallery-section-text h3{
-    color: var(--azul-primario);
-    font-weight: bold;
+    color: var(--azul-primario) !important;
+    font-weight: bold !important;
 }
 
 .card-gallery-container{
@@ -246,7 +244,7 @@ main{
 
 .card-gallery{
     width: 30%;
-    border-radius: 10px;
+    border-radius: 10px !important;
     transition: box-shadow 0.3s ease;
     box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
 }

@@ -1,3 +1,6 @@
+import LogoTitulo from '../../assets/LogoTitulo/LogoTitle2.png';
+
+
 function Navbar() {
   return (
     <div className="header-container">
@@ -5,7 +8,7 @@ function Navbar() {
         <div className="container-fluid">
           <img
             className="navbar-img logo-grande"
-            src="imgs/LogoTitulo/LogoTitle2.png"
+            src={LogoTitulo}
             alt="Logo Latidos&Ronrons"
           />
 

@@ -1,4 +1,4 @@
-import Animals from "../../../public/imgs/Miscellaneous/animals.png";
+import Animals from '../../assets/Miscellaneous/animals.png/';
 
 function MainSection() {
   return (

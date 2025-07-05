@@ -1,10 +1,11 @@
-import LogoTitle from "../../../public/imgs/LogoTitulo/LogoTitle.png";
-import EmailLogo from "../../../public/imgs/Miscellaneous/email.png";
-import TelefoneLogo from "../../../public/imgs/Miscellaneous/telefone.png";
-import LocalLogo from "../../../public/imgs/Miscellaneous/local.png";
-import FacebookLogo from "../../../public/imgs/Miscellaneous/facebook.png";
-import InstagramLogo from "../../../public/imgs/Miscellaneous/instagram.png";
-import TwitterLogo from "../../../public/imgs/Miscellaneous/twitter.png";
+import LogoTitle from "../../assets/LogoTitulo/LogoTitle.png";
+import EmailLogo from "../../assets/Miscellaneous/email.png";
+import TelefoneLogo from "../../assets/Miscellaneous/telefone.png";
+import LocalLogo from "../../assets/Miscellaneous/local.png";
+import FacebookLogo from "../../assets/Miscellaneous/facebook.png";
+import InstagramLogo from "../../assets/Miscellaneous/instagram.png";
+import TwitterLogo from "../../assets/Miscellaneous/twitter.png";
+ 
 
 function Footer() {
   return (

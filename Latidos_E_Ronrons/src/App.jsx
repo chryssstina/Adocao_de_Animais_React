@@ -1,22 +1,19 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import MainSection from "./components/MainSection";
-import AboutSection from "./components/AboutSection";
-import ProgrammingSection from "./components/ProgrammingSection";
-import PhotoGallerySection from "./components/PhotoGallerySection";
 
+import Home from "./pages/Home/Home";
+import AnimalAdoption from "./pages/AnimalAdoption/AnimalAdoption";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
   return (
     <>
-      <Navbar />
-      <main>
-        <MainSection />
-        <AboutSection />
-        <ProgrammingSection />
-        <PhotoGallerySection />
-        <Footer />
-      </main>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/adocao-de-animais" element={<AnimalAdoption />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
