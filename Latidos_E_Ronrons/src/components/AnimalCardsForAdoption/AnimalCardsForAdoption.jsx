@@ -1,4 +1,5 @@
 import './AnimalCardForAdoption.css'
+import BtnQueroAdotar from '../BtnQueroAdotar/BtnQueroAdotar';
 
 function AnimalCardsForAdoption({ animalName, animalAge, animalWeight, favoriteFood, photo }) {
 
@@ -12,7 +13,7 @@ function AnimalCardsForAdoption({ animalName, animalAge, animalWeight, favoriteF
                     <p class="card-text"> Idade: {animalAge}</p>
                     <p class="card-text"> Peso: {animalWeight}</p>
                     <p class="card-text"> Comida favorita: {favoriteFood}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <BtnQueroAdotar/>
                 </div>
             </div>
 

@@ -3,6 +3,7 @@
 :root {
     --azul-primario: #2E607C;
     --azul-medio: #4A90B2;
+    --azul-claro: #A9D5F0;
     --azul-acinzentado: #4B5563;
     --cinza-claro: #F7F7F7;
 }
@@ -89,6 +90,7 @@ main{
 }
 
 .btn-adotar{
+    margin-top: 2rem;
     background-color: var(--azul-medio) !important;
     color: #D2ECF7 !important;
 }
