@@ -39,6 +39,7 @@ function AnimalAdoption() {
                                     animalAge={animal.animalAge}
                                     animalWeight={animal.animalWeight}
                                     favoriteFood={animal.favoriteFood}
+                                    species={animal.species}
                                     photo={animal.photo}
                                 />
                             </div>
