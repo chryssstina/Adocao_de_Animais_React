@@ -1,0 +1,83 @@
+.adoptdonate-section {
+  padding: 2rem 0;
+  background: linear-gradient(to left, #6fb1fc, #d6eefe); /* Gradiente azul como no mockup */
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  max-width: 720px;
+  width: 100%;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.adopt-container,
+.donate-container {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.adopt-icon img,
+.donate-icon img {
+  border-radius: 50%;
+  padding: 1rem;
+  width: 128px;
+  height: 128px;
+}
+
+.adopt-content h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 1rem 0 0.5rem;
+  color: #2b2b2b;
+}
+
+.donate-content h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 1rem 0 0.5rem;
+  color: #2b2b2b;
+}
+
+.adopt-content p,
+.donate-content p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: #4a90e2;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #357ab8;
+}
+
+.adopt-content span {
+  display: block;
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+hr {
+  margin: 3rem 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+span{
+    text-decoration: underline;
+}
