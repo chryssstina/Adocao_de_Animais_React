@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import LogoTitulo from '../../assets/LogoTitulo/LogoTitle2.png';
+import "./Navbar.css"
 
 
 function Navbar() {
@@ -22,8 +23,7 @@ function Navbar() {
   };
 
   return (
-    <div className="header-container">
-      <nav className="navbar navbar-expand-lg">
+      <nav className="header-container navbar navbar-expand-lg sticky-top">
         <div className="container-fluid">
           <Link to={"/"}>
             <img
@@ -62,7 +62,6 @@ function Navbar() {
           </div>
         </div>
       </nav>
-    </div>
   );
 }
 
