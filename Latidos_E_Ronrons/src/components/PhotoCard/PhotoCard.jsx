@@ -1,7 +1,6 @@
 import "./AnimalCardForAdoption.css";
-import BtnQueroAdotar from "../BtnQueroAdotar/BtnQueroAdotar";
 
-function AnimalCardsForAdoption({ photo, animalName, description }) {
+function PhotoCard({ photo, animalName, description }) {
   return (
     <>
       <div className="card-gallery-container">
@@ -21,4 +20,4 @@ function AnimalCardsForAdoption({ photo, animalName, description }) {
   );
 }
 
-export default AnimalCardsForAdoption;
+export default PhotoCard;
