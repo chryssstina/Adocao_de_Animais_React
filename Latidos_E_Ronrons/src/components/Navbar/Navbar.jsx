@@ -1,7 +1,26 @@
+import { useNavigate, useLocation } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import LogoTitulo from '../../assets/LogoTitulo/LogoTitle2.png';
 
 
 function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigateWithScroll = (sectionId) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Espera o componente ser montado para rolar até a seção
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100); // pequeno atraso
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="header-container">
       <nav className="navbar navbar-expand-lg">
@@ -25,18 +44,18 @@ function Navbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto">
-              <a className="nav-link" href="#about">
+              <button className="nav-link btn btn-link" onClick={() => handleNavigateWithScroll("about")}>
                 Sobre
-              </a>
-              <a className="nav-link" href="#programming-section">
+              </button>
+              <button className="nav-link btn btn-link" onClick={() => handleNavigateWithScroll("programming-section")}>
                 Programação
-              </a>
-              <a className="nav-link" href="#form-section">
-                Inscrição
-              </a>
-              <a className="nav-link" href="#photo-gallery-section">
+              </button>
+              <Link className="nav-link btn btn-link" to={"/adocao-de-animais"}>
+                Adoção
+              </Link>
+              <button className="nav-link btn btn-link" onClick={() => handleNavigateWithScroll("photo-gallery-section")}>
                 Galeria
-              </a>
+              </button>
             </div>
           </div>
         </div>
