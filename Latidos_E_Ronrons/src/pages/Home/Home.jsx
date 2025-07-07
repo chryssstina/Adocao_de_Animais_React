@@ -4,6 +4,7 @@ import ProgrammingSection from "../../components/ProgrammingSection";
 import PhotoGallerySection from "../../components/PhotoGallerySection";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import AdoptDonate from "../../components/AdoptDonate";
 
 
 function Home() {
@@ -14,6 +15,7 @@ function Home() {
                 <MainSection />
                 <AboutSection />
                 <ProgrammingSection />
+                <AdoptDonate />
                 <PhotoGallerySection />
                 <Footer />
             </main>
