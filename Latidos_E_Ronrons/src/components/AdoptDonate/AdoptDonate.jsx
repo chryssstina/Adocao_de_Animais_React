@@ -2,6 +2,7 @@ import "./AdoptDonate.css";
 import Bone from "../../assets/icons/Bone.svg";
 import Heart from "../../assets/icons/Heart.svg";
 import Arrow from "../../assets/icons/Frame.svg";
+import { Link } from 'react-router-dom';
 
 function AdoptDonate() {
   return (
@@ -18,7 +19,7 @@ function AdoptDonate() {
               animais disponíveis para adoção e encontre seu novo companheiro de
               vida.
             </p>
-            <button>Ver animais disponíveis <img src={Arrow}/></button>
+            <Link className="btn btn-lg btn-adotar" to={"/adocao-de-animais"}>Ver animais disponíveis <img src={Arrow}/></Link>
             <span>+50 animais já encontraram um lar amoroso</span>
           </div>
         </div>
@@ -35,7 +36,7 @@ function AdoptDonate() {
               Gostaria de nos ajudar doando alimentos, brinquedos e ter a
               oportunidade de ajudar nossa causa? Clique abaixo!
             </p>
-            <button>Doar</button>
+            <Link className="btn btn-lg btn-adotar" to={"/"}>Doar</Link>
           </div>
         </div>
       </div>

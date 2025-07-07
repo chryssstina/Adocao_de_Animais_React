@@ -59,22 +59,6 @@
   margin-bottom: 1rem;
 }
 
-button {
-  background-color: #4a90e2;
-  color: white;
-  padding: 0.7rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #357ab8;
-}
-
 .adopt-content span {
   display: block;
   font-size: 0.85rem;
