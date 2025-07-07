@@ -1,3 +1,5 @@
+import "./ProgrammingSection.css"
+
 function ProgrammingSection() {
   return (
     <section className="programming-section" id="programming-section">
