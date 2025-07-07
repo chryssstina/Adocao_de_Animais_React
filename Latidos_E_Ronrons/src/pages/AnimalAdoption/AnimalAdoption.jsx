@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import './AnimalAdoption.css'
 import AnimalCardsForAdoption from "../../components/AnimalCardsForAdoption/AnimalCardsForAdoption";
 import { animal_adoption as mockData } from "../../data/animal_adoption_mock";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 function AnimalAdoption() {
 

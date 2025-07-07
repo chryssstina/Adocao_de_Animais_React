@@ -1,4 +1,4 @@
-import "./AnimalCardForAdoption.css";
+import "./PhotoCard.css";
 
 function PhotoCard({ photo, animalName, description }) {
   return (
