@@ -1,0 +1,20 @@
+.home-section{
+    background-image: linear-gradient(#A4D8F0, #FFFFFF);
+    display: flex;
+    width: 100%;
+}
+
+.home-section-text{
+    color: var(--azul-primario);
+    padding-top: 10%;
+    padding-left: 10%;
+}
+
+.home-section-text h1 {
+    font-weight: bold;
+}
+
+.home-section-img{
+    width: 50%;
+    height: auto;
+}
