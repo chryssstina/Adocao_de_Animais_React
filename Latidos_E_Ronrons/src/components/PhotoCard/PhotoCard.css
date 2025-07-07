@@ -1,0 +1,8 @@
+.custom-card{
+    width: 16rem !important;
+    height: auto;
+}
+
+.card-body p{
+    margin: 0px !important;
+}
