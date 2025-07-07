@@ -1,21 +1,25 @@
 import './SignUpUser.css';
-import DogAdocao from '../../assets/PhotoGallery/dog_feira_adocao.jpg'
+import DogAdocao from '../../assets/PhotoGallery/dog_feira_adocao.jpg';
 import Navbar from '../../components/Navbar/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
 import { useState } from 'react';
+import animal_adoption_mock from '../../data/animal_adoption_mock.js';
 
 function SignUpUser() {
 
-    const navigate = useNavigate(); //para fazer o redirecionamento para a página de login
+    const navigate = useNavigate();
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
 
+    // Random animal photo logic
+    const randomNumber = Math.floor(Math.random() * 10) + 1;
+    const animal = animal_adoption_mock.find(a => a.id === randomNumber);
+    const animalPhoto = animal ? animal.photo : DogAdocao;
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        navigate("/login")
+        navigate("/login");
     }
 
     return (
@@ -23,35 +27,35 @@ function SignUpUser() {
         <Navbar />
         <main className="signUp-main">
             <div className="container-signUp">
-                <form class="input-fields" onSubmit={handleSubmit}>
+                <form className="input-fields" onSubmit={handleSubmit}>
                     <div className="custom-title">
                         <h1>Cadastre-se</h1>
                         <p>Crie sua conta e conheça nossos AUmigos</p>
                     </div>
-                    <div class="mb-3 input-signUp">
-                        <label for="user-name" class="form-label">Nome</label>
+                    <div className="mb-3 input-signUp">
+                        <label htmlFor="user-name" className="form-label">Nome</label>
                         <input type="text" 
-                                class="form-control" 
+                                className="form-control" 
                                 value={userName}  
                                 placeholder="Insira seu nome"
                                 onChange={(e) => setUserName(e.target.value)} 
                                 required/>
                     </div>
 
-                    <div class="mb-3 input-signUp">
-                        <label for="user-email" class="form-label">Email</label>
+                    <div className="mb-3 input-signUp">
+                        <label htmlFor="user-email" className="form-label">Email</label>
                         <input type="email" 
-                                class="form-control" 
+                                className="form-control" 
                                 value={userEmail} 
                                 placeholder="Insira seu e-mail"
                                 onChange={(e) => setUserEmail(e.target.value)} 
                                 required />
                     </div>
 
-                    <div class="mb-3 input-signUp">
-                        <label for="user-passsword" class="form-label">Senha</label>
+                    <div className="mb-3 input-signUp">
+                        <label htmlFor="user-password" className="form-label">Senha</label>
                         <input type="password" 
-                                class="form-control" 
+                                className="form-control" 
                                 value={userPassword} 
                                 placeholder="Insira sua senha"
                                 onChange={(e) => setUserPassword(e.target.value)} 
@@ -62,12 +66,10 @@ function SignUpUser() {
                     </button>
                 </form>
 
-                <img src={DogAdocao} alt="Dog Trovão" />
+                <img src={animalPhoto} alt="Animal para adoção" />
 
             </div>
         </main>
-       
-      
         </>
     );
 }
