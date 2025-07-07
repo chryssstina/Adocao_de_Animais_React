@@ -1,6 +1,6 @@
 import './Login.css';
 import DogAdocao from '../../assets/PhotoGallery/varios-cachorros.jpg'
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 import {useForm} from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 

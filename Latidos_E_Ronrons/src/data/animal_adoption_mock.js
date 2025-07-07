@@ -17,7 +17,8 @@ export const animal_adoption = [
         animalWeight: "10Kg",
         favoriteFood: "Sardinha",
         species: "Gato",
-        photo: Luna
+        photo: Luna,
+        description: "Gata brincalhona, adora dormir no sol e correr atrás de brinquedos."
     },
     {
         id: 2,
@@ -26,7 +27,8 @@ export const animal_adoption = [
         animalWeight: "18Kg",
         favoriteFood: "Ração de cordeiro",
         species: "Cachorro",
-        photo: Thor
+        photo: Thor,
+        description: "Cachorro de porte médio, muito leal e protetor, adora brincar com crianças."
     },
     {
         id: 3,
@@ -35,7 +37,8 @@ export const animal_adoption = [
         animalWeight: "7Kg",
         favoriteFood: "Frango cozido",
         species: "Gato",
-        photo: Rufus
+        photo: Rufus,
+        description: "Gata doce e carinhosa, adora receber carinho e brincar com bolinhas de lã."
     },
     {
         id: 4,
@@ -44,7 +47,8 @@ export const animal_adoption = [
         animalWeight: "20Kg",
         favoriteFood: "Biscoito canino",
         species: "Cachorro",
-        photo: Tobbey
+        photo: Tobbey,
+        description: "Cachorro amigável, adora correr no parque e brincar com outros cães."
     },
     {
         id: 5,
@@ -53,7 +57,8 @@ export const animal_adoption = [
         animalWeight: "9Kg",
         favoriteFood: "Peixe grelhado",
         species: "Gato",
-        photo: Nina
+        photo: Nina,
+        description: "Gata curiosa e independente, gosta de explorar novos lugares e observar os pássaros."
     },
     {
         id: 6,
@@ -62,7 +67,8 @@ export const animal_adoption = [
         animalWeight: "25Kg",
         favoriteFood: "Arroz com carne",
         species: "Cachorro",
-        photo: Fred
+        photo: Fred,
+        description: "Cachorro idoso, muito tranquilo e amoroso, adora cochilar ao sol e receber carinho."
     },
     {
         id: 7,
@@ -71,7 +77,8 @@ export const animal_adoption = [
         animalWeight: "6Kg",
         favoriteFood: "Atum",
         species: "Gato",
-        photo: Maya
+        photo: Maya,
+        description: "Gata brincalhona e cheia de energia, adora correr atrás de penas e brincar com caixas."
     },
     {
         id: 8,
@@ -80,7 +87,8 @@ export const animal_adoption = [
         animalWeight: "30Kg",
         favoriteFood: "Carne crua",
         species: "Cachorro",
-        photo: Rex
+        photo: Rex,
+        description: "Cachorro grande e forte, muito protetor com sua família, adora brincar de buscar a bola."
     },
     {
         id: 9,
@@ -89,7 +97,8 @@ export const animal_adoption = [
         animalWeight: "8Kg",
         favoriteFood: "Petiscos de salmão",
         species: "Gato",
-        photo: Lili
+        photo: Lili,
+        description: "Gata meiga e tranquila, adora dormir em lugares quentes e receber carinho dos humanos."
     },
     {
         id: 10,
@@ -98,6 +107,7 @@ export const animal_adoption = [
         animalWeight: "22Kg",
         favoriteFood: "Ração Premium",
         species: "Cachorro",
-        photo: Max
+        photo: Max,
+        description: "Cachorro ativo e brincalhão, adora correr no parque e brincar com outros cães."
     }
 ];

@@ -39,7 +39,6 @@
 }
 
 .card-gallery{
-    width: 30%;
     border-radius: 10px !important;
     transition: box-shadow 0.3s ease;
     box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);

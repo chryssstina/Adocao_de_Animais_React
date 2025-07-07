@@ -1,6 +1,5 @@
 import "./MainSection.css"
 import Animals from '../../assets/Miscellaneous/animals.png/';
-import BtnQueroAdotar from '../BtnQueroAdotar/BtnQueroAdotar';
 
 function MainSection() {
   return (
