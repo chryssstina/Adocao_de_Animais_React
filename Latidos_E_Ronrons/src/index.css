@@ -12,29 +12,11 @@ body{
     font-family: "Poppins", sans-serif !important;
 }
 
-.navbar{
-    background-color: #FEFEFA;
-}
-
-.navbar-nav{
-    column-gap: 40px;
-}
-
 .container-fluid{
     padding-left: 60px;
     padding-right: 60px;
 }
 
-.navbar-img{
-    height: 100px !important;
-    width: auto !important;
-}
-
-.nav-link{
-    color: #2C5772 !important;
-    font-weight: 600 !important;
-    font-size: 20px !important;
-}
 .logo-pequena {
     display: none !important;
 }
