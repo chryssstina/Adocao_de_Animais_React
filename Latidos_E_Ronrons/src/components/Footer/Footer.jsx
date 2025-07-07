@@ -12,7 +12,6 @@ function Footer() {
   return (
     <div className="container-fluid" id="footer">
       <footer className="py-5">
-        <div className="container">
           <div className="row">
             <div className="col-md-4 mb-4">
               <img
@@ -32,19 +31,19 @@ function Footer() {
                 <li>
                   <i className="bi bi-envelope">
                     <img src={EmailLogo} />
-                  </i>{" "}
+                  </i>
                   contato@latidoseronrons.org
                 </li>
                 <li>
                   <i className="bi bi-telephone">
                     <img src={TelefoneLogo} />
-                  </i>{" "}
+                  </i>
                   (00) 1234-5678
                 </li>
                 <li>
                   <i className="bi bi-geo-alt">
                     <img src={LocalLogo} />
-                  </i>{" "}
+                  </i>
                   Rua dos Animais, 123 - Bairro Feliz
                 </li>
               </ul>
@@ -71,7 +70,6 @@ function Footer() {
               © 2025 Latidos & Ronrons. Todos os direitos reservados.
             </small>
           </div>
-        </div>
       </footer>
     </div>
   );
