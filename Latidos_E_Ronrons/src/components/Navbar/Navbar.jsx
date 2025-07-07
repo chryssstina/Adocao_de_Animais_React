@@ -25,11 +25,13 @@ function Navbar() {
     <div className="header-container">
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <img
-            className="navbar-img logo-grande"
-            src={LogoTitulo}
-            alt="Logo Latidos&Ronrons"
-          />
+          <Link to={"/"}>
+            <img
+              className="navbar-img logo-grande"
+              src={LogoTitulo}
+              alt="Logo Latidos&Ronrons"
+            />
+          </Link>
 
           <button
             className="navbar-toggler"
