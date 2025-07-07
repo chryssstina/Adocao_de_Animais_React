@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --azul-primario: #2E607C;
+    --azul-medio: #4A90B2;
+    --azul-claro: #A9D5F0;
+    --azul-acinzentado: #4B5563;
+    --cinza-claro: #F7F7F7;
+}
+
+.about-section{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+}
+
+.accordion-button, .about-section h3{
+    color: var(--azul-primario) !important; 
+    font-weight: bold !important;
+}
+
+.accordion{
+    width: 70%;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #FEFEFA !important;
+}

@@ -1,3 +1,4 @@
+import "./AboutSection.css"
 
 function AboutSection() {
   return (

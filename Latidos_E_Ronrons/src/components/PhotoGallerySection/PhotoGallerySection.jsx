@@ -1,3 +1,4 @@
+import "./PhotoGallerySection.css"
 import Rufus from "../../assets/PhotoGallery/rufus_gato_laranja.jpg";
 import Nina from "../../assets/PhotoGallery/nina_gata_cinza.jpg";
 import Thor from "../../assets/PhotoGallery/thor_porte_medio.jpg";

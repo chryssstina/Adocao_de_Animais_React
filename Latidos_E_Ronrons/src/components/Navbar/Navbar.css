@@ -1,0 +1,18 @@
+.navbar{
+    background-color: #FEFEFA;
+}
+
+.navbar-nav{
+    column-gap: 40px;
+}
+
+.navbar-img{
+    height: 100px !important;
+    width: auto !important;
+}
+
+.nav-link{
+    color: #2C5772 !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+}

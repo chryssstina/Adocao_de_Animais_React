@@ -12,29 +12,11 @@ body{
     font-family: "Poppins", sans-serif !important;
 }
 
-.navbar{
-    background-color: #FEFEFA;
-}
-
-.navbar-nav{
-    column-gap: 40px;
-}
-
 .container-fluid{
     padding-left: 60px;
     padding-right: 60px;
 }
 
-.navbar-img{
-    height: 100px !important;
-    width: auto !important;
-}
-
-.nav-link{
-    color: #2C5772 !important;
-    font-weight: 600 !important;
-    font-size: 20px !important;
-}
 .logo-pequena {
     display: none !important;
 }
@@ -68,27 +50,6 @@ main{
 }
 
 /* ---------- HOME SECTION --------------*/
-.home-section{
-    background-image: linear-gradient(#A4D8F0, #FFFFFF);
-    display: flex;
-    width: 100%;
-}
-
-.home-section-text{
-    color: var(--azul-primario);
-    padding-top: 10%;
-    padding-left: 10%;
-}
-
-.home-section-text h1 {
-    font-weight: bold;
-}
-
-.home-section-img{
-    width: 50%;
-    height: auto;
-}
-
 .btn-adotar{
     margin-top: 2rem;
     background-color: var(--azul-medio) !important;
@@ -105,170 +66,3 @@ main{
     color: #FFFFFF !important;
 }
 
-
-
-/* ---------- SECTION SOBRE - ACCORDION --------------*/
-.about-section{
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 20px;
-}
-
-.accordion-button, .about-section h3{
-    color: var(--azul-primario) !important; 
-    font-weight: bold !important;
-}
-
-.accordion{
-    width: 70%;
-}
-
-.accordion-button:not(.collapsed) {
-    background-color: #FEFEFA !important;
-}
-
-
-/* ---------- SECTION PROGRAMAÇÃO - CARDS --------------*/
-.programming-section{
-    background-color: var(--cinza-claro);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-}
-
-.programming-section-text{
-    text-align: center;
-    width: 50%;
-    padding: 40px;
-}
-.programming-section-text h3{
-    color: var(--azul-primario) !important;
-    font-weight: bold !important;
-}
-.cards-conteiner{
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    padding-bottom: 40px;
-}
-.card{
-    border-color: var(--azul-medio) !important;
-    border-left: solid 4px var(--azul-medio) !important;
-    height: 20rem;
-    width: 30rem;
-    transition: box-shadow 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important; /* sombra leve inicial */
-}
-
-.card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important; /* sombra mais forte no hover */
-}
-
-.material-symbols-outlined{
-    color: var(--azul-medio);
-}
-.card-title{
-    color: var(--azul-primario) !important;
-    font-weight: bold;
-}
-
-.card-subtitle{
-    color: var(--azul-acinzentado);
-    font-weight: 300;
-}
-
-.card-text{
-    color: var(--azul-acinzentado);
-}
-
-
-/* ---------- SECTION FORMULÁRIO DE INSCRIÇÃO --------------*/
-.form-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-}
-
-.form-section-text{
-    text-align: center;
-    width: 50%;
-    padding: 40px;
-}
-
-.form-section-text h3{
-    color: var(--azul-primario);
-    font-weight: bold;
-}
-
-
-/* ---------- SECTION GALERIA DE FOTOS --------------*/
-
-
-.photo-gallery-section{
-    background-color: var(--cinza-claro);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-}
-
-.photo-gallery-section-text{
-    text-align: center;
-    width: 50%;
-    padding: 40px;
-}
-
-.photo-gallery-section-text h3{
-    color: var(--azul-primario) !important;
-    font-weight: bold !important;
-}
-
-.card-gallery-container{
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    padding-bottom: 40px;
-}
-
-.card-gallery{
-    width: 30%;
-    border-radius: 10px !important;
-    transition: box-shadow 0.3s ease;
-    box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
-}
-
-.card-gallery:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sombra mais forte no hover */
-}
-.card-img-top{
-    height: auto;
-    width: 100%;
-}
-
-.card-gallery .card-body{
-    padding: 10px;
-}
-
-/* ---------- SECTION FOOTER --------------*/
-#footer{
-    background-color: #2C5772;
-    color: #FEFEFA;
-}
-
-#LogoFooter{
-    width: 30vh ;
-} 
