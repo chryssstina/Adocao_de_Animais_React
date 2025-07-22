@@ -13,28 +13,28 @@ export const animal_adoption_mock = [
     {
         id: 1,
         animalName: "Luna",
-        animalAge: 4,
-        animalWeight: "10Kg",
+        animalAge: "2 anos",
+        animalWeight: "4Kg",
         favoriteFood: "Sardinha",
         species: "Gato",
         photo: Luna,
-        description: "Gata brincalhona, adora dormir no sol e correr atrás de brinquedos."
+        description: "Gatinha carinhosa, brincalhona e sociável. Pronta para um lar amoroso."
     },
     {
         id: 2,
         animalName: "Thor",
-        animalAge: 2,
-        animalWeight: "18Kg",
+        animalAge: "5 anos",
+        animalWeight: "25Kg",
         favoriteFood: "Ração de cordeiro",
         species: "Cachorro",
         photo: Thor,
-        description: "Cachorro de porte médio, muito leal e protetor, adora brincar com crianças."
+        description: "Cão leal e protetor, ideal para casas com quintal."
     },
     {
         id: 3,
         animalName: "Mel",
-        animalAge: 1,
-        animalWeight: "7Kg",
+        animalAge: "1 ano",
+        animalWeight: "3.2Kg",
         favoriteFood: "Frango cozido",
         species: "Gato",
         photo: Rufus,
@@ -43,7 +43,7 @@ export const animal_adoption_mock = [
     {
         id: 4,
         animalName: "Tobby",
-        animalAge: 5,
+        animalAge: "4 anos",
         animalWeight: "20Kg",
         favoriteFood: "Biscoito canino",
         species: "Cachorro",
@@ -53,8 +53,8 @@ export const animal_adoption_mock = [
     {
         id: 5,
         animalName: "Nina",
-        animalAge: 3,
-        animalWeight: "9Kg",
+        animalAge: "3 anos",
+        animalWeight: "6Kg",
         favoriteFood: "Peixe grelhado",
         species: "Gato",
         photo: Nina,
@@ -63,18 +63,18 @@ export const animal_adoption_mock = [
     {
         id: 6,
         animalName: "Fred",
-        animalAge: 6,
-        animalWeight: "25Kg",
+        animalAge: "6 anos",
+        animalWeight: "30Kg",
         favoriteFood: "Arroz com carne",
         species: "Cachorro",
         photo: Fred,
-        description: "Cachorro idoso, muito tranquilo e amoroso, adora cochilar ao sol e receber carinho."
+        description: "Cachorro muito tranquilo e amoroso, adora cochilar ao sol e receber carinho."
     },
     {
         id: 7,
         animalName: "Maya",
-        animalAge: 2,
-        animalWeight: "6Kg",
+        animalAge: "2 anos",
+        animalWeight: "5.5Kg",
         favoriteFood: "Atum",
         species: "Gato",
         photo: Maya,
@@ -83,18 +83,18 @@ export const animal_adoption_mock = [
     {
         id: 8,
         animalName: "Rex",
-        animalAge: 4,
-        animalWeight: "30Kg",
+        animalAge: "7 anos",
+        animalWeight: "28Kg",
         favoriteFood: "Carne crua",
         species: "Cachorro",
         photo: Rex,
-        description: "Cachorro grande e forte, muito protetor com sua família, adora brincar de buscar a bola."
+        description: "Cachorro grande e forte, mas não resiste a brincar de buscar a bola."
     },
     {
         id: 9,
         animalName: "Lili",
-        animalAge: 3,
-        animalWeight: "8Kg",
+        animalAge: "3 anos",
+        animalWeight: "4.8Kg",
         favoriteFood: "Petiscos de salmão",
         species: "Gato",
         photo: Lili,
@@ -102,13 +102,13 @@ export const animal_adoption_mock = [
     },
     {
         id: 10,
-        animalName: "Max",
-        animalAge: 5,
+        animalName: "Simba",
+        animalAge: "4 anos",
         animalWeight: "22Kg",
         favoriteFood: "Ração Premium",
         species: "Cachorro",
         photo: Max,
-        description: "Cachorro ativo e brincalhão, adora correr no parque e brincar com outros cães."
+        description: "Cachorro ativo e brincalhão, ompanheiro para todas as horas."
     }
 ];
 
