@@ -35,3 +35,24 @@
     color: var(--azul-medio) !important;
 
 }
+
+
+@media (max-width:750px) {
+    .main-basic-animal-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .main-basic-animal-info img {
+        max-width: 60%;
+
+    }
+
+    .left-info {
+        margin: 10px 10px;
+    }
+
+    .left-info .card-title {
+        text-align: center;
+    }
+}

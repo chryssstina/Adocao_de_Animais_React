@@ -7,7 +7,7 @@ function BasicAnimalInfo({ animalName, animalAge, animalWeight, favoriteFood, an
         <>
             <main className="main-basic-animal-info">
                 <img src={photo} />
-                <div>
+                <div className="left-info">
                     <h1 className="card-title"><i class="bi bi-hearts"></i>{animalName}</h1>
 
                     <div className="container-basic-animal-info">
