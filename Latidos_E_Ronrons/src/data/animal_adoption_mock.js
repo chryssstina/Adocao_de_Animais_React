@@ -16,7 +16,7 @@ export const animal_adoption_mock = [
         animalAge: "2 anos",
         animalWeight: "4Kg",
         favoriteFood: "Sardinha",
-        species: "Gato",
+        animalCategory: "Gato",
         photo: Luna,
         description: "Gatinha carinhosa, brincalhona e sociável. Pronta para um lar amoroso."
     },
@@ -26,7 +26,7 @@ export const animal_adoption_mock = [
         animalAge: "5 anos",
         animalWeight: "25Kg",
         favoriteFood: "Ração de cordeiro",
-        species: "Cachorro",
+        animalCategory: "Cachorro",
         photo: Thor,
         description: "Cão leal e protetor, ideal para casas com quintal."
     },
@@ -36,7 +36,7 @@ export const animal_adoption_mock = [
         animalAge: "1 ano",
         animalWeight: "3.2Kg",
         favoriteFood: "Frango cozido",
-        species: "Gato",
+        animalCategory: "Gato",
         photo: Rufus,
         description: "Gata doce e carinhosa, adora receber carinho e brincar com bolinhas de lã."
     },
@@ -46,7 +46,7 @@ export const animal_adoption_mock = [
         animalAge: "4 anos",
         animalWeight: "20Kg",
         favoriteFood: "Biscoito canino",
-        species: "Cachorro",
+        animalCategory: "Cachorro",
         photo: Tobbey,
         description: "Cachorro amigável, adora correr no parque e brincar com outros cães."
     },
@@ -56,7 +56,7 @@ export const animal_adoption_mock = [
         animalAge: "3 anos",
         animalWeight: "6Kg",
         favoriteFood: "Peixe grelhado",
-        species: "Gato",
+        animalCategory: "Gato",
         photo: Nina,
         description: "Gata curiosa e independente, gosta de explorar novos lugares e observar os pássaros."
     },
@@ -66,7 +66,7 @@ export const animal_adoption_mock = [
         animalAge: "6 anos",
         animalWeight: "30Kg",
         favoriteFood: "Arroz com carne",
-        species: "Cachorro",
+        animalCategory: "Cachorro",
         photo: Fred,
         description: "Cachorro muito tranquilo e amoroso, adora cochilar ao sol e receber carinho."
     },
@@ -76,7 +76,7 @@ export const animal_adoption_mock = [
         animalAge: "2 anos",
         animalWeight: "5.5Kg",
         favoriteFood: "Atum",
-        species: "Gato",
+        animalCategory: "Gato",
         photo: Maya,
         description: "Gata brincalhona e cheia de energia, adora correr atrás de penas e brincar com caixas."
     },
@@ -86,7 +86,7 @@ export const animal_adoption_mock = [
         animalAge: "7 anos",
         animalWeight: "28Kg",
         favoriteFood: "Carne crua",
-        species: "Cachorro",
+        animalCategory: "Cachorro",
         photo: Rex,
         description: "Cachorro grande e forte, mas não resiste a brincar de buscar a bola."
     },
@@ -96,7 +96,7 @@ export const animal_adoption_mock = [
         animalAge: "3 anos",
         animalWeight: "4.8Kg",
         favoriteFood: "Petiscos de salmão",
-        species: "Gato",
+        animalCategory: "Gato",
         photo: Lili,
         description: "Gata meiga e tranquila, adora dormir em lugares quentes e receber carinho dos humanos."
     },
@@ -106,7 +106,7 @@ export const animal_adoption_mock = [
         animalAge: "4 anos",
         animalWeight: "22Kg",
         favoriteFood: "Ração Premium",
-        species: "Cachorro",
+        animalCategory: "Cachorro",
         photo: Max,
         description: "Cachorro ativo e brincalhão, ompanheiro para todas as horas."
     }

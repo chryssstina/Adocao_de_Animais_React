@@ -1,6 +1,7 @@
 import "./PhotoGallerySection.css";
 import { useEffect, useState } from "react";
 import PhotoCard from "../PhotoCard/PhotoCard";
+import CustomBtn from "../CustomBtn/CustomBtn";
 import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
 
 function PhotoGallerySection() {
@@ -44,6 +45,13 @@ function PhotoGallerySection() {
           ))
         )}
       </div>
+
+  
+      <CustomBtn
+          route="/adocao-de-animais"
+          label="Veja mais animais disponíveis"
+          icon="bi bi-arrow-right"
+      />
     </section>
   );
 }

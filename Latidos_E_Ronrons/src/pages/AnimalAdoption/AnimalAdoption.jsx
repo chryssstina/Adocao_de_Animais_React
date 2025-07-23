@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import './AnimalAdoption.css'
 import AnimalCardsForAdoption from "../../components/AnimalCardsForAdoption/AnimalCardsForAdoption";
 import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
+
 
 function AnimalAdoption() {
 
@@ -22,7 +21,7 @@ function AnimalAdoption() {
 
     return (
         <>
-            <Navbar />
+
             <main className="animal-adoption-main">
                 <div className="custom-title">
                     <h1>Pets para adoção</h1>
@@ -39,15 +38,17 @@ function AnimalAdoption() {
                                     animalAge={animal.animalAge}
                                     animalWeight={animal.animalWeight}
                                     favoriteFood={animal.favoriteFood}
-                                    species={animal.species}
+                                    animalCategory={animal.animalCategory}
                                     photo={animal.photo}
                                 />
+                                
                             </div>
+
                         ))
                     )}
                 </div>
             </main>
-            <Footer />
+
         </>
 
 

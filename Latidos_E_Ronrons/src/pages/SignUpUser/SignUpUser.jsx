@@ -1,6 +1,5 @@
 import './SignUpUser.css';
 import DogAdocao from '../../assets/PhotoGallery/dog_feira_adocao.jpg'
-import Navbar from '../../components/Navbar/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -20,7 +19,6 @@ function SignUpUser() {
 
     return (
         <>
-        <Navbar />
         <main className="signUp-main">
             <div className="container-signUp">
                 <form class="input-fields" onSubmit={handleSubmit}>

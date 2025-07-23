@@ -1,7 +1,7 @@
 import './AnimalCardForAdoption.css'
-import BtnQueroAdotar from '../BtnQueroAdotar/BtnQueroAdotar';
+import CustomBtn from '../CustomBtn/CustomBtn';
 
-function AnimalCardsForAdoption({ animalName, animalAge, animalWeight, favoriteFood, species, photo }) {
+function AnimalCardsForAdoption({ animalName, animalAge, animalWeight, favoriteFood, animalCategory, photo }) {
 
     return (
         <>
@@ -13,9 +13,21 @@ function AnimalCardsForAdoption({ animalName, animalAge, animalWeight, favoriteF
                     <p class="card-text"> Idade: {animalAge}</p>
                     <p class="card-text"> Peso: {animalWeight}</p>
                     <p class="card-text"> Comida favorita: {favoriteFood}</p>
-                    <p class="card-text"> Espécie: {species}</p>
-                    <BtnQueroAdotar/>
+                    <p class="card-text"> Categoria: {animalCategory}</p>
                 </div>
+                <div className='card-buttons'>
+                    <CustomBtn
+                        route="/"
+                        label="Tenho interesse"
+                        className="custom-btn-tenho-interesse"
+                    />
+                    <CustomBtn
+                        route="/"
+                        label="+"
+                        className="custom-btn-ver-mais"
+                    />
+                </div>
+
             </div>
 
         </>

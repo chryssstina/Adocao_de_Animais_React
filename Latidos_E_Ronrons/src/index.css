@@ -6,6 +6,8 @@
     --azul-claro: #A9D5F0;
     --azul-acinzentado: #4B5563;
     --cinza-claro: #F7F7F7;
+    --branco: #FEFEFA;
+    --branco-puro: #FFFFFF;
 }
 
 body{
@@ -47,7 +49,7 @@ main{
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    row-gap: 40px;
+    /* row-gap: 40px; */
 }
 
 /* ---------- HOME SECTION --------------*/
