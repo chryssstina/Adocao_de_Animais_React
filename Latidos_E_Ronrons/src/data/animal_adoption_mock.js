@@ -32,12 +32,12 @@ export const animal_adoption_mock = [
     },
     {
         id: 3,
-        animalName: "Mel",
+        animalName: "Nina",
         animalAge: "1 ano",
         animalWeight: "3.2Kg",
         favoriteFood: "Frango cozido",
         animalCategory: "Gato",
-        photo: Rufus,
+        photo: Nina,
         description: "Gata doce e carinhosa, adora receber carinho e brincar com bolinhas de lã."
     },
     {
@@ -52,13 +52,13 @@ export const animal_adoption_mock = [
     },
     {
         id: 5,
-        animalName: "Nina",
+        animalName: "Rufus",
         animalAge: "3 anos",
         animalWeight: "6Kg",
         favoriteFood: "Peixe grelhado",
         animalCategory: "Gato",
-        photo: Nina,
-        description: "Gata curiosa e independente, gosta de explorar novos lugares e observar os pássaros."
+        photo: Rufus,
+        description: "Gato curioso e independente, gosta de explorar novos lugares e observar os pássaros."
     },
     {
         id: 6,

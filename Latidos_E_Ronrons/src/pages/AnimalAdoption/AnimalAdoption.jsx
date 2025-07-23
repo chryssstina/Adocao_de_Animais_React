@@ -34,6 +34,7 @@ function AnimalAdoption() {
                         animals.map((animal) => (
                             <div className="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center" key={animal.id}>
                                 <AnimalCardsForAdoption
+                                    id={animal.id}
                                     animalName={animal.animalName}
                                     animalAge={animal.animalAge}
                                     animalWeight={animal.animalWeight}

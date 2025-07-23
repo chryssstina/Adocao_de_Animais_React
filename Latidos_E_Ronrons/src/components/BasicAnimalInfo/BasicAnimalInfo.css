@@ -1,0 +1,37 @@
+.main-basic-animal-info {
+    background-color: var(--cinza-claro);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 70px;
+    padding: 3%;
+}
+
+.main-basic-animal-info img {
+    max-width: 40%;
+
+}
+
+.container-basic-animal-info {
+    background-color: var(--branco-puro);
+    padding: 20px;
+    margin: 10px 0px;
+    border: 1px solid var(--cinza-medio);
+    border-radius: 10px;
+}
+
+.custom-title-basic-animal {
+    font-size: 1.3rem;
+    padding-bottom: 10px;
+}
+
+.custom-btn-basic-info-back {
+    background-color: var(--cinza-claro) !important;
+    color: var(--azul-medio) !important;
+    margin-left: 20px !important;
+}
+
+.bi-arrow-down-left-circle {
+    color: var(--azul-medio) !important;
+
+}
