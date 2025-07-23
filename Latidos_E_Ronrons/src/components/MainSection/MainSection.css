@@ -28,3 +28,14 @@
     width: 50%;
     height: auto;
 }
+
+/* até 800px a imagem não aparece */
+@media (max-width:800px) {
+    .home-section-img{
+    display: none;
+}
+.home-section-text{
+    text-align: center;
+    padding: 5% 10%;
+}
+}

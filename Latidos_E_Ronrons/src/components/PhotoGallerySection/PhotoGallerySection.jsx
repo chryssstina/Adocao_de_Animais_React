@@ -45,12 +45,12 @@ function PhotoGallerySection() {
           ))
         )}
       </div>
-
   
       <CustomBtn
           route="/adocao-de-animais"
+          className="custom-btn-mais-animais"
           label="Veja mais animais disponíveis"
-          icon="bi bi-arrow-right"
+          icon="bi bi-arrow-up-right-circle"
       />
     </section>
   );
