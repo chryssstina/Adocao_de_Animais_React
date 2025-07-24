@@ -47,7 +47,6 @@ main{
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    row-gap: 40px;
 }
 
 /* ---------- HOME SECTION --------------*/
