@@ -10,7 +10,7 @@ function PhotoCard({ photo, animalName, description }) {
             className="card-img-top"
             alt={`${animalName}, ${description}`}
           />
-          <div className="card-body">
+          <div className="card-body card-container">
             <h5 className="card-title">{animalName}</h5>
             <p className="card-text">{description}</p>
           </div>
