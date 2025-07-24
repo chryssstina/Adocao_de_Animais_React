@@ -16,3 +16,35 @@
     font-weight: 600 !important;
     font-size: 20px !important;
 }
+
+.nav-link{
+  background:
+    linear-gradient(
+      to right,
+      rgba(74, 144, 178, 0),
+      rgba(74, 144, 178, 0)
+    ),
+    linear-gradient(
+      to right,
+      rgba(74, 144, 178, 1),
+      rgba(74, 144, 178, 1)
+  ) !important;
+  background-size: 100% 3px, 0 3px !important;
+  background-position: 100% 100%, 0 100% !important;
+  background-repeat: no-repeat !important;
+  transition: background-size 400ms !important;
+}
+
+.nav-link:hover{
+  background-size: 0 3px, 100% 3px !important;
+}
+
+/* Presentational Styles */
+/* body {
+  display: grid;
+  font-family: 'Poppins', sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  height: 100vh;
+  place-items: center;
+} */
