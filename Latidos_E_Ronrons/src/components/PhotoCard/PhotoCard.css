@@ -1,10 +1,9 @@
-.custom-card{
-    width: 16rem !important;
-    height: auto;
-}
-
-.card-body p{
+.card-body{
     margin: 0px !important;
+    z-index: 0 !important;
+    margin-top: -15vh !important;
+    position: relative; /* or absolute/fixed/sticky */
+    transition: 0.3s ease;
 }
 
 .programming-section{

@@ -29,13 +29,14 @@
 }
 
 .card-gallery-container{
-    width: 90%;
+    width: 22vw !important;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 30px;
-    padding-bottom: 40px;
+    padding-bottom: 15vh;
+    transition: 0.3s ease;
 }
 
 .card-gallery{
@@ -44,12 +45,26 @@
     box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
 }
 
-.card-gallery:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sombra mais forte no hover */
+.card-gallery-container:hover {
+    padding-bottom: 0 !important;
+    transition: 0.3s ease;
 }
+.card-gallery-container:hover .card-gallery {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sombra mais forte no hover */
+
+}
+.card-gallery-container:hover .card-body {
+    /* Add your desired styles here */
+    margin-top: 0 !important;
+    transition: 0.3s ease;
+}
+
 .card-img-top{
+    border-radius: 10px 10px 10px 10px !important;
+    z-index: 1 !important;
+    position: relative; /* or absolute/fixed/sticky */
     height: auto;
-    width: 100%;
+    width: 22vw !important;
 }
 
 .card-gallery .card-body{
