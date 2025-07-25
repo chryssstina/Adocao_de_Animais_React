@@ -21,34 +21,4 @@ body{
     padding-right: 60px;
 }
 
-.logo-pequena {
-    display: none !important;
-}
-
-
-
-main{
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
-    /* row-gap: 40px; */
-}
-
-/* ---------- HOME SECTION --------------*/
-.btn-adotar{
-    margin-top: 2rem;
-    background-color: var(--azul-medio) !important;
-    color: #D2ECF7 !important;
-}
-
-.btn-adotar a{
-    color: #D2ECF7 !important;
-    text-decoration: none !important;
-}
-
-.btn-adotar:hover{
-    background-color: var(--azul-primario) !important;
-    color: #FFFFFF !important;
-}
 
