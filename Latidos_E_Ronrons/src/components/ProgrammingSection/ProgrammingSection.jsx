@@ -43,8 +43,8 @@ function ProgrammingSection() {
 
       <div className="cards-conteiner">
         {actions.map((action, index) => (
-          <div className="card">
-            <div key={index} className="card-body">
+          <div key={index} className="card custom-actions-card">
+            <div  className="card-body">
               <span className="material-symbols-outlined">{action.icon}</span>
               <h5 className="card-title"> {action.title}</h5>
               <h6 className="card-subtitle mb-2 ">{action.text}</h6>
