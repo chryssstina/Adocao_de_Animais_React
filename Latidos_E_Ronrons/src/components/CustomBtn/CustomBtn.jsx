@@ -3,7 +3,7 @@ import './CustomBtn.css';
 
 
 function CustomBtn({ label, route, className="", icon=""}) {
-    // btn é padrão do bootstrap
+    // btn é classe padrão do bootstrap
     const baseClass = `btn custom-btn-class ${className}`.trim();
 
 

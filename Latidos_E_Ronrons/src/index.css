@@ -25,24 +25,6 @@ body{
     display: none !important;
 }
 
-/* Mostra a logo pequena e esconde a grande em telas menores */
-@media (max-width: 620px) {
-    .logo-grande {
-        display: none !important;
-    }
-
-    .logo-pequena {
-        display: block !important;
-        height: 80px !important; 
-        width: auto !important;
-    }
-    
-
-    .home-section-img{
-        width: 20vw;
-        height: auto;
-    }
-}
 
 
 main{

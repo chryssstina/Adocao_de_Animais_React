@@ -12,7 +12,7 @@
 }
 
 .nav-link {
-    color: #2C5772 !important;
+    color: var(--azul-primario) !important;
     font-weight: 600 !important;
     font-size: 20px !important;
 }
