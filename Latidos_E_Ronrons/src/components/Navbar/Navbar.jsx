@@ -52,7 +52,7 @@ function Navbar() {
               <button className="nav-link btn btn-link" onClick={() => handleNavigateWithScroll("programming-section")}>
                 Programação
               </button>
-              <Link className="nav-link btn btn-link" to={"/adocao-de-animais"}>
+              <Link className="nav-link btn btn-link" to={"/animais"}>
                 Adoção
               </Link>
               <button className="nav-link btn btn-link" onClick={() => handleNavigateWithScroll("photo-gallery-section")}>

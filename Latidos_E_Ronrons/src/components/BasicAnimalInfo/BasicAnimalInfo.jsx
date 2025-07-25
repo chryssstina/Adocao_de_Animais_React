@@ -32,7 +32,7 @@ function BasicAnimalInfo({ animalName, animalAge, animalWeight, favoriteFood, an
                     label='Voltar'
                     icon="bi bi-arrow-down-left-circle"
                     className="custom-btn-basic-info-back"
-                    route="/adocao-de-animais"
+                    route="/animais"
                     />
                 </div>
                 
