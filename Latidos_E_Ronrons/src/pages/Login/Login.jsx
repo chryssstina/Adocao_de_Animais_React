@@ -1,6 +1,5 @@
 import './Login.css';
-import DogAdocao from '../../assets/PhotoGallery/varios-cachorros.jpg'
-import Navbar from '../../components/Navbar/Navbar';
+import DogAdocao from '../../assets/PhotoGallery/fred-cachorro.jpg'
 import {useForm} from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,7 +19,7 @@ function Login() {
 
     return (
         <>
-        <Navbar />
+        
         <main className="login-main">
             <div className="container-login">
                 <form class="input-fields">

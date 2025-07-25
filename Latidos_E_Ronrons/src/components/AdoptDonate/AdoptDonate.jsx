@@ -19,7 +19,7 @@ function AdoptDonate() {
               animais disponíveis para adoção e encontre seu novo companheiro de
               vida.
             </p>
-            <Link className="btn btn-lg btn-adotar" to={"/adocao-de-animais"}>Ver animais disponíveis <img src={Arrow}/></Link>
+            <Link className="btn btn-lg btn-adotar" to={"/animais"}>Ver animais disponíveis <img src={Arrow}/></Link>
             <span>+50 animais já encontraram um lar amoroso</span>
           </div>
         </div>

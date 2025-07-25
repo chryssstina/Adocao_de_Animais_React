@@ -6,3 +6,18 @@
 .card-body p{
     margin: 0px !important;
 }
+
+.card-buttons{
+    padding: 10px 10px;
+    display: flex;
+    column-gap: 10px;
+}
+
+
+.custom-btn-ver-mais{
+    /* width: 80%; */
+    /* margin-bottom: 10px; */
+    background-color: var(--cinza-claro) !important;
+    color: var(--azul-medio) !important;
+    border: 1px solid var(--azul-medio) !important;
+}

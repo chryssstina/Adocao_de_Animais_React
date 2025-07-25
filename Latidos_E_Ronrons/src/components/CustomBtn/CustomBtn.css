@@ -1,0 +1,14 @@
+.custom-btn-class{
+    background-color: var(--azul-medio) !important;
+    color: var(--branco-puro) !important;
+}
+
+.custom-btn-class:hover{
+    background-color: var(--azul-primario) !important;
+    color: var(--cinza-claro) !important;
+    cursor: pointer;
+}
+
+.custom-icon{
+    color: var(--branco-puro);
+}

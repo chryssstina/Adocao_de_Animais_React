@@ -6,6 +6,9 @@
     --azul-claro: #A9D5F0;
     --azul-acinzentado: #4B5563;
     --cinza-claro: #F7F7F7;
+    --cinza-medio: #E8E8E8;
+    --branco: #FEFEFA;
+    --branco-puro: #FFFFFF;
 }
 
 body{
@@ -22,24 +25,6 @@ body{
     display: none !important;
 }
 
-/* Mostra a logo pequena e esconde a grande em telas menores */
-@media (max-width: 620px) {
-    .logo-grande {
-        display: none !important;
-    }
-
-    .logo-pequena {
-        display: block !important;
-        height: 80px !important; 
-        width: auto !important;
-    }
-    
-
-    .home-section-img{
-        width: 20vw;
-        height: auto;
-    }
-}
 
 
 main{
@@ -47,7 +32,7 @@ main{
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    row-gap: 40px;
+    /* row-gap: 40px; */
 }
 
 /* ---------- HOME SECTION --------------*/

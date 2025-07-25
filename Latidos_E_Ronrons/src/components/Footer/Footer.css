@@ -1,6 +1,6 @@
 #footer{
-    background-color: #2C5772;
-    color: #FEFEFA;
+    color: var(--branco);
+    background-color: var(--azul-primario);
 }
 
 #LogoFooter{

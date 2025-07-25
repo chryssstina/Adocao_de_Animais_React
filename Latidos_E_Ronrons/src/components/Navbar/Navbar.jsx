@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import LogoTitulo from '../../assets/LogoTitulo/LogoTitle2.png';
+import Logo3 from '../../assets/Logos/logo3.png/';
 import "./Navbar.css"
 
 
@@ -31,6 +32,12 @@ function Navbar() {
               src={LogoTitulo}
               alt="Logo Latidos&Ronrons"
             />
+
+            <img
+              className="navbar-img logo-pequena"
+              src={Logo3}
+              alt="Logo Latidos&Ronrons"
+            />
           </Link>
 
           <button
@@ -52,7 +59,7 @@ function Navbar() {
               <button className="nav-link btn btn-link" onClick={() => handleNavigateWithScroll("programming-section")}>
                 Programação
               </button>
-              <Link className="nav-link btn btn-link" to={"/adocao-de-animais"}>
+              <Link className="nav-link btn btn-link" to={"/animais"}>
                 Adoção
               </Link>
               <button className="nav-link btn btn-link" onClick={() => handleNavigateWithScroll("photo-gallery-section")}>

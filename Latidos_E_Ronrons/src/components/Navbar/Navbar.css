@@ -1,18 +1,32 @@
-.navbar{
-    background-color: #FEFEFA;
+.navbar {
+    background-color: var(--branco);
 }
 
-.navbar-nav{
+.navbar-nav {
     column-gap: 40px;
 }
 
-.navbar-img{
+.navbar-img {
     height: 100px !important;
     width: auto !important;
 }
 
-.nav-link{
-    color: #2C5772 !important;
+.nav-link {
+    color: var(--azul-primario) !important;
     font-weight: 600 !important;
     font-size: 20px !important;
+}
+
+/* Mostra a logo pequena e esconde a grande em telas menores */
+@media (max-width: 620px) {
+    .logo-grande {
+        display: none !important;
+    }
+
+    .logo-pequena {
+        display: block !important;
+        height: 4rem !important;
+        width: auto !important;
+    }
+
 }

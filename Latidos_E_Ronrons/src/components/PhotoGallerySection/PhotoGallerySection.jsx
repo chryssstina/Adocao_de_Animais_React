@@ -1,6 +1,7 @@
 import "./PhotoGallerySection.css";
 import { useEffect, useState } from "react";
 import PhotoCard from "../PhotoCard/PhotoCard";
+import CustomBtn from "../CustomBtn/CustomBtn";
 import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
 
 function PhotoGallerySection() {
@@ -25,13 +26,14 @@ function PhotoGallerySection() {
         </p>
       </div>
 
-      <div className="row justify-content-center">
+      <div className="row card-gallery-container">
         {loading ? (
           <p>Carregando galeria...</p>
         ) : (
-          photos.map((animal) => (
+          // slice determina quantos cards vão aparecer (índice inicial, índice final)
+          photos.slice(0,5).map((animal) => (
             <div
-              className="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
+              className="col-sm-4 col-md-4 col-lg-3 d-flex justify-content-center"
               key={animal.id}
             >
               <PhotoCard
@@ -43,6 +45,13 @@ function PhotoGallerySection() {
           ))
         )}
       </div>
+  
+      <CustomBtn
+          route="/animais"
+          className="custom-btn-mais-animais"
+          label="Veja mais animais disponíveis"
+          icon="bi bi-arrow-up-right-circle"
+      />
     </section>
   );
 }
