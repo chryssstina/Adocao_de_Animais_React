@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import LogoTitulo from '../../assets/LogoTitulo/LogoTitle2.png';
+import Logo3 from '../../assets/Logos/logo3.png/';
 import "./Navbar.css"
 
 
@@ -29,6 +30,12 @@ function Navbar() {
             <img
               className="navbar-img logo-grande"
               src={LogoTitulo}
+              alt="Logo Latidos&Ronrons"
+            />
+
+            <img
+              className="navbar-img logo-pequena"
+              src={Logo3}
               alt="Logo Latidos&Ronrons"
             />
           </Link>

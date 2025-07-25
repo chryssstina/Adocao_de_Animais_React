@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import './AnimalAdoption.css'
+import './AnimalList.css'
 import AnimalCardsForAdoption from "../../components/AnimalCardsForAdoption/AnimalCardsForAdoption";
 import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
 
 
-function AnimalAdoption() {
+function AnimalList() {
 
     const [animals, setAnimals] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -57,4 +57,4 @@ function AnimalAdoption() {
     );
 }
 
-export default AnimalAdoption;
+export default AnimalList;
