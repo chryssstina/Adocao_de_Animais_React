@@ -26,7 +26,7 @@ function PhotoGallerySection() {
         </p>
       </div>
 
-      <div className="row card-gallery-container">
+      <div className="row photo-gallery-container">
         {loading ? (
           <p>Carregando galeria...</p>
         ) : (
