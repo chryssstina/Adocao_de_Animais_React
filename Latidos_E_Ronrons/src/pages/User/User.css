@@ -1,0 +1,15 @@
+.user-greeting{
+    color: var(--azul-primario);
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.user-welcome{
+    color: var(--azul-primario);
+    font-size: 1.2rem;
+}
+
+#user-card{
+    border: 1px solid var(--azul-primario);
+    border-color: red;
+}
