@@ -13,3 +13,8 @@
     border: 1px solid var(--azul-primario);
     border-color: red;
 }
+
+/* no borders */
+#user-container{
+    border: none !important;
+}

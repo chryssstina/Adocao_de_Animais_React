@@ -13,9 +13,7 @@ function User() {
       <div className="container py-4" id="user-container">
         <div className="user-header mb-4" id="user-header">
           <h1 className="user-greeting">Olá, {user.nome}!</h1>
-          <h2 className="user-welcome">
-            Bem-vindo à sua página de usuário.
-          </h2>
+          <h2 className="user-welcome">Bem-vindo à sua página de usuário.</h2>
         </div>
 
         <div className="row g-4" id="user-panel">
@@ -23,19 +21,31 @@ function User() {
             <div className="card w-75 mb-3 rounded-lg border bg-card text-card-foreground shadow-sm">
               <div className="card-body">
                 <div className="d-flex align-items-center mb-3">
-                  <i className="bi bi-person me-2 fs-4 text-success"></i>
+                  <i className="bi bi-person me-2 fs-4" id="user-icon"></i>
                   <h5 className="card-title mb-0">Meu Perfil</h5>
                 </div>
                 <div className="mb-2">
-                  <p className="card-text mb-1">
-                    <strong>Nome:</strong> {user.nome}
-                  </p>
-                  <p className="card-text mb-1">
-                    <strong>Email:</strong> {user.email}
-                  </p>
-                  <p className="card-text mb-1">
-                    <strong>Tipo de usuário:</strong> {user.tipo}
-                  </p>
+                  <div className="mb-4">
+                    <label className="card-text mb-1 fw-bold">
+                      Nome:
+                    </label>
+                    <p className="">{user.nome}</p>
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="card-text mb-1 fw-bold">
+                      Email:
+                    </label>
+                    <p className="">{user.email}</p>
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="card-text mb-1 fw-bold">
+                      Tipo de usuário:
+                    </label>
+                    <p className="">{user.tipo}</p>
+                  </div>
+
                 </div>
                 <div className="d-flex flex-wrap gap-2 mt-3">
                   <button className="btn btn-primary">Editar Perfil</button>
@@ -50,10 +60,8 @@ function User() {
             <div className="card w-100">
               <div className="card-body">
                 <div className="d-flex align-items-center mb-3">
-                  <i className="bi bi-heart me-2 fs-4 text-success"></i>
-                  <h5 className="card-title mb-0">
-                    Meus pedidos de adoção
-                  </h5>
+                  <i className="bi bi-heart me-2 fs-4" id="heart-icon"></i>
+                  <h5 className="card-title mb-0">Meus pedidos de adoção</h5>
                 </div>
                 <AdoptionCard />
               </div>
