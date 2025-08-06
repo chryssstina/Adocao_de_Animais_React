@@ -7,7 +7,7 @@ function PhotoCard({ photo, animalName, description }) {
         <div className="card-gallery mb-3">
           <img
             src={photo}
-            className="card-img-top"
+            className="card-img-top-photocard"
             alt={`${animalName}, ${description}`}
           />
           <div className="card-body card-container">

@@ -14,7 +14,7 @@ function Login() {
     } = useForm();
 
     const onSubmit = (data) => {
-        navigate("/"); //leva o usuário para a página Home
+        navigate("/user"); //leva o usuário para a página Home
     }
 
     return (

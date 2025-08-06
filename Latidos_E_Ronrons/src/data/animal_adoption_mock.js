@@ -18,7 +18,10 @@ export const animal_adoption_mock = [
         favoriteFood: "Sardinha",
         animalCategory: "Gato",
         photo: Luna,
-        description: "Gatinha carinhosa, brincalhona e sociável. Pronta para um lar amoroso."
+        description: "Gatinha carinhosa, brincalhona e sociável. Pronta para um lar amoroso.",
+        statusAdoption: "disponivel",
+        adoptionDate: "",
+        userId: 1
     },
     {
         id: 2,
@@ -28,7 +31,10 @@ export const animal_adoption_mock = [
         favoriteFood: "Ração de cordeiro",
         animalCategory: "Cachorro",
         photo: Thor,
-        description: "Cão leal e protetor, ideal para casas com quintal."
+        description: "Cão leal e protetor, ideal para casas com quintal.",
+        statusAdoption: "aprovado",
+        adoptionDate: "2023-10-02",
+        userId: 1
     },
     {
         id: 3,
@@ -38,7 +44,10 @@ export const animal_adoption_mock = [
         favoriteFood: "Frango cozido",
         animalCategory: "Gato",
         photo: Nina,
-        description: "Gata doce e carinhosa, adora receber carinho e brincar com bolinhas de lã."
+        description: "Gata doce e carinhosa, adora receber carinho e brincar com bolinhas de lã.",
+        statusAdoption: "pendente",
+        adoptionDate: "2023-10-03",
+        userId: 1
     },
     {
         id: 4,
@@ -48,7 +57,10 @@ export const animal_adoption_mock = [
         favoriteFood: "Biscoito canino",
         animalCategory: "Cachorro",
         photo: Tobbey,
-        description: "Cachorro amigável, adora correr no parque e brincar com outros cães."
+        description: "Cachorro amigável, adora correr no parque e brincar com outros cães.",
+        statusAdoption: "rejeitado",
+        adoptionDate: "2023-10-04",
+        userId: 1
     },
     {
         id: 5,
@@ -58,7 +70,10 @@ export const animal_adoption_mock = [
         favoriteFood: "Peixe grelhado",
         animalCategory: "Gato",
         photo: Rufus,
-        description: "Gato curioso e independente, gosta de explorar novos lugares e observar os pássaros."
+        description: "Gato curioso e independente, gosta de explorar novos lugares e observar os pássaros.",
+        statusAdoption: "disponivel",
+        adoptionDate: "2023-10-05",
+        userId: 2
     },
     {
         id: 6,
@@ -68,7 +83,10 @@ export const animal_adoption_mock = [
         favoriteFood: "Arroz com carne",
         animalCategory: "Cachorro",
         photo: Fred,
-        description: "Cachorro muito tranquilo e amoroso, adora cochilar ao sol e receber carinho."
+        description: "Cachorro muito tranquilo e amoroso, adora cochilar ao sol e receber carinho.",
+        statusAdoption: "disponivel",
+        adoptionDate: "2023-10-06",
+        userId: 2
     },
     {
         id: 7,
@@ -78,7 +96,10 @@ export const animal_adoption_mock = [
         favoriteFood: "Atum",
         animalCategory: "Gato",
         photo: Maya,
-        description: "Gata brincalhona e cheia de energia, adora correr atrás de penas e brincar com caixas."
+        description: "Gata brincalhona e cheia de energia, adora correr atrás de penas e brincar com caixas.",
+        statusAdoption: "disponivel",
+        adoptionDate: "2023-10-05",
+        userId: 2
     },
     {
         id: 8,
@@ -88,7 +109,10 @@ export const animal_adoption_mock = [
         favoriteFood: "Carne crua",
         animalCategory: "Cachorro",
         photo: Rex,
-        description: "Cachorro grande e forte, mas não resiste a brincar de buscar a bola."
+        description: "Cachorro grande e forte, mas não resiste a brincar de buscar a bola.",
+        statusAdoption: "aprovado",
+        adoptionDate: "2023-10-07",
+        userId: 2
     },
     {
         id: 9,
@@ -98,7 +122,10 @@ export const animal_adoption_mock = [
         favoriteFood: "Petiscos de salmão",
         animalCategory: "Gato",
         photo: Lili,
-        description: "Gata meiga e tranquila, adora dormir em lugares quentes e receber carinho dos humanos."
+        description: "Gata meiga e tranquila, adora dormir em lugares quentes e receber carinho dos humanos.",
+        statusAdoption: "pendente",
+        adoptionDate: "",
+        userId: 2
     },
     {
         id: 10,
@@ -108,7 +135,10 @@ export const animal_adoption_mock = [
         favoriteFood: "Ração Premium",
         animalCategory: "Cachorro",
         photo: Max,
-        description: "Cachorro ativo e brincalhão, ompanheiro para todas as horas."
+        description: "Cachorro ativo e brincalhão, ompanheiro para todas as horas.",
+        statusAdoption: "rejeitado",
+        adoptionDate: "",
+        userId: 2
     }
 ];
 

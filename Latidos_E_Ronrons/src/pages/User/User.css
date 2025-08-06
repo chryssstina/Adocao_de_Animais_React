@@ -1,0 +1,24 @@
+.user-greeting{
+    color: var(--azul-primario);
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.user-welcome{
+    color: var(--azul-primario);
+    font-size: 1.2rem;
+}
+
+#user-container{
+    border: none !important;
+    box-shadow: none !important;
+
+}
+
+.button_black {
+    color: black !important;
+    border: rgb(128, 128, 128, 0.5) 1px solid !important;
+}
+.button_black:hover {
+    color: white !important;
+}
