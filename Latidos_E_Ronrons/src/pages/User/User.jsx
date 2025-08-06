@@ -26,16 +26,12 @@ function User() {
                 </div>
                 <div className="mb-2">
                   <div className="mb-4">
-                    <label className="card-text mb-1 fw-bold">
-                      Nome:
-                    </label>
+                    <label className="card-text mb-1 fw-bold">Nome:</label>
                     <p className="">{user.nome}</p>
                   </div>
 
                   <div className="mb-4">
-                    <label className="card-text mb-1 fw-bold">
-                      Email:
-                    </label>
+                    <label className="card-text mb-1 fw-bold">Email:</label>
                     <p className="">{user.email}</p>
                   </div>
 
@@ -45,7 +41,6 @@ function User() {
                     </label>
                     <p className="">{user.tipo}</p>
                   </div>
-
                 </div>
                 <div className="d-flex flex-wrap gap-2 mt-3">
                   <button className="btn btn-primary">Editar Perfil</button>
@@ -55,7 +50,6 @@ function User() {
               </div>
             </div>
           </div>
-
           <div className="col-12 col-md-7">
             <div className="card w-100">
               <div className="card-body">
