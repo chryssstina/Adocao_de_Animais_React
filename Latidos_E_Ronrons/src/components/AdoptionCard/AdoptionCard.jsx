@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import "./AdoptionCard.css";
 
-function AdoptionCard({ animalName, adoptionDate, status, photo }) {
+function AdoptionCard({id, animalName, adoptionDate, status, photo }) {
   return status === "disponivel" ? (
     <></>
   ) : (
@@ -42,9 +43,9 @@ function AdoptionCard({ animalName, adoptionDate, status, photo }) {
                 Desconhecido
               </span>
             )}
-            <button className="btn btn-outline-secondary btn-sm button_black">
+            <Link className="btn btn-outline-secondary btn-sm button_black" to={`/detalhes-do-animal/${id}`}>
               Ver Detalhes
-            </button>
+            </Link>
             {
               status === "rejeitado" ? (
                 <button className="btn btn-danger btn-sm" id="DeleteButton">Excluir</button>

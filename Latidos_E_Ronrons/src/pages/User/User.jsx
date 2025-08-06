@@ -70,7 +70,7 @@ function User() {
                   ) : (
                     userAdoptions.map((adoption) => (
                       <AdoptionCard
-                        key={adoption.id}
+                        id={adoption.id}
                         animalName={adoption.animalName}
                         adoptionDate={adoption.adoptionDate}
                         status={adoption.statusAdoption}
