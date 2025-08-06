@@ -45,7 +45,14 @@ function AdoptionCard({ animalName, adoptionDate, status, photo }) {
             <button className="btn btn-outline-secondary btn-sm button_black">
               Ver Detalhes
             </button>
-            <button className="btn btn-danger btn-sm">Cancelar</button>
+            {
+              status === "rejeitado" ? (
+                <button className="btn btn-danger btn-sm" id="DeleteButton">Excluir</button>
+              ) : (
+                <button className="btn btn-danger btn-sm" id="CancelButton">Cancelar</button>
+              )
+            }
+            
           </div>
         </div>
       </div>
