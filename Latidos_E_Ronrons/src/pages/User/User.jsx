@@ -13,7 +13,7 @@ function User() {
 
   return (
     <section className="container-fluid bg-light py-4" id="user-page">
-      <div className="container bg-light" id="user-container">
+      <div className="container bg-light pt-1" id="user-container">
         <div className="user-header mb-4" id="user-header">
           <h1 className="user-greeting fw-semibold">Olá, {user.nome}!</h1>
           <p className="text-muted mb-0">Bem-vindo à sua página de usuário.</p>
