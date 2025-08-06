@@ -1,14 +1,15 @@
 import "./AdoptionCard.css";
-import Rufus from "../../assets/PhotoGallery/rufus_gato_laranja.jpg";
 
-function AdoptionCard() {
-  return (
+function AdoptionCard({ animalName, adoptionDate, status, photo }) {
+  return status === "disponivel" ? (
+    <></>
+  ) : (
     <section className="adoption-card" id="adoption-card-section">
       <div className="card mb-3" id="adoption-card-content">
         <div className="row g-0 align-items-center">
           <div className="col-md-2 text-center">
             <img
-              src={Rufus}
+              src={photo}
               className="img-fluid rounded-circle"
               alt="Animal adotado"
               id="adoption-card-image"
@@ -16,23 +17,35 @@ function AdoptionCard() {
           </div>
 
           <div className="col-md-4">
-            <h5 className="card-title mb-1">Luna</h5>
+            <h5 className="card-title mb-1">{animalName}</h5>
             <div className="text-muted small">
               <i className="bi bi-calendar me-1"></i>
-              <span>2024-01-15</span>
+              {adoptionDate === "" ? (
+                <span className="text-warning">Aguardando Adoção</span>
+              ) : (
+                <span className="no-underline">{adoptionDate}</span>
+              )}
             </div>
           </div>
 
           <div className="col-md-6 d-flex justify-content-end align-items-center gap-2 flex-wrap">
-            <span className="badge bg-warning text-dark no-underline">Pendente</span>
-            <span className="badge bg-success no-underline">Aprovado</span>
-            <span className="badge bg-danger no-underline">Rejeitado</span>
-            <button className="btn btn-outline-primary btn-sm">
+            {status === "pendente" ? (
+              <span className="badge bg-warning text-dark no-underline">
+                Pendente
+              </span>
+            ) : status === "aprovado" ? (
+              <span className="badge bg-success no-underline">Aprovado</span>
+            ) : status === "rejeitado" ? (
+              <span className="badge bg-danger no-underline">Rejeitado</span>
+            ) : (
+              <span className="badge bg-secondary no-underline">
+                Desconhecido
+              </span>
+            )}
+            <button className="btn btn-outline-secondary btn-sm button_black">
               Ver Detalhes
             </button>
-            <button className="btn btn-danger btn-sm">
-              Cancelar
-            </button>
+            <button className="btn btn-danger btn-sm">Cancelar</button>
           </div>
         </div>
       </div>

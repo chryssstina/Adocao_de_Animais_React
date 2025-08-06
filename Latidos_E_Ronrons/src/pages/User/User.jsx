@@ -1,12 +1,15 @@
 import AdoptionCard from "../../components/AdoptionCard/AdoptionCard";
 import "./User.css";
+import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
 
 function User() {
   const user = {
+    id: 1,
     nome: "João Silva",
     email: "joao.silva@example.com",
     tipo: "Adotante",
   };
+  const userAdoptions = mockData.filter(adoption => adoption.userId === user.id);
 
   return (
     <section className="container-fluid bg-light py-4" id="user-page">
@@ -61,7 +64,21 @@ function User() {
                   <i className="bi bi-heart me-2 fs-4 text-danger"></i>
                   <h5 className="card-title mb-0">Meus Pedidos de Adoção</h5>
                 </div>
-                <AdoptionCard />
+                <div className="adoption-list">
+                  {userAdoptions.length === 0 ? (
+                    <p className="text-muted">Você ainda não fez nenhum pedido de adoção.</p>
+                  ) : (
+                    userAdoptions.map((adoption) => (
+                      <AdoptionCard
+                        key={adoption.id}
+                        animalName={adoption.animalName}
+                        adoptionDate={adoption.adoptionDate}
+                        status={adoption.statusAdoption}
+                        photo={adoption.photo}
+                      />
+                    ))
+                  )}
+                </div>
               </div>
             </div>
           </div>
