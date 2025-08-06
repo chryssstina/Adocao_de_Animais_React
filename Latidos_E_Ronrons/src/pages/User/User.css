@@ -12,5 +12,12 @@
 #user-container{
     border: none !important;
     box-shadow: none !important;
+
 }
 
+.button_black {
+    color: black !important;
+}
+.button_black:hover {
+    color: white !important;
+}

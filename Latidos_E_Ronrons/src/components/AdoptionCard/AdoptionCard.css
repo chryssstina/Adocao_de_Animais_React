@@ -15,3 +15,7 @@
 #adoption-card-content{
     padding: 1rem;
 }
+
+.no-underline {
+    text-decoration: none !important;
+}

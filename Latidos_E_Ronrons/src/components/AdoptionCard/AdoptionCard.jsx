@@ -6,7 +6,6 @@ function AdoptionCard() {
     <section className="adoption-card" id="adoption-card-section">
       <div className="card mb-3" id="adoption-card-content">
         <div className="row g-0 align-items-center">
-          {/* Imagem */}
           <div className="col-md-2 text-center">
             <img
               src={Rufus}
@@ -24,13 +23,14 @@ function AdoptionCard() {
             </div>
           </div>
 
-          {/* Status e botões */}
           <div className="col-md-6 d-flex justify-content-end align-items-center gap-2 flex-wrap">
-            <span className="badge bg-warning text-dark">Pendente</span>
+            <span className="badge bg-warning text-dark no-underline">Pendente</span>
+            <span className="badge bg-success no-underline">Aprovado</span>
+            <span className="badge bg-danger no-underline">Rejeitado</span>
             <button className="btn btn-outline-primary btn-sm">
               Ver Detalhes
             </button>
-            <button className="btn btn-outline-danger btn-sm">
+            <button className="btn btn-danger btn-sm">
               Cancelar
             </button>
           </div>
