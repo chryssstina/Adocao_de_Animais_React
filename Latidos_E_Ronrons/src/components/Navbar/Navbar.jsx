@@ -65,6 +65,10 @@ function Navbar() {
               <button className="nav-link btn btn-link" onClick={() => handleNavigateWithScroll("photo-gallery-section")}>
                 Galeria
               </button>
+              {/* adicionar autenticação para verificar se o usuario está logado */}
+              <Link className="nav-link btn btn-link" to={"/user"}>
+                Perfil
+              </Link>
             </div>
           </div>
         </div>

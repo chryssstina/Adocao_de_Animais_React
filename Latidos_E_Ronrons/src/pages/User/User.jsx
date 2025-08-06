@@ -24,8 +24,8 @@ function User() {
             <div className="card shadow-sm rounded-3 border-0">
               <div className="card-body p-4">
                 <div className="d-flex align-items-center mb-3">
-                  <i className="bi bi-person me-2 fs-4 text-primary"></i>
-                  <h5 className="card-title mb-0">Meu Perfil</h5>
+                  <i className="bi bi-person me-2 fs-4 text-primary "></i>
+                  <h5 className="card-title user_title mb-0">Meu Perfil</h5>
                 </div>
 
                 <div className="mb-3">
@@ -62,7 +62,7 @@ function User() {
               <div className="card-body p-4">
                 <div className="d-flex align-items-center mb-3">
                   <i className="bi bi-heart me-2 fs-4 text-danger"></i>
-                  <h5 className="card-title mb-0">Meus Pedidos de Adoção</h5>
+                  <h5 className="card-title user_title mb-0">Meus Pedidos de Adoção</h5>
                 </div>
                 <div className="adoption-list">
                   {userAdoptions.length === 0 ? (
