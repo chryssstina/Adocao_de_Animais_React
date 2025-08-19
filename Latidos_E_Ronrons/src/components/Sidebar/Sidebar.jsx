@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 function Sidebar() {
@@ -7,60 +8,33 @@ function Sidebar() {
       <div className="sidebar-container d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
 
         {/* Navegação */}
-        <ul className="nav nav-pills flex-column mb-auto">
-          <li>
-            <a href="#" className="nav-link link-body-emphasis">
-              <svg
-                className="bi pe-none me-2"
-                width="16"
-                height="16"
-                aria-hidden="true"
-              >
-                <use xlinkHref="#speedometer2"></use>
-              </svg>
-              Gerenciar Animais
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link link-body-emphasis">
-              <svg
-                className="bi pe-none me-2"
-                width="16"
-                height="16"
-                aria-hidden="true"
-              >
-                <use xlinkHref="#table"></use>
-              </svg>
-              Gerenciar Adoções
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link link-body-emphasis">
-              <svg
-                className="bi pe-none me-2"
-                width="16"
-                height="16"
-                aria-hidden="true"
-              >
-                <use xlinkHref="#grid"></use>
-              </svg>
-              Gerenciar Usuários
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link link-body-emphasis">
-              <svg
-                className="bi pe-none me-2"
-                width="16"
-                height="16"
-                aria-hidden="true"
-              >
-                <use xlinkHref="#people-circle"></use>
-              </svg>
-              Gerenciar Voluntários
-            </a>
-          </li>
-        </ul>
+        <div className="list-group mb-auto">
+          <Link
+            to="/animais"
+            className="list-group-item list-group-item-action"
+          >
+            Gerenciar Animais
+          </Link>
+          <Link
+            to="/adocoes"
+            className="list-group-item list-group-item-action"
+          >
+            Gerenciar Adoções
+          </Link>
+          <Link
+            to="/usuarios"
+            className="list-group-item list-group-item-action"
+          >
+            Gerenciar Usuários
+          </Link>
+          <Link
+            to="/voluntarios"
+            className="list-group-item list-group-item-action"
+          >
+            Gerenciar Voluntários
+          </Link>
+        </div>
+
         <hr />
 
         {/* Perfil / Dropdown */}
@@ -82,22 +56,22 @@ function Sidebar() {
           </a>
           <ul className="dropdown-menu text-small shadow">
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="/configuracoes">
                 Configurações
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="/perfil">
                 Perfil
-              </a>
+              </Link>
             </li>
             <li>
               <hr className="dropdown-divider" />
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to="/logout">
                 Sair
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
