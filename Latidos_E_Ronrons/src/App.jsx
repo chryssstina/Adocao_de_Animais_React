@@ -9,6 +9,7 @@ import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import User from "./pages/User/User";
 import AdoptedAnimalDetails from "./pages/AdoptedAnimalDetails/AdoptedAnimalDetails";
+import Admin from "./pages/Admin/Admin";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/detalhes-do-animal/:id" element={<AnimalDetails />} />
           <Route path="/adotados/:id" element={<AdoptedAnimalDetails />} />
           <Route path="/user" element={<User />} />
+          <Route path="/Admin" element={<Admin />} />
           <Route path="*" element={<h1>404 - Página não encontrada</h1>} />
         </Routes>
         <Footer/>

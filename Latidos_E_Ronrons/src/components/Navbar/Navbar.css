@@ -11,7 +11,7 @@
     width: auto !important;
 }
 
-.nav-link{
+.navbar-link{
   background:
     linear-gradient(
       to right,
@@ -29,7 +29,7 @@
   transition: background-size 400ms !important;
 }
 
-.nav-link:hover{
+.navbar-link:hover{
   background-size: 0 3px, 100% 3px !important;
 }
 

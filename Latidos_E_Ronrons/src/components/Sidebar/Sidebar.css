@@ -1,0 +1,12 @@
+/* largura fixa da sidebar */
+.sidebar-container {
+  width: 280px;
+  min-height: 100vh; /* ocupa altura toda */
+  border-right: 1px solid #dee2e6; /* opcional, dá um destaque */
+}
+
+/* deixa o link ativo mais visível */
+.nav-link.active {
+  background-color: #0d6efd !important;
+  color: #fff !important;
+}
