@@ -25,7 +25,7 @@ function App() {
           <Route path="/detalhes-do-animal/:id" element={<AnimalDetails />} />
           <Route path="/adotados/:id" element={<AdoptedAnimalDetails />} />
           <Route path="/user" element={<User />} />
-          <Route path="/Admin" element={<Admin />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<h1>404 - Página não encontrada</h1>} />
         </Routes>
         <Footer/>
