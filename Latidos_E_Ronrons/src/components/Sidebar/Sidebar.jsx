@@ -5,7 +5,7 @@ import "./Sidebar.css";
 function Sidebar() {
   return (
     <section className="admin-section" id="admin-section">
-      <div className="sidebar-container d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
+      <div className="sidebar-container d-flex flex-column flex-shrink-0 p-3 ">
 
         {/* Navegação */}
         <div className="list-group mb-auto">

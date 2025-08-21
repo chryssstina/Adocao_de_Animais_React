@@ -10,7 +10,7 @@ function Admin() {
         <Sidebar />
 
         {/* Conteúdo dinâmico */}
-        <main className="flex-grow-1 p-4">
+        <main className="flex-grow-1" id="admin-content">
           <Outlet />
         </main>
       </div>
