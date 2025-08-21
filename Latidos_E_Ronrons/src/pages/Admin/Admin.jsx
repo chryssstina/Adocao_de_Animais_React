@@ -1,11 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import "./Admin.css";
-
+import AdminAdoptions from "./AdminAdoptions/AdminAdoptions";
+import AdminAnimals from "./AdminAnimals/AdminAnimals";
+import AdminUsers from "./AdminUsers/AdminUsers";
 // Páginas internas do admin
-import Dashboard from "./Dashboard";
-import Users from "./Users";
-import Settings from "./Settings";
 
 function Admin() {
   return (
@@ -17,9 +16,9 @@ function Admin() {
         {/* Conteúdo dinâmico */}
         <main className="flex-grow-1 p-4">
           <Routes>
-            <Route path="/admin" element={<Dashboard />} />
-            <Route path="/admin/users" element={<Users />} />
-            <Route path="/admin/settings" element={<Settings />} />
+            <Route path="/admin/adoptions" element={<AdminAdoptions />} />
+            <Route path="/admin/users" element={<AdminUsers />} />
+            <Route path="/admin/animals" element={<AdminAnimals />} />
           </Routes>
         </main>
       </div>
