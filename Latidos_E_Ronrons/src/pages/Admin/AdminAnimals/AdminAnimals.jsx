@@ -3,73 +3,119 @@ import { animal_adoption_mock as mockData } from "../../../data/animal_adoption_
 import AdoptionCard from "../../../components/AdoptionCard/AdoptionCard";
 
 function AdminAnimals() {
-const user = {
+  const user = {
     id: 1,
     nome: "João Silva",
     email: "joao.silva@example.com",
     tipo: "Adotante",
   };
-  const userAdoptions = mockData.filter(adoption => adoption.userId === user.id);
+  const userAdoptions = mockData.filter((adoption) => adoption.userId === user.id);
 
   return (
     <section className="container-fluid bg-light py-4" id="user-page">
       <div className="container bg-light pt-1" id="user-container">
         <div className="user-header mb-4" id="user-header">
-          <h1 className="user-greeting fw-semibold">Olá, {user.nome}!</h1>
-          <p className="text-muted mb-0">Bem-vindo à sua página de usuário.</p>
+          <h1 className="user-greeting fw-semibold">Gerenciar Animais</h1>
+          <p className="text-muted mb-0">
+            Cadastre, edite e gerencie os animais para adoção
+          </p>
         </div>
 
         <div className="row g-4" id="user-panel">
+          {/* FORMULÁRIO DE CADASTRO */}
           <div className="col-12 col-md-5">
             <div className="card shadow-sm rounded-3 border-0">
               <div className="card-body p-4">
                 <div className="d-flex align-items-center mb-3">
-                  <i className="bi bi-person me-2 fs-4 text-primary "></i>
-                  <h5 className="card-title user_title mb-0">Meu Perfil</h5>
+                  <i className="bi bi-plus-circle me-2 fs-4 text-success"></i>
+                  <h5 className="card-title user_title mb-0">
+                    Cadastrar Novo Animal
+                  </h5>
                 </div>
 
-                <div className="mb-3">
-                  <p className="text-muted small">Nome</p>
-                  <p className="fw-semibold">{user.nome}</p>
-                </div>
+                <form>
+                  <div className="mb-3">
+                    <label htmlFor="nome" className="form-label">
+                      Nome
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="nome"
+                      placeholder="Nome do animal"
+                    />
+                  </div>
 
-                <div className="mb-3">
-                  <p className="text-muted small">Email</p>
-                  <p className="fw-semibold">{user.email}</p>
-                </div>
+                  <div className="mb-3">
+                    <label htmlFor="especie" className="form-label">
+                      Espécie
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="especie"
+                      placeholder="Cão, Gato, etc."
+                    />
+                  </div>
 
-                <div className="mb-4">
-                  <p className="text-muted small">Tipo de Usuário</p>
-                  <p className="fw-semibold">{user.tipo}</p>
-                </div>
+                  <div className="mb-3">
+                    <label htmlFor="idade" className="form-label">
+                      Idade
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="idade"
+                      placeholder="Ex: 2 anos"
+                    />
+                  </div>
 
-                <div className="d-flex flex-column gap-2">
-                  <button className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black">
-                    <i className="bi bi-pencil"></i>
-                    Editar Perfil
+                  <div className="mb-3">
+                    <label htmlFor="descricao" className="form-label">
+                      Descrição
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="descricao"
+                      rows="3"
+                      placeholder="Descreva o temperamento e características"
+                    ></textarea>
+                  </div>
+
+                  <div className="mb-3">
+                    <label htmlFor="imagem" className="form-label">
+                      Imagem
+                    </label>
+                    <input className="form-control" type="file" id="imagem" />
+                  </div>
+
+                  <button type="submit" className="btn btn-dark w-100">
+                    Cadastrar
                   </button>
-                  <button className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black">
-                    <i className="bi bi-box-arrow-right"></i>
-                    Sair da Conta
-                  </button>
-                </div>
+                </form>
               </div>
             </div>
           </div>
 
+          {/* LISTA DE ANIMAIS CADASTRADOS */}
           <div className="col-12 col-md-7">
             <div className="card shadow-sm rounded-3 border-0">
               <div className="card-body p-4">
                 <div className="d-flex align-items-center mb-3">
                   <i className="bi bi-heart me-2 fs-4 text-danger"></i>
-                  <h5 className="card-title user_title mb-0">Meus Pedidos de Adoção</h5>
+                  <h5 className="card-title user_title mb-0">
+                    Animais Cadastrados
+                  </h5>
                 </div>
                 <div className="adoption-list">
                   {userAdoptions.length === 0 ? (
-                    <p className="text-muted">Você ainda não fez nenhum pedido de adoção.</p>
+                    <p className="text-muted">
+                      Você ainda não fez nenhum pedido de adoção.
+                    </p>
                   ) : (
                     userAdoptions.map((adoption) => (
                       <AdoptionCard
+                        key={adoption.id}
                         id={adoption.id}
                         animalName={adoption.animalName}
                         adoptionDate={adoption.adoptionDate}
