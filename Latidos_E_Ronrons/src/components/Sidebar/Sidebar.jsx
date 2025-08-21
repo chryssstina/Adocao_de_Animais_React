@@ -10,29 +10,29 @@ function Sidebar() {
         {/* Navegação */}
         <div className="list-group mb-auto">
           <Link
-            to="animais"
+            to="animals"
             className="list-group-item list-group-item-action"
           >
             Gerenciar Animais
           </Link>
           <Link
-            to="adocoes"
+            to="adoptions"
             className="list-group-item list-group-item-action"
           >
             Gerenciar Adoções
           </Link>
           <Link
-            to="usuarios"
+            to="users"
             className="list-group-item list-group-item-action"
           >
             Gerenciar Usuários
           </Link>
-          <Link
+          {/* <Link
             to="voluntarios"
             className="list-group-item list-group-item-action"
           >
             Gerenciar Voluntários
-          </Link>
+          </Link> */}
         </div>
 
         <hr />
