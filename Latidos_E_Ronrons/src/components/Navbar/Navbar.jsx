@@ -24,7 +24,7 @@ function Navbar() {
   };
 
   return (
-      <nav className="header-container navbar navbar-expand-lg sticky-top">
+      <nav className="header-container navbar navbar-expand-lg sticky-top" id="navbar-container">
         <div className="container-fluid">
           <Link to={"/"}>
             <img
