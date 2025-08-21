@@ -1,21 +1,14 @@
 import { Link } from "react-router-dom";
 import "./AdoptionCardAdmin.css";
 
-function AdoptionCardAdmin({id, animalName, adoptionDate, status, photo }) {
+function AdoptionCardAdmin({id, animalName, adoptionDate, status}) {
   return status === "disponivel" ? (
     <></>
   ) : (
     <section className="adoption-card" id="adoption-card-section">
       <div className="card mb-3" id="adoption-card-content">
         <div className="row g-0 align-items-center">
-          <div className="col-md-2 text-center">
-            <img
-              src={photo}
-              className="img-fluid rounded-circle"
-              alt="Animal adotado"
-              id="adoption-card-image"
-            />
-          </div>
+          
 
           <div className="col-md-4">
             <h5 className="card-title mb-1">{animalName}</h5>

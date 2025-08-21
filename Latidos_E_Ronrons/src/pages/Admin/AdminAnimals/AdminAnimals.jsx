@@ -1,6 +1,6 @@
 import "./AdminAnimals.css";
 import { animal_adoption_mock as mockData } from "../../../data/animal_adoption_mock";
-import AdoptionCard from "../../../components/AdoptionCard/AdoptionCard";
+import AdoptionCardAdmin from "../../../components/AdoptionCardAdmin/AdoptionCardAdmin";
 
 function AdminAnimals() {
   const user = {
@@ -114,13 +114,12 @@ function AdminAnimals() {
                     </p>
                   ) : (
                     userAdoptions.map((adoption) => (
-                      <AdoptionCard
+                      <AdoptionCardAdmin
                         key={adoption.id}
                         id={adoption.id}
                         animalName={adoption.animalName}
                         adoptionDate={adoption.adoptionDate}
                         status={adoption.statusAdoption}
-                        photo={adoption.photo}
                       />
                     ))
                   )}
