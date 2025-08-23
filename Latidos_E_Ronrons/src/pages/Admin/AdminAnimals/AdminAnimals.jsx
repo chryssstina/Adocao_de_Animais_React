@@ -102,7 +102,7 @@ function AdminAnimals() {
             <div className="card shadow-sm rounded-3 border-0">
               <div className="card-body p-4">
                 <div className="d-flex align-items-center mb-3">
-                  <i className="bi bi-heart me-2 fs-4 text-danger"></i>
+                  <i className="bi bi-bag-heart me-2 fs-4 text-danger"></i>
                   <h5 className="card-title user_title mb-0">
                     Animais Cadastrados
                   </h5>
