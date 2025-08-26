@@ -1,0 +1,25 @@
+
+
+
+#data-text{
+    text-decoration: none;
+}
+
+#view-icon {
+    text-shadow: 0 0 1px black;
+}
+
+#adoption-card-image {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#adoption-card-content{
+    padding: 1rem;
+}
+
+.no-underline {
+    text-decoration: none !important;
+}
