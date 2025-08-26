@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+enum UserType{
+  ADMIN_USER
+  DEFAULT_USER
+}
+
+enum AnimalSex{
+  FEMALE
+  MALE
+}
+
+
+enum AdoptionStatus{
+  IN_PROGRESS
+  ACCEPTED
+  DECLINED
+}
+
+
+model Users{
+  user_id                   Int       @id @default(autoincrement())
+  user_name                 String
+  user_email                String    @unique
+  user_password             String
+  user_type                 UserType?  @default(DEFAULT_USER)
+  user_registration_date    DateTime  @default(now())
+
+  animals                 Animals[]                                           //se admin,  animais cadastrados
+  adoptions               Adoptions[] @relation("AdoptionsByUser")
+  adoptions_processed     Adoptions[] @relation("AdoptionsProcessedByAdmin")
+  favorites               Favorites[]
+}
+
+
+model AnimalCategory{
+  category_id         Int        @id @default(autoincrement())
+  category_name       String 
+
+  animals Animals[]
+}
+
+model Animals{
+  animal_id                 Int         @id @default(autoincrement())
+  animal_name               String
+  animal_age                String
+  animal_sex                AnimalSex
+  animal_weight             String
+  animal_favorite_food      String
+  animal_description        String
+
+  fk_admin_user_id        Int
+  fk_category_id          Int?
+
+  admin_user Users @relation(fields: [fk_admin_user_id], references: [user_id]) 
+  @@index([fk_admin_user_id])
+
+  category AnimalCategory? @relation(fields: [fk_category_id], references: category_id)
+  @@index([fk_category_id])
+
+  favorited_by        Favorites[]
+  adoptions           Adoptions[]
+}
+
+
+
+model Adoptions{
+  adoption_id             Int                 @id @default(autoincrement())
+  adoption_status         AdoptionStatus?      @default(IN_PROGRESS)
+  order_date              DateTime            @default(now())
+  processed_date          DateTime?
+
+  fk_animal_id           Int
+  fk_adopting_user_id    Int
+  fk_admin_user_id       Int?
+
+  animal Animals @relation(fields: [fk_animal_id], references: [animal_id]) 
+  @@index([fk_animal_id])
+
+  adopting_user Users @relation("AdoptionsByUser", fields: [fk_adopting_user_id], references: [user_id]) 
+  @@index([fk_adopting_user_id])
+  
+  processed_by_admin_id Users? @relation("AdoptionsProcessedByAdmin", fields: [fk_admin_user_id], references: [user_id]) 
+  @@index([fk_admin_user_id])
+
+  @@unique([fk_animal_id, fk_adopting_user_id])
+}
+
+
+model Favorites{
+  favorite_id       Int        @id @default(autoincrement())
+  favorite_date     DateTime   @default(now())
+
+  fk_animal_id    Int
+  fk_user_id      Int
+
+  animal Animals @relation(fields: [fk_animal_id], references: [animal_id]) 
+  @@index([fk_animal_id])
+
+  user Users @relation(fields: [fk_user_id], references: [user_id]) 
+  @@index([fk_user_id])
+
+  @@unique([fk_user_id, fk_animal_id])
+
+}
