@@ -3,13 +3,7 @@ import { animal_adoption_mock as mockData } from "../../../data/animal_adoption_
 import AdoptionCardAdmin from "../../../components/AdoptionCardAdmin/AdoptionCardAdmin";
 
 function AdminAnimals() {
-  const user = {
-    id: 1,
-    nome: "João Silva",
-    email: "joao.silva@example.com",
-    tipo: "Adotante",
-  };
-  const userAdoptions = mockData.filter((adoption) => adoption.userId === user.id);
+  const userAdoptions = mockData;
 
   return (
     <section className="container-fluid bg-light py-4" id="user-page">
