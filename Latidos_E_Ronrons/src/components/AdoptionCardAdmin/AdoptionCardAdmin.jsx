@@ -24,7 +24,8 @@ function AdoptionCardAdmin({ id, animalName, adoptionDate, status }) {
             ) : status === "aprovado" ? (
               <span className="badge bg-success no-underline"> Adotado </span>
             ) : status === "rejeitado" ? (
-              <span className="badge bg-danger no-underline"> Rejeitado </span>
+              // disponivel, pois se o pedido de adoção foi rejeitado, ele ainda não saiu da adoção
+              <span className="badge bg-primary no-underline"> Disponível </span>
             ) : status === "disponivel" ? (
               <span className="badge bg-primary no-underline"> Disponível </span>
             ) : (
