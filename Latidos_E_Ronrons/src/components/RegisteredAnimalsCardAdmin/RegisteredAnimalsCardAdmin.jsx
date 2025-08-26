@@ -42,7 +42,7 @@ function RegisteredAnimalsCardAdmin({
             className="btn btn-outline-secondary btn-sm"
             to={`/adotados/${id}`}
           >
-            <i className="bi bi-eye"></i>
+            <i className="bi bi-eye" id="view-icon"></i>
           </Link>
         </div>
       </td>

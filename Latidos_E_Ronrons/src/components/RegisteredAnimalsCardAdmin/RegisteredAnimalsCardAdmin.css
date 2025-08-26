@@ -5,6 +5,10 @@
     text-decoration: none;
 }
 
+#view-icon {
+    text-shadow: 0 0 1px black;
+}
+
 #adoption-card-image {
     width: 6rem;
     height: 6rem;
