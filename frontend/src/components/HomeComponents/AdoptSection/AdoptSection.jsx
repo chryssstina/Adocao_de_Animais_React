@@ -1,10 +1,10 @@
-import "./AdoptDonate.css";
-import Bone from "../../assets/icons/Bone.svg";
-import Heart from "../../assets/icons/Heart.svg";
-import Arrow from "../../assets/icons/Frame.svg";
+import "./AdoptSection.css";
+import Bone from "../../../assets/icons/Bone.svg";
+import Heart from "../../../assets/icons/Heart.svg";
+import Arrow from "../../../assets/icons/Frame.svg";
 import { Link } from 'react-router-dom';
 
-function AdoptDonate() {
+function AdoptSection() {
   return (
     <section className="container-fluid adoptdonate-section" id="adoptdonate">
       <div className="container">
@@ -28,4 +28,4 @@ function AdoptDonate() {
   );
 }
 
-export default AdoptDonate;
+export default AdoptSection;

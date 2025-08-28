@@ -1,6 +1,6 @@
 import "./MainSection.css"
-import Animals from '../../assets/Miscellaneous/animals.png/';
-import CustomBtn from "../CustomBtn/CustomBtn";
+import Animals from '../../../assets/Miscellaneous/animals.png/';
+import CustomBtn from "../../CustomBtn/CustomBtn";
 
 function MainSection() {
   return (
