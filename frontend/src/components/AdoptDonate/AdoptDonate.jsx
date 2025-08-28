@@ -23,22 +23,6 @@ function AdoptDonate() {
             <span>+50 animais já encontraram um lar amoroso</span>
           </div>
         </div>
-
-        <hr />
-
-        <div className="donate-container">
-          <div className="donate-icon">
-            <img src={Bone} alt="Ícone de osso" />
-          </div>
-          <div className="donate-content">
-            <h2>Deseja Ajudar Nossa ONG?</h2>
-            <p>
-              Gostaria de nos ajudar doando alimentos, brinquedos e ter a
-              oportunidade de ajudar nossa causa? Clique abaixo!
-            </p>
-            <Link className="btn btn-lg btn-adotar" to={"/"}>Doar</Link>
-          </div>
-        </div>
       </div>
     </section>
   );
