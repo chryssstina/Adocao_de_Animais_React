@@ -41,6 +41,7 @@ const createAnimalHandler = async(req, res) => {
     const { animal_name, 
             animal_age, 
             animal_sex,
+            animal_status,
             animal_weight, 
             animal_favorite_food, 
             animal_description, 
@@ -50,6 +51,7 @@ const createAnimalHandler = async(req, res) => {
     if(!animal_name 
         || !animal_age 
         || !animal_sex 
+        || !animal_status
         || !animal_weight 
         || !animal_favorite_food
         || !animal_description
@@ -63,6 +65,7 @@ const createAnimalHandler = async(req, res) => {
             animal_name, 
             animal_age, 
             animal_sex,
+            animal_status,
             animal_weight, 
             animal_favorite_food, 
             animal_description, 
@@ -81,6 +84,7 @@ const updateAnimalHandler = async (req, res) => {
     const { animal_name, 
             animal_age, 
             animal_sex,
+            animal_status,
             animal_weight, 
             animal_favorite_food, 
             animal_description, 
@@ -104,6 +108,7 @@ const updateAnimalHandler = async (req, res) => {
             animal_name, 
             animal_age, 
             animal_sex,
+            animal_status,
             animal_weight, 
             animal_favorite_food, 
             animal_description, 
