@@ -31,6 +31,12 @@ enum AdoptionStatus{
   DECLINED
 }
 
+enum AnimalStatus{
+  AVAILABLE
+  IN_PROCESS_ADOPTION
+  ADOPTED
+}
+
 
 model Users{
   user_id                   Int       @id @default(autoincrement())
@@ -59,9 +65,11 @@ model Animals{
   animal_name               String
   animal_age                String
   animal_sex                AnimalSex
+  animal_status             AnimalStatus  @default(AVAILABLE)
   animal_weight             String
   animal_favorite_food      String
   animal_description        String
+  animal_registration_date    DateTime  @default(now())
 
   fk_admin_user_id        Int
   fk_category_id          Int?
