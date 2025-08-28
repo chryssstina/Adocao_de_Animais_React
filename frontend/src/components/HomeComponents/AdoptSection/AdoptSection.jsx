@@ -1,10 +1,10 @@
-import "./AdoptDonate.css";
-import Bone from "../../assets/icons/Bone.svg";
-import Heart from "../../assets/icons/Heart.svg";
-import Arrow from "../../assets/icons/Frame.svg";
+import "./AdoptSection.css";
+import Bone from "../../../assets/icons/Bone.svg";
+import Heart from "../../../assets/icons/Heart.svg";
+import Arrow from "../../../assets/icons/Frame.svg";
 import { Link } from 'react-router-dom';
 
-function AdoptDonate() {
+function AdoptSection() {
   return (
     <section className="container-fluid adoptdonate-section" id="adoptdonate">
       <div className="container">
@@ -23,25 +23,9 @@ function AdoptDonate() {
             <span>+50 animais já encontraram um lar amoroso</span>
           </div>
         </div>
-
-        <hr />
-
-        <div className="donate-container">
-          <div className="donate-icon">
-            <img src={Bone} alt="Ícone de osso" />
-          </div>
-          <div className="donate-content">
-            <h2>Deseja Ajudar Nossa ONG?</h2>
-            <p>
-              Gostaria de nos ajudar doando alimentos, brinquedos e ter a
-              oportunidade de ajudar nossa causa? Clique abaixo!
-            </p>
-            <Link className="btn btn-lg btn-adotar" to={"/"}>Doar</Link>
-          </div>
-        </div>
       </div>
     </section>
   );
 }
 
-export default AdoptDonate;
+export default AdoptSection;

@@ -1,8 +1,8 @@
 import "./PhotoGallerySection.css";
 import { useEffect, useState } from "react";
-import PhotoCard from "../PhotoCard/PhotoCard";
-import CustomBtn from "../CustomBtn/CustomBtn";
-import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
+import PhotoCard from "../../PhotoCard/PhotoCard";
+import CustomBtn from "../../CustomBtn/CustomBtn";
+import { animal_adoption_mock as mockData } from "../../../data/animal_adoption_mock";
 
 function PhotoGallerySection() {
   const [photos, setPhotos] = useState([]);

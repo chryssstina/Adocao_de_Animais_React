@@ -1,6 +1,6 @@
 import "./AdminAnimals.css";
 import { animal_adoption_mock as mockData } from "../../../data/animal_adoption_mock";
-import AdoptionCardAdmin from "../../../components/AdoptionCardAdmin/AdoptionCardAdmin";
+import AdoptionCardAdmin from "../../../components/AdminComponents/AdoptionCardAdmin/AdoptionCardAdmin";
 
 function AdminAnimals() {
   const userAdoptions = mockData;

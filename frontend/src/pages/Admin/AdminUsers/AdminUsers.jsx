@@ -1,7 +1,7 @@
 import "./AdminUsers.css"; 
 import { users_mock as mockData } from "../../../data/users_mock";
-import AdminUserCard from "../../../components/AdminUserCard/AdminUserCard";
-import UserStatsCard from "../../../components/UserStatsCard/UserStatsCard";
+import AdminUserCard from "../../../components/AdminComponents/AdminUserCard/AdminUserCard";
+import UserStatsCard from "../../../components/AdminComponents/UserStatsCard/UserStatsCard";
 
 function AdminUsers() {
   const users = mockData;

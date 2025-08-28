@@ -1,9 +1,9 @@
 import "../../index.css";
-import MainSection from "../../components/MainSection/MainSection";
-import AboutSection from "../../components/AboutSection/AboutSection";
-import ProgrammingSection from "../../components/ProgrammingSection/ProgrammingSection";
-import PhotoGallerySection from "../../components/PhotoGallerySection/PhotoGallerySection";
-import AdoptDonate from "../../components/AdoptDonate/AdoptDonate";
+import MainSection from "../../components/HomeComponents/MainSection/MainSection";
+import AboutSection from "../../components/HomeComponents/AboutSection/AboutSection";
+import ProgrammingSection from "../../components/HomeComponents/ProgrammingSection/ProgrammingSection";
+import PhotoGallerySection from "../../components/HomeComponents/PhotoGallerySection/PhotoGallerySection";
+import AdoptSection from "../../components/HomeComponents/AdoptSection/AdoptSection";
 
 
 function Home() {
@@ -13,7 +13,7 @@ function Home() {
                 <MainSection />
                 <AboutSection />
                 <ProgrammingSection />
-                <AdoptDonate />
+                <AdoptSection />
                 <PhotoGallerySection />
             </main>
         </>

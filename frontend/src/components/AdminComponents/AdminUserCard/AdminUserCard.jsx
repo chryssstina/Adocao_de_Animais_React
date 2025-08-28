@@ -1,6 +1,6 @@
 import "./AdminUserCard.css";
 
-function AdminUserCard({ id, name, email, role, status, createdAt }) {
+function AdminUserCard({ name, email, role, status, createdAt }) {
   return (
     <tr>
       <td><strong>{name}</strong></td>
