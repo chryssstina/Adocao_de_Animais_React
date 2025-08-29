@@ -3,10 +3,12 @@ import "./User.css";
 import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
 import FavoritesCard from "../../components/UserComponents/FavoritesCard/FavoritesCard";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserEditModal from "../../components/UserComponents/UserEditModal/UserEditModal";
 
 function User() {
+  const navigate = useNavigate();
+
   const user = {
     id: 1,
     nome: "João Silva",
@@ -27,6 +29,25 @@ function User() {
   const handleEditClick = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
 
+  // ---- NOVAS FUNÇÕES ----
+  const handleLogout = () => {
+    console.log("Usuário saiu da conta!");
+    // limpar dados locais (ex: localStorage.removeItem("token"))
+    // redireciona para login
+    navigate("/login");
+  };
+
+  const handleDeleteAccount = () => {
+    const confirmDelete = window.confirm(
+      "Tem certeza que deseja excluir sua conta? Essa ação não pode ser desfeita."
+    );
+    if (confirmDelete) {
+      console.log("Conta excluída com sucesso!");
+      // futuramente chamar API: await api.delete(`/users/${user.id}`);
+      navigate("/"); // manda para home após excluir
+    }
+  };
+  // ----------------------
 
   return (
     <section className="container-fluid bg-light py-4" id="user-page">
@@ -68,11 +89,17 @@ function User() {
                     <i className="bi bi-pencil"></i>
                     Editar Perfil
                   </button>
-                  <button className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black">
+                  <button
+                    className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black"
+                    onClick={handleLogout}
+                  >
                     <i className="bi bi-box-arrow-right"></i>
                     Sair da Conta
                   </button>
-                  <button className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black">
+                  <button
+                    className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black"
+                    onClick={handleDeleteAccount}
+                  >
                     <i className="bi bi-trash"></i>
                     Excluir Conta
                   </button>
