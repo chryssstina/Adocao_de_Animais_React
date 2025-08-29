@@ -21,8 +21,7 @@ function AnimalCardsForAdoption({ id, animalName, animalAge, animalCategory, pho
                     />
                     <CustomBtn
                         route={`/detalhes-do-animal/${id}`}
-                        label="+"
-                        className="custom-btn-ver-mais"
+                        className="bi bi-eye"
                     />
                 </div>
 
