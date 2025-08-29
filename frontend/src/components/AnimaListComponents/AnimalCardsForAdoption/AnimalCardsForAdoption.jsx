@@ -11,9 +11,8 @@ function AnimalCardsForAdoption({
   photo,
 }) {
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({
-    nome: "user",
-    email: "user@example.com",
+    nome: animalName,
+    email: animalAge,
     password: "",
   });
 
@@ -24,7 +23,7 @@ function AnimalCardsForAdoption({
   const handleCloseModal = () => setShowModal(false);
 
   return (
-    <section id={`animal-${id}`}>
+    <section>
       <div className="card custom-card mb-5">
         <img src={photo} className="card-img-top" alt={animalName} />
         <div className="card-body">
@@ -47,11 +46,11 @@ function AnimalCardsForAdoption({
       <UserAdoptModal
         show={showModal}
         onClose={handleCloseModal}
-        onSave={(updatedData) => {
-          console.log("Dados atualizados:", updatedData);
-          setFormData(updatedData); // atualiza localmente
+        onSave={(adoptionRequest) => {
+          console.log("Pedido de adoção:", adoptionRequest);
+          setFormData(adoptionRequest);
         }}
-        initialData={formData}
+        animalName={animalName}
       />
     </section>
   );

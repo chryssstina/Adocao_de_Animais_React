@@ -1,51 +1,40 @@
 import "./UserAdoptModal.css";
 import { useState, useEffect } from "react";
 
-function UserAdoptModal({ show, onClose, onSave, initialData = {} }) {
-  const [formData, setFormData] = useState({
-    nome: initialData.nome || "",
-    email: initialData.email || "",
-    password: "",
-  });
+function UserAdoptModal({ show, onClose, onSave, animalName }) {
+  const [reason, setReason] = useState("");
 
-  // Atualiza quando initialData mudar
+  // reseta o campo sempre que abrir o modal
   useEffect(() => {
-    setFormData({
-      nome: initialData.nome || "",
-      email: initialData.email || "",
-      password: "",
-    });
-  }, [initialData]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleCloseModal = () => {
-    setFormData({
-      nome: initialData.nome || "",
-      email: initialData.email || "",
-      password: "",
-    });
-    if (onClose) onClose();
-  };
+    if (show) {
+      setReason("");
+    }
+  }, [show]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (onSave) onSave(formData);
+    if (onSave) {
+      onSave({ animal: animalName, reason });
+    }
     handleCloseModal();
+  };
+
+  const handleCloseModal = () => {
+    setReason("");
+    if (onClose) onClose();
   };
 
   if (!show) return null;
 
   return (
-    <div className="modal fade show" id="user-edit-modal">
+    <div className="modal fade show d-block" id="user-adopt-modal">
       <div className="modal-dialog">
         <div className="modal-content">
           <form onSubmit={handleSubmit}>
             <div className="modal-header">
-              <h5 className="modal-title">Editar Perfil</h5>
+              <h5 className="modal-title">
+                Pedido de Adoção - {animalName}
+              </h5>
               <button
                 type="button"
                 className="btn-close"
@@ -54,36 +43,16 @@ function UserAdoptModal({ show, onClose, onSave, initialData = {} }) {
             </div>
             <div className="modal-body">
               <div className="mb-3">
-                <label className="form-label">Nome</label>
-                <input
-                  type="text"
+                <label className="form-label">
+                  Por que você gostaria de adotar este animal?
+                </label>
+                <textarea
                   className="form-control"
-                  name="nome"
-                  value={formData.nome}
-                  onChange={handleChange}
+                  name="reason"
+                  value={reason}
+                  onChange={(e) => setReason(e.target.value)}
+                  rows="4"
                   required
-                />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">Nova Senha</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  placeholder="Deixe em branco para não alterar"
                 />
               </div>
             </div>
@@ -96,7 +65,7 @@ function UserAdoptModal({ show, onClose, onSave, initialData = {} }) {
                 Cancelar
               </button>
               <button type="submit" className="btn btn-primary">
-                Salvar Alterações
+                Enviar Pedido
               </button>
             </div>
           </form>
