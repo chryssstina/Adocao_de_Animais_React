@@ -36,7 +36,7 @@ function AnimalCardsForAdoption({
 
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
-  
+
   // useEffect para "observar" a mudança em adoptionRequest e disparar a API
   useEffect(() => {
     // Só executa se houver um pedido para ser enviado
@@ -112,7 +112,7 @@ function AnimalCardsForAdoption({
 
   return (
     <section>
-      <div className="card custom-card mb-5">
+      <div className="card mb-5">
         <img src={photo} className="card-img-top" alt={animalName} />
         <div className="card-body">
           <h5 className="card-title">{animalName}</h5>
