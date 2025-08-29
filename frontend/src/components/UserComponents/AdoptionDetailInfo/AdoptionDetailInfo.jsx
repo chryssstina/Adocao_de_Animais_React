@@ -1,5 +1,5 @@
 import './AdoptionDetailInfo.css'
-import CustomBtn from '../CustomBtn/CustomBtn';
+import CustomBtn from '../../CustomBtn/CustomBtn';
 
 function AdoptionDetailInfo({ animalName, animalAge, animalWeight, favoriteFood, animalCategory, photo, description }) {
 
@@ -24,15 +24,26 @@ function AdoptionDetailInfo({ animalName, animalAge, animalWeight, favoriteFood,
                         <p>{description}</p>
                     </div>
 
-                    <CustomBtn
-                    label='Tenho interesse'
-                    icon="bi bi-heart"
-                    />
+                    
+                </div>
+                <div className="left-info">
+                    <h1 className="card-title">Usuario</h1>
+
+                    <div className="container-basic-animal-info">
+                        <h3 className="card-title custom-title-basic-animal">Informações básicas</h3>
+                        <p class="card-text">Nome: José</p>
+                        <p class="card-text">Email: jose@example.com</p>
+                        <p class="card-text">Data do pedido: 01/01/2022</p>
+                    </div>
+
+                    <div className="container-basic-animal-info">
+                        <h3 className="card-title custom-title-basic-animal">Descrição</h3>
+                        <p>Quero adotar por que amo animais e quero proporcionar um lar feliz para {animalName}.</p>
+                    </div>
                     <CustomBtn
                     label='Voltar'
                     icon="bi bi-arrow-down-left-circle"
-                    className="custom-btn-basic-info-back"
-                    route="/animais"
+                    route="/user"
                     />
                 </div>
                 
