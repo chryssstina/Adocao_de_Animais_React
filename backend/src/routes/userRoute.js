@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+const authMiddleware = require('../middlewares/authMiddleware');
 const {
     getAllUsersHandler,
     getUserByIdHandler,
+    getUserProfileHandler,
     createUserHandler,
     updateUserHandler,
     deleteUserHandler
@@ -11,10 +13,13 @@ const {
 
 
 router.get('/', getAllUsersHandler);
-router.get('/:user_id', getUserByIdHandler);
+router.get('/:user_id', authMiddleware, getUserByIdHandler);
 router.post('/', createUserHandler);
 router.put('/:user_id', updateUserHandler);
 router.delete('/:user_id', deleteUserHandler);
+
+//rota com autentificação
+router.get("/profile", authMiddleware, getUserProfileHandler);
 
 
 module.exports = router;
