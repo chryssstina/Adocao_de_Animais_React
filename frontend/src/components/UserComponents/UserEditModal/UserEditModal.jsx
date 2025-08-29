@@ -40,10 +40,7 @@ function UserEditModal({ show, onClose, onSave, initialData = {} }) {
   if (!show) return null;
 
   return (
-    <div
-      className="modal fade show"
-      style={{ display: "block", background: "rgba(0,0,0,0.5)" }}
-    >
+    <div className="modal fade show" id="user-edit-modal">
       <div className="modal-dialog">
         <div className="modal-content">
           <form onSubmit={handleSubmit}>
