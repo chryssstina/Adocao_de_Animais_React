@@ -34,6 +34,9 @@ function AnimalCardsForAdoption({
   const [adoptionRequest, setAdoptionRequest] = useState(null);
   const [requestStatus, setRequestStatus] = useState("idle"); // 'idle', 'loading', 'success', 'error'
 
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+  
   // useEffect para "observar" a mudança em adoptionRequest e disparar a API
   useEffect(() => {
     // Só executa se houver um pedido para ser enviado
@@ -58,8 +61,6 @@ function AnimalCardsForAdoption({
     }
   }, [adoptionRequest, id]); // Dependências do useEffect
 
-  const handleOpenModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
 
   // Função para renderizar o conteúdo dos botões de acordo com o status
   const renderCardButtons = () => {
