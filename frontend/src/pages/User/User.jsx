@@ -1,15 +1,57 @@
-import AdoptionCard from "../../components/AdoptionCard/AdoptionCard";
+import AdoptionCard from "../../components/UserComponents/AdoptionCard/AdoptionCard";
 import "./User.css";
 import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
+import FavoritesCard from "../../components/UserComponents/FavoritesCard/FavoritesCard";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import UserEditModal from "../../components/UserComponents/UserEditModal/UserEditModal";
+import DeleteAccountModal from "../../components/UserComponents/DeleteAccountModal/DeleteAccountModal";
 
 function User() {
+  const navigate = useNavigate();
+
   const user = {
     id: 1,
     nome: "João Silva",
     email: "joao.silva@example.com",
     tipo: "Adotante",
   };
-  const userAdoptions = mockData.filter(adoption => adoption.userId === user.id);
+  const userAdoptions = mockData.filter(
+    (adoption) => adoption.userId === user.id
+  );
+
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    nome: user.nome,
+    email: user.email,
+    password: "",
+  });
+
+  const handleEditClick = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
+  // ---- NOVAS FUNÇÕES ----
+  const handleLogout = () => {
+    console.log("Usuário saiu da conta!");
+    // limpar dados locais (ex: localStorage.removeItem("token"))
+    // redireciona para login
+    navigate("/login");
+  };
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const handleDeleteAccount = () => setShowDeleteModal(true);
+
+  const handleCloseDeleteModal = () => setShowDeleteModal(false);
+
+  const handleConfirmDelete = () => {
+    // lógica para excluir conta
+    console.log("Conta excluída!");
+    setShowDeleteModal(false);
+    // limpar dados locais e redirecionar
+    navigate("/login");
+  };
+  // ----------------------
 
   return (
     <section className="container-fluid bg-light py-4" id="user-page">
@@ -44,46 +86,117 @@ function User() {
                 </div>
 
                 <div className="d-flex flex-column gap-2">
-                  <button className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black">
+                  <button
+                    className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black"
+                    onClick={handleEditClick}
+                  >
                     <i className="bi bi-pencil"></i>
                     Editar Perfil
                   </button>
-                  <button className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black">
+                  <button
+                    className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black"
+                    onClick={handleLogout}
+                  >
                     <i className="bi bi-box-arrow-right"></i>
                     Sair da Conta
+                  </button>
+                  <button
+                    className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black"
+                    onClick={handleDeleteAccount}
+                  >
+                    <i className="bi bi-trash"></i>
+                    Excluir Conta
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="col-12 col-md-7">
-            <div className="card shadow-sm rounded-3 border-0">
-              <div className="card-body p-4">
-                <div className="d-flex align-items-center mb-3">
-                  <i className="bi bi-heart me-2 fs-4 text-danger"></i>
-                  <h5 className="card-title user_title mb-0">Meus Pedidos de Adoção</h5>
+          <div className="col-12 col-md-7" id="adoption-favorites-section">
+            <div className="row mb-4" id="adoption-requests">
+              <div className="card shadow-sm rounded-3 border-0">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-heart me-2 fs-4 text-danger"></i>
+                    <h5 className="card-title user_title mb-0">
+                      Meus Pedidos de Adoção
+                    </h5>
+                  </div>
+                  <div className="adoption-list">
+                    {userAdoptions.length === 0 ? (
+                      <p className="text-muted">
+                        Você ainda não fez nenhum pedido de adoção.
+                      </p>
+                    ) : (
+                      userAdoptions.map((adoption) => (
+                        <AdoptionCard
+                          key={adoption.id}
+                          id={adoption.id}
+                          animalName={adoption.animalName}
+                          adoptionDate={adoption.adoptionDate}
+                          status={adoption.statusAdoption}
+                          photo={adoption.photo}
+                        />
+                      ))
+                    )}
+                  </div>
                 </div>
-                <div className="adoption-list">
-                  {userAdoptions.length === 0 ? (
-                    <p className="text-muted">Você ainda não fez nenhum pedido de adoção.</p>
-                  ) : (
-                    userAdoptions.map((adoption) => (
-                      <AdoptionCard
-                        id={adoption.id}
-                        animalName={adoption.animalName}
-                        adoptionDate={adoption.adoptionDate}
-                        status={adoption.statusAdoption}
-                        photo={adoption.photo}
-                      />
-                    ))
-                  )}
+              </div>
+            </div>
+            <div className="row" id="favorites-section">
+              <div className="card shadow-sm rounded-3 border-0">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-heart me-2 fs-4 text-danger"></i>
+                    <h5 className="card-title user_title mb-0">
+                      Minha Lista de Desejos
+                    </h5>
+                  </div>
+                  <div className="adoption-list">
+                    {userAdoptions.length === 0 ? (
+                      <div>
+                        <p className="text-muted">
+                          Você ainda não fez nenhum pedido de adoção.
+                        </p>
+                        <Link to="/animais" className="btn btn-link p-0">
+                          Explorar Animais
+                        </Link>
+                      </div>
+                    ) : (
+                      userAdoptions.map((adoption) => (
+                        <FavoritesCard
+                          key={adoption.id}
+                          id={adoption.id}
+                          animalName={adoption.animalName}
+                          animalAge={adoption.animalAge}
+                          animalCategory={adoption.animalCategory}
+                          photo={adoption.photo}
+                        />
+                      ))
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <UserEditModal
+        show={showModal}
+        onClose={handleCloseModal}
+        onSave={(updatedData) => {
+          console.log("Dados atualizados:", updatedData);
+          setFormData(updatedData); // atualiza localmente
+        }}
+        initialData={formData}
+      />
+
+      <DeleteAccountModal
+        show={showDeleteModal}
+        onClose={handleCloseDeleteModal}
+        onDelete={handleConfirmDelete}
+      />
     </section>
   );
 }

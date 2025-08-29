@@ -43,12 +43,12 @@ function AdoptionCard({id, animalName, adoptionDate, status, photo }) {
                 Desconhecido
               </span>
             )}
-            <Link className="btn btn-outline-secondary btn-sm button_black" to={`/adotados/${id}`}>
+            <Link className="btn btn-outline-secondary btn-sm button_black" to={`/pedido/${id}`}>
               Ver Detalhes
             </Link>
             {
               status === "rejeitado" ? (
-                <button className="btn btn-danger btn-sm" id="DeleteButton">Excluir</button>
+                <button className="btn btn-danger btn-sm" id="DeleteButton">Remover</button>
               ) : (
                 <button className="btn btn-danger btn-sm" id="CancelButton">Cancelar</button>
               )

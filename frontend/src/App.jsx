@@ -12,6 +12,7 @@ import Admin from "./pages/Admin/Admin";
 import AdminAdoptions from "./pages/Admin/AdminAdoptions/AdminAdoptions";
 import AdminAnimals from "./pages/Admin/AdminAnimals/AdminAnimals";
 import AdminUsers from "./pages/Admin/AdminUsers/AdminUsers";
+import UserAdoptionDetail from "./pages/User/UserAdoptionDetail/UserAdoptionDetail";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/animais" element={<AnimalList />} />
           <Route path="/detalhes-do-animal/:id" element={<AnimalDetails />} />
           <Route path="/adotados/:id" element={<AdoptedAnimalDetails />} />
+          <Route path="/pedido/:id" element={<UserAdoptionDetail />} />
           <Route path="/user" element={<User />} />
           <Route path="/admin" element={<Admin />}>
             <Route path="/admin/adoptions" element={<AdminAdoptions />} />

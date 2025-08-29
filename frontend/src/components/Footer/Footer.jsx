@@ -56,9 +56,9 @@ function Footer() {
           </div>
         </div>
 
-        <hr class="border-white" />
+        <hr className="border-white" />
 
-        <div class="text-center pt-3">
+        <div className="text-center pt-3">
           <small>
             © 2025 Latidos & Ronrons. Todos os direitos reservados.
           </small>
