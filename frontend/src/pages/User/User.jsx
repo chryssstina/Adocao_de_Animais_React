@@ -5,6 +5,7 @@ import FavoritesCard from "../../components/UserComponents/FavoritesCard/Favorit
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserEditModal from "../../components/UserComponents/UserEditModal/UserEditModal";
+import DeleteAccountModal from "../../components/UserComponents/DeleteAccountModal/DeleteAccountModal";
 
 function User() {
   const navigate = useNavigate();
@@ -37,15 +38,19 @@ function User() {
     navigate("/login");
   };
 
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   const handleDeleteAccount = () => {
-    const confirmDelete = window.confirm(
-      "Tem certeza que deseja excluir sua conta? Essa ação não pode ser desfeita."
-    );
-    if (confirmDelete) {
-      console.log("Conta excluída com sucesso!");
-      // futuramente chamar API: await api.delete(`/users/${user.id}`);
-      navigate("/"); // manda para home após excluir
-    }
+    setShowDeleteModal(true);
+  };
+  const handleCloseDeleteModal = () => setShowDeleteModal(false);
+
+  const handleConfirmDelete = () => {
+    // lógica para excluir conta
+    console.log("Conta excluída!");
+    setShowDeleteModal(false);
+    // limpar dados locais e redirecionar
+    navigate("/login");
   };
   // ----------------------
 
@@ -186,6 +191,12 @@ function User() {
           setFormData(updatedData); // atualiza localmente
         }}
         initialData={formData}
+      />
+
+      <DeleteAccountModal
+        show={showDeleteModal}
+        onClose={handleCloseDeleteModal}
+        onConfirm={handleConfirmDelete}
       />
     </section>
   );
