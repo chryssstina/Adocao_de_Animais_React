@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import "./FavoritesCard.css";
 
-function FavoritesCard({id, animalName, adoptionDate, status, photo }) {
-  return status === "disponivel" ? (
-    <></>
-  ) : (
+function FavoritesCard({ id, animalName, animalAge, animalCategory, photo }) {
+  return  (
     <section className="adoption-card" id="adoption-card-section">
       <div className="card mb-3" id="adoption-card-content">
         <div className="row g-0 align-items-center">
@@ -20,40 +18,25 @@ function FavoritesCard({id, animalName, adoptionDate, status, photo }) {
           <div className="col-md-4">
             <h5 className="card-title mb-1">{animalName}</h5>
             <div className="text-muted small">
-              <i className="bi bi-calendar me-1"></i>
-              {adoptionDate === "" ? (
-                <span className="text-warning">Aguardando Adoção</span>
-              ) : (
-                <span className="no-underline">{adoptionDate}</span>
-              )}
+              <i className="bi bi-house-heart me-1"></i>
+                <span className="no-underline">{animalCategory}</span>
+            </div>
+            <div className="text-muted small">
+              <i className="bi bi-cake me-1"></i>
+                <span className="no-underline">{animalAge}</span>
             </div>
           </div>
 
           <div className="col-md-6 d-flex justify-content-end align-items-center gap-2 flex-wrap">
-            {status === "pendente" ? (
-              <span className="badge bg-warning text-dark no-underline">
-                Pendente
-              </span>
-            ) : status === "aprovado" ? (
-              <span className="badge bg-success no-underline">Aprovado</span>
-            ) : status === "rejeitado" ? (
-              <span className="badge bg-danger no-underline">Rejeitado</span>
-            ) : (
-              <span className="badge bg-secondary no-underline">
-                Desconhecido
-              </span>
-            )}
-            <Link className="btn btn-outline-secondary btn-sm button_black" to={`/adotados/${id}`}>
+            <Link
+              className="btn btn-outline-secondary btn-sm button_black"
+              to={`/adotados/${id}`}
+            >
               Ver Detalhes
             </Link>
-            {
-              status === "rejeitado" ? (
-                <button className="btn btn-danger btn-sm" id="DeleteButton">Excluir</button>
-              ) : (
-                <button className="btn btn-danger btn-sm" id="CancelButton">Cancelar</button>
-              )
-            }
-            
+            <button className="btn btn-danger btn-sm" id="DeleteButton">
+              Remover
+            </button>
           </div>
         </div>
       </div>

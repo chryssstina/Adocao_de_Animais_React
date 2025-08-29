@@ -114,8 +114,8 @@ function User() {
                         <FavoritesCard
                           id={adoption.id}
                           animalName={adoption.animalName}
-                          adoptionDate={adoption.adoptionDate}
-                          status={adoption.statusAdoption}
+                          animalAge={adoption.animalAge}
+                          animalCategory={adoption.animalCategory}
                           photo={adoption.photo}
                         />
                       ))
