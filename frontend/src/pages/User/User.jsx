@@ -2,6 +2,9 @@ import AdoptionCard from "../../components/UserComponents/AdoptionCard/AdoptionC
 import "./User.css";
 import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
 import FavoritesCard from "../../components/UserComponents/FavoritesCard/FavoritesCard";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import UserEditModal from "../../components/UserComponents/UserEditModal/UserEditModal";
 
 function User() {
   const user = {
@@ -13,6 +16,17 @@ function User() {
   const userAdoptions = mockData.filter(
     (adoption) => adoption.userId === user.id
   );
+
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    nome: user.nome,
+    email: user.email,
+    password: "",
+  });
+
+  const handleEditClick = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
 
   return (
     <section className="container-fluid bg-light py-4" id="user-page">
@@ -47,13 +61,20 @@ function User() {
                 </div>
 
                 <div className="d-flex flex-column gap-2">
-                  <button className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black">
+                  <button
+                    className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black"
+                    onClick={handleEditClick}
+                  >
                     <i className="bi bi-pencil"></i>
                     Editar Perfil
                   </button>
                   <button className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black">
                     <i className="bi bi-box-arrow-right"></i>
                     Sair da Conta
+                  </button>
+                  <button className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 button_black">
+                    <i className="bi bi-trash"></i>
+                    Excluir Conta
                   </button>
                 </div>
               </div>
@@ -78,6 +99,7 @@ function User() {
                     ) : (
                       userAdoptions.map((adoption) => (
                         <AdoptionCard
+                          key={adoption.id}
                           id={adoption.id}
                           animalName={adoption.animalName}
                           adoptionDate={adoption.adoptionDate}
@@ -102,16 +124,17 @@ function User() {
                   <div className="adoption-list">
                     {userAdoptions.length === 0 ? (
                       <div>
-                          <p className="text-muted">
-                           Você ainda não fez nenhum pedido de adoção.
+                        <p className="text-muted">
+                          Você ainda não fez nenhum pedido de adoção.
                         </p>
-                          <Link to="/animais" className="btn btn-link p-0">
-                           Explorar Animais
+                        <Link to="/animais" className="btn btn-link p-0">
+                          Explorar Animais
                         </Link>
                       </div>
                     ) : (
                       userAdoptions.map((adoption) => (
                         <FavoritesCard
+                          key={adoption.id}
                           id={adoption.id}
                           animalName={adoption.animalName}
                           animalAge={adoption.animalAge}
@@ -127,6 +150,16 @@ function User() {
           </div>
         </div>
       </div>
+
+      <UserEditModal
+        show={showModal}
+        onClose={handleCloseModal}
+        onSave={(updatedData) => {
+          console.log("Dados atualizados:", updatedData);
+          setFormData(updatedData); // atualiza localmente
+        }}
+        initialData={formData}
+      />
     </section>
   );
 }
