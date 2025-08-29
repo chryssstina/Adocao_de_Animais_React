@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import './AnimalList.css'
-import AnimalCardsForAdoption from "../../components/AnimalCardsForAdoption/AnimalCardsForAdoption";
+import AnimalCardsForAdoption from "../../components/AnimaListComponents/AnimalCardsForAdoption/AnimalCardsForAdoption";
 import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
 
 

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import './CustomBtn.css';
 
 
-function CustomBtn({ label, route, className="", icon=""}) {
+function CustomBtn({ label, route, className="", icon="", onClick}) {
     // btn é classe padrão do bootstrap
     const baseClass = `btn custom-btn-class ${className}`.trim();
 
@@ -13,7 +13,7 @@ function CustomBtn({ label, route, className="", icon=""}) {
                     {icon && <i className={`${icon} custom-icon ms-2`}></i>}
                 </Link>;
     } else {
-        return <button type="button" className={baseClass}>
+        return <button type="button" className={baseClass} onClick={onClick}>
                     {label}
                     {icon && <i className={`${icon} custom-icon ms-2`}></i>}
                 </button>;
