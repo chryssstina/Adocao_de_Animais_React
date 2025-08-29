@@ -15,7 +15,12 @@ function DeleteAccountModal({ show, onClose, onDelete, userName = "" }) {
   if (!show) return null;
 
   return (
-    <div className="modal fade show" id="delete-account-modal" tabIndex="-1" style={{ display: "block", background: "rgba(0,0,0,0.5)" }}>
+    <div
+      className="modal fade show"
+      id="delete-account-modal"
+      tabIndex="-1"
+      style={{ display: "block", background: "rgba(0,0,0,0.5)" }}
+    >
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
@@ -45,10 +50,7 @@ function DeleteAccountModal({ show, onClose, onDelete, userName = "" }) {
             <button
               type="button"
               className="btn btn-danger"
-              onClick={() => {
-                if (onDelete) onDelete();
-                onClose && onClose();
-              }}
+              onClick={onDelete}
             >
               Excluir Conta
             </button>

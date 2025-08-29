@@ -40,9 +40,8 @@ function User() {
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  const handleDeleteAccount = () => {
-    setShowDeleteModal(true);
-  };
+  const handleDeleteAccount = () => setShowDeleteModal(true);
+
   const handleCloseDeleteModal = () => setShowDeleteModal(false);
 
   const handleConfirmDelete = () => {
@@ -196,7 +195,7 @@ function User() {
       <DeleteAccountModal
         show={showDeleteModal}
         onClose={handleCloseDeleteModal}
-        onConfirm={handleConfirmDelete}
+        onDelete={handleConfirmDelete}
       />
     </section>
   );
