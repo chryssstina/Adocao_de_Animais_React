@@ -43,7 +43,7 @@ function AdoptionCard({id, animalName, adoptionDate, status, photo }) {
                 Desconhecido
               </span>
             )}
-            <Link className="btn btn-outline-secondary btn-sm button_black" to={`/adotados/${id}`}>
+            <Link className="btn btn-outline-secondary btn-sm button_black" to={`/pedido/${id}`}>
               Ver Detalhes
             </Link>
             {
