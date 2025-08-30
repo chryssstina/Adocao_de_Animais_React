@@ -12,6 +12,7 @@ import AdminAdoptions from "./pages/Admin/AdminAdoptions/AdminAdoptions";
 import AdminAnimals from "./pages/Admin/AdminAnimals/AdminAnimals";
 import AdminUsers from "./pages/Admin/AdminUsers/AdminUsers";
 import UserAdoptionDetail from "./pages/User/UserAdoptionDetail/UserAdoptionDetail";
+import AdminWelcome from "./pages/Admin/AdminWelcome/AdminWelcome";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/pedido/:id" element={<UserAdoptionDetail />} />
           <Route path="/user" element={<User />} />
           <Route path="/admin" element={<Admin />}>
+            <Route index element={<AdminWelcome />} />
             <Route path="/admin/adoptions" element={<AdminAdoptions />} />
             <Route path="/admin/users" element={<AdminUsers />} />
             <Route path="/admin/animals" element={<AdminAnimals />} />

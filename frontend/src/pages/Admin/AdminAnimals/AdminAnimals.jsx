@@ -6,9 +6,9 @@ function AdminAnimals() {
   const userAdoptions = mockData;
 
   return (
-    <section className="container-fluid bg-light py-4" id="user-page">
+    <section className="container-fluid bg-light py-4" id="admin-animals-page">
       <div className="container bg-light pt-1" id="user-container">
-        <div className="user-header mb-4" id="user-header">
+        <div className="admin-animals-header mb-4" id="admin-animals-header">
           <h1 className="user-greeting fw-semibold">Gerenciar Animais</h1>
           <p className="text-muted mb-0">
             Cadastre, edite e gerencie os animais para adoção

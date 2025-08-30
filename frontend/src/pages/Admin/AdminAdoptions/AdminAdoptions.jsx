@@ -6,7 +6,7 @@ function AdminAdoptions() {
   const userAdoptions = mockData;
 
   return (
-    <section className="container-fluid bg-light py-4" id="user-page">
+    <section className="container-fluid bg-light py-4" id="admin-adoptions-page">
       <div className="container bg-light pt-1" id="user-container">
         <div className="user-header mb-4" id="user-header">
           <h1 className="user-greeting fw-semibold">Pedidos de Adoção</h1>

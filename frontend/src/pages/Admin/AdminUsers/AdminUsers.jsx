@@ -12,7 +12,7 @@ function AdminUsers() {
   const totalUsers = users.length;
 
   return (
-    <section className="container-fluid bg-light py-4" id="user-page">
+    <section className="container-fluid bg-light py-4" id="admin-user-page">
       <div className="container bg-light pt-1" id="user-container">
         <div className="user-header mb-4" id="user-header">
           <h1 className="user-greeting fw-semibold">Lista de Usuários</h1>
