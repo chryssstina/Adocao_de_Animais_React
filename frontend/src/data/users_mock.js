@@ -11,7 +11,7 @@ export const users_mock = [
     id: 2,
     name: "João Santos",
     email: "joao@email.com",
-    role: "Voluntário",
+    role: "Adotante",
     status: "Ativo",
     createdAt: "2024-01-08",
   },

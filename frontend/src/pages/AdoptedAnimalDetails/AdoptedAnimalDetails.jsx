@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
-import AdoptedAnimalInfo from "../../components/AdoptedAnimalInfo/AdoptedAnimalInfo";
+import BasicAnimalInfo from "../../components/BasicAnimalInfo/BasicAnimalInfo";
 
 
 function AdoptedAnimalDetails() {
@@ -16,7 +16,7 @@ function AdoptedAnimalDetails() {
 
     return (
         <>
-            <AdoptedAnimalInfo
+            <BasicAnimalInfo
                 id={animal.id}
                 animalName={animal.animalName}
                 animalAge={animal.animalAge}
@@ -25,6 +25,7 @@ function AdoptedAnimalDetails() {
                 animalCategory={animal.animalCategory}
                 description={animal.description}
                 photo={animal.photo}
+                route="/user"
             />
 
         </>

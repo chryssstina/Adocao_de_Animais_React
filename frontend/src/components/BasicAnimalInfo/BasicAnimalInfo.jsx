@@ -1,7 +1,7 @@
 import './BasicAnimalInfo.css'
 import CustomBtn from '../CustomBtn/CustomBtn';
 
-function BasicAnimalInfo({ animalName, animalAge, animalWeight, favoriteFood, animalCategory, photo, description }) {
+function BasicAnimalInfo({ animalName, animalAge, animalWeight, favoriteFood, animalCategory, photo, description, route }) {
 
     return (
         <>
@@ -31,8 +31,8 @@ function BasicAnimalInfo({ animalName, animalAge, animalWeight, favoriteFood, an
                     <CustomBtn
                     label='Voltar'
                     icon="bi bi-arrow-down-left-circle"
-                    className="custom-btn-basic-info-back"
-                    route="/animais"
+                    className="ms-2"
+                    route={route}
                     />
                 </div>
                 

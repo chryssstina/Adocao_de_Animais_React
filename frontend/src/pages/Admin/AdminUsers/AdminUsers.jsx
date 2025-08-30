@@ -1,4 +1,4 @@
-import "./AdminUsers.css"; 
+import "./AdminUsers.css";
 import { users_mock as mockData } from "../../../data/users_mock";
 import AdminUserCard from "../../../components/AdminComponents/AdminUserCard/AdminUserCard";
 import UserStatsCard from "../../../components/AdminComponents/UserStatsCard/UserStatsCard";
@@ -8,8 +8,7 @@ function AdminUsers() {
 
   // Cálculos
   const adopters = users.filter((u) => u.role === "Adotante").length;
-  const volunteers = users.filter((u) => u.role === "Voluntário").length;
-  const activeUsers = users.filter((u) => u.status === "Ativo").length;
+  const totalAdmins = users.filter((u) => u.role === "Administrador").length;
   const totalUsers = users.length;
 
   return (
@@ -23,12 +22,12 @@ function AdminUsers() {
         </div>
 
         {/* Cards informativos */}
-        <div className="row mb-4">
-          <UserStatsCard value={adopters} label="Adotantes" color="primary" />
-          <UserStatsCard value={volunteers} label="Voluntários" color="purple" />
-          <UserStatsCard value={activeUsers} label="Usuários Ativos" color="success" />
-          <UserStatsCard value={totalUsers} label="Total de Usuários" color="secondary" />
-        </div>
+        {/* centralizar */}
+          <div className="row justify-content-center mb-4 gap-3">
+            <UserStatsCard value={adopters} label="Adotantes" color="primary" />
+            <UserStatsCard value={totalUsers} label="Total de Usuários" color="secondary" />
+            <UserStatsCard value={totalAdmins} label="Total de Administradores" color="success" />
+          </div>
 
         {/* Tabela de usuários */}
         <div className="row g-4" id="user-panel">
@@ -75,7 +74,6 @@ function AdminUsers() {
                     </tbody>
                   </table>
                 </div>
-
               </div>
             </div>
           </div>

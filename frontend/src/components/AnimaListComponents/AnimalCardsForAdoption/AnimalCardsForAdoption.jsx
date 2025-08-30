@@ -97,13 +97,15 @@ function AnimalCardsForAdoption({
         return (
           <>
             <CustomBtn
-              label="Tenho interesse"
-              className="custom-btn-tenho-interesse"
+              label="Favoritar"
+              icon="bi bi-star"
+              className="custom-btn-favoritar"
               onClick={handleOpenModal}
             />
             <CustomBtn
               route={`/detalhes-do-animal/${id}`}
-              className="bi bi-eye"
+              label="Ver Detalhes"
+              icon="bi bi-eye"
             />
           </>
         );
