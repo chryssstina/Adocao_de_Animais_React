@@ -24,7 +24,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUpUser />} />
           <Route path="/animais" element={<AnimalList />} />
-          <Route path="/detalhes-do-animal/:id" element={<AnimalDetails />} />
+          <Route path="/detalhes-do-animal/:id" element={<AnimalDetails route="/animais" />} />
+          <Route path="/adotados/:id" element={<AnimalDetails route="/user" />} />
           <Route path="/pedido/:id" element={<UserAdoptionDetail />} />
           <Route path="/user" element={<User />} />
           <Route path="/admin" element={<Admin />}>

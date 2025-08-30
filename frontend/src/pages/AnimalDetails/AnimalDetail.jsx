@@ -3,7 +3,7 @@ import { animal_adoption_mock as mockData } from "../../data/animal_adoption_moc
 import BasicAnimalInfo from "../../components/BasicAnimalInfo/BasicAnimalInfo";
 
 
-function AnimalDetails() {
+function AnimalDetails({route}) {
 
     const { id } = useParams();
     const animalId = parseInt(id);
@@ -25,7 +25,7 @@ function AnimalDetails() {
                 animalCategory={animal.animalCategory}
                 description={animal.description}
                 photo={animal.photo}
-                route="/animais"
+                route={route}
             />
 
         </>
