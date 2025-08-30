@@ -25,6 +25,7 @@ function AnimalDetails() {
                 animalCategory={animal.animalCategory}
                 description={animal.description}
                 photo={animal.photo}
+                route="/animais"
             />
 
         </>

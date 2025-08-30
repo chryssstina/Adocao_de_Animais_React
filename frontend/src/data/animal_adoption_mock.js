@@ -45,7 +45,7 @@ export const animal_adoption_mock = [
         animalCategory: "Gato",
         photo: Nina,
         description: "Gata doce e carinhosa, adora receber carinho e brincar com bolinhas de lã.",
-        statusAdoption: "pendente",
+        statusAdoption: "disponivel",
         adoptionDate: "2023-10-03",
         userId: 1
     },
@@ -58,7 +58,7 @@ export const animal_adoption_mock = [
         animalCategory: "Cachorro",
         photo: Tobbey,
         description: "Cachorro amigável, adora correr no parque e brincar com outros cães.",
-        statusAdoption: "rejeitado",
+        statusAdoption: "disponivel",
         adoptionDate: "2023-10-04",
         userId: 1
     },

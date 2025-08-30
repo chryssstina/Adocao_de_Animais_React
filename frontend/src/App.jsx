@@ -25,7 +25,6 @@ function App() {
           <Route path="/sign-up" element={<SignUpUser />} />
           <Route path="/animais" element={<AnimalList />} />
           <Route path="/detalhes-do-animal/:id" element={<AnimalDetails />} />
-          <Route path="/adotados/:id" element={<AdoptedAnimalDetails />} />
           <Route path="/pedido/:id" element={<UserAdoptionDetail />} />
           <Route path="/user" element={<User />} />
           <Route path="/admin" element={<Admin />}>
