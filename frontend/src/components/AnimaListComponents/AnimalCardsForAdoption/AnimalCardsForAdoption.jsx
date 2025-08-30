@@ -1,24 +1,25 @@
 import "./AnimalCardForAdoption.css";
 import CustomBtn from "../../CustomBtn/CustomBtn";
-import UserAdoptModal from "../UserAdoptModal/UserAdoptModal";
-import React, { useState, useEffect } from "react"; // 👈 Adicionado useEffect
+import React, { useState } from "react"; // 👈 Não precisamos mais do useEffect aqui
 
-// --- SIMULAÇÃO DE UMA CHAMADA DE API ---
-// Esta função simula o envio de dados para um servidor.
-// Ela espera 1.5 segundos e depois resolve ou rejeita a Promise.
-const fakeApiCall = (data) => {
-  console.log("Iniciando chamada à API com os dados:", data);
+// --- NOVA SIMULAÇÃO DE API PARA FAVORITAR ---
+// Simula uma chamada rápida para adicionar/remover um favorito.
+const fakeFavoriteApiCall = (animalId, shouldBeFavorited) => {
+  console.log(
+    `API: ${shouldBeFavorited ? "Adicionando" : "Removendo"} favorito para o animal ID:`,
+    animalId
+  );
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      // Simula 75% de chance de sucesso e 25% de erro
-      if (Math.random() > 0.25) {
+      // Simula um erro ocasional
+      if (Math.random() > 0.1) { // 90% de chance de sucesso
         console.log("API: Sucesso!");
-        resolve({ status: "ok", message: "Adoption request received!" });
+        resolve({ status: "ok" });
       } else {
         console.log("API: Erro!");
-        reject(new Error("Falha na comunicação com o servidor."));
+        reject(new Error("Falha ao atualizar o favorito."));
       }
-    }, 1500); // 1.5 segundos de delay
+    }, 700); // Delay menor, pois favoritar é uma ação rápida
   });
 };
 // -----------------------------------------
@@ -29,86 +30,28 @@ function AnimalCardsForAdoption({
   animalAge,
   animalCategory,
   photo,
+  // Opcional: receber o estado inicial do componente pai no futuro
+  initialIsFavorited = false, 
 }) {
-  const [showModal, setShowModal] = useState(false);
-  const [adoptionRequest, setAdoptionRequest] = useState(null);
-  const [requestStatus, setRequestStatus] = useState("idle"); // 'idle', 'loading', 'success', 'error'
+  // --- ESTADOS SIMPLIFICADOS ---
+  const [isFavorited, setIsFavorited] = useState(initialIsFavorited);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleOpenModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
+  // --- LÓGICA DE CLIQUE PARA FAVORITAR ---
+  const handleFavoriteClick = async () => {
+    setIsLoading(true); // Desabilita o botão
 
-  // useEffect para "observar" a mudança em adoptionRequest e disparar a API
-  useEffect(() => {
-    // Só executa se houver um pedido para ser enviado
-    if (adoptionRequest) {
-      const submitRequest = async () => {
-        setRequestStatus("loading"); // Muda a UI para "carregando"
-        try {
-          // Adiciona o ID do animal ao objeto de requisição
-          const requestData = { ...adoptionRequest, animalId: id };
-
-          // Chama a nossa API (simulada)
-          await fakeApiCall(requestData);
-
-          setRequestStatus("success"); // Muda a UI para "sucesso"
-        } catch (error) {
-          console.error("Erro ao enviar o pedido:", error);
-          setRequestStatus("error"); // Muda a UI para "erro"
-        }
-      };
-
-      submitRequest();
-    }
-  }, [adoptionRequest, id]); // Dependências do useEffect
-
-
-  // Função para renderizar o conteúdo dos botões de acordo com o status
-  const renderCardButtons = () => {
-    switch (requestStatus) {
-      case "loading":
-        return (
-          <div className="d-flex align-items-center justify-content-center p-2">
-            <div className="spinner-border spinner-border-sm" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-            <span className="ms-2">Enviando...</span>
-          </div>
-        );
-      case "success":
-        return (
-          <div className="text-success p-2 text-center">
-            <strong>Pedido enviado com sucesso!</strong>
-          </div>
-        );
-      case "error":
-        return (
-          <div className="text-danger p-2 text-center">
-            <p className="mb-1">Ops! Ocorreu um erro.</p>
-            <button
-              className="btn btn-sm btn-outline-primary"
-              onClick={() => setRequestStatus("idle")} // Reseta para o estado inicial
-            >
-              Tentar Novamente
-            </button>
-          </div>
-        );
-      case "idle":
-      default:
-        return (
-          <>
-            <CustomBtn
-              label="Favoritar"
-              icon="bi bi-star"
-              className="custom-btn-favoritar"
-              onClick={handleOpenModal}
-            />
-            <CustomBtn
-              route={`/detalhes-do-animal/${id}`}
-              label="Ver Detalhes"
-              icon="bi bi-eye"
-            />
-          </>
-        );
+    try {
+      // Chama a API com o estado desejado (o inverso do atual)
+      await fakeFavoriteApiCall(id, !isFavorited);
+      // Se a API funcionou, atualiza o estado local
+      setIsFavorited((currentValue) => !currentValue);
+    } catch (error) {
+      console.error(error);
+      // Poderíamos mostrar uma notificação de erro para o usuário aqui
+      alert("Não foi possível favoritar o pet. Tente novamente.");
+    } finally {
+      setIsLoading(false); // Reabilita o botão, independente de sucesso ou erro
     }
   };
 
@@ -121,18 +64,26 @@ function AnimalCardsForAdoption({
           <p className="card-text"> Idade: {animalAge}</p>
           <p className="card-text"> Categoria: {animalCategory}</p>
         </div>
-        <div className="card-buttons">{renderCardButtons()}</div>
+        <div className="card-buttons">
+          {/* --- BOTÃO DE FAVORITAR DINÂMICO --- */}
+          <CustomBtn
+              label="Favoritar"
+            // O ícone muda com base no estado 'isFavorited'
+            icon={isFavorited ? "bi bi-star-fill" : "bi bi-star"}
+            // A classe também muda para podermos estilizar o botão favoritado
+            className={`custom-btn-favoritar ${isFavorited ? "favorited" : ""}`}
+            onClick={handleFavoriteClick}
+            // Desabilita o botão durante a chamada da API
+            disabled={isLoading}
+          />
+          <CustomBtn
+              label="Ver Detalhes"
+              icon="bi bi-eye"
+              route={`/detalhes-do-animal/${id}`}
+          />
+        </div>
       </div>
-      <UserAdoptModal
-        show={showModal}
-        onClose={handleCloseModal}
-        onSave={(newRequest) => {
-          console.log("Pedido de adoção recebido do modal:", newRequest);
-          setAdoptionRequest(newRequest); // Guarda o pedido, o que vai disparar o useEffect
-          handleCloseModal(); // Fecha o modal imediatamente
-        }}
-        animalName={animalName}
-      />
+      {/* O Modal foi removido, não é mais necessário aqui */}
     </section>
   );
 }

@@ -7,7 +7,6 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import User from "./pages/User/User";
-import AdoptedAnimalDetails from "./pages/AdoptedAnimalDetails/AdoptedAnimalDetails";
 import Admin from "./pages/Admin/Admin";
 import AdminAdoptions from "./pages/Admin/AdminAdoptions/AdminAdoptions";
 import AdminAnimals from "./pages/Admin/AdminAnimals/AdminAnimals";
