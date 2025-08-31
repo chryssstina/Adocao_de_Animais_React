@@ -33,7 +33,7 @@ function AdminAdoptions() {
                         <th scope="col">Animal</th>
                         <th scope="col">Adotante</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Data</th>
+                        <th scope="col">Data do pedido</th>
                         <th scope="col">Status</th>
                         <th scope="col">Ações</th>
                       </tr>
