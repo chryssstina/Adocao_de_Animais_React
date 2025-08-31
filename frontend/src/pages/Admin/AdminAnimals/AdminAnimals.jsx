@@ -1,20 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import "./AdminAnimals.css";
+import { animal_adoption_mock as mockData } from "../../../data/animal_adoption_mock";
 import "./AdminAnimals.css";
 import AdoptionCardAdmin from "../../../components/AdminComponents/AdoptionCardAdmin/AdoptionCardAdmin";
 import DeleteConfirmationModal from "../../../components/AdminComponents/DeleteComponentModal/DeleteComponentModal";
 
 // --- DADOS MOCK ---
-const animal_adoption_mock = [
-    { id: 1, animalName: "Luna", adoptionDate: "", statusAdoption: "disponivel" },
-    { id: 2, animalName: "Thor", adoptionDate: "2023-10-02", statusAdoption: "aprovado" },
-    { id: 3, animalName: "Nina", adoptionDate: "", statusAdoption: "disponivel" },
-    { id: 4, animalName: "Tobby", adoptionDate: "", statusAdoption: "disponivel" },
-    { id: 5, animalName: "Rufus", adoptionDate: "", statusAdoption: "disponivel" },
-    { id: 6, animalName: "Fred", adoptionDate: "", statusAdoption: "disponivel" },
-];
-
+const animal_adoption_mock = mockData;
 
 function AdminAnimals() {
   const [animals, setAnimals] = useState(animal_adoption_mock);
