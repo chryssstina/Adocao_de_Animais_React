@@ -30,6 +30,7 @@ function AdminAdoptions() {
                   <table className="table align-middle">
                     <thead>
                       <tr>
+                        <th scope="col">Id</th>
                         <th scope="col">Animal</th>
                         <th scope="col">Adotante</th>
                         <th scope="col">Email</th>
