@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-// Opcional: Crie um CSS se precisar de estilos específicos para este modal
-// import "./AdminUserEditModal.css";
+import "./AdminUserEditModal.css"
 
 function AdminUserEditModal({ show, onClose, onSave, userData }) {
-  // Estado inicial do formulário, agora com 'role'
   const initialFormState = {
     name: "",
     email: "",
@@ -53,9 +51,7 @@ function AdminUserEditModal({ show, onClose, onSave, userData }) {
   if (!show) return null;
 
   return (
-    // Backdrop do modal
-    <div className="modal-backdrop fade show">
-      <div className="modal fade show" style={{ display: "block" }} tabIndex="-1">
+      <div className="modal fade show" id="admin-user-edit-modal">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <form onSubmit={handleSubmit}>
@@ -68,7 +64,6 @@ function AdminUserEditModal({ show, onClose, onSave, userData }) {
                 ></button>
               </div>
               <div className="modal-body">
-                {/* Campo Nome */}
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">Nome</label>
                   <input
@@ -82,7 +77,6 @@ function AdminUserEditModal({ show, onClose, onSave, userData }) {
                   />
                 </div>
 
-                {/* Campo Email */}
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">Email</label>
                   <input
@@ -96,7 +90,6 @@ function AdminUserEditModal({ show, onClose, onSave, userData }) {
                   />
                 </div>
                 
-                {/* NOVO: Campo Tipo (Role) */}
                 <div className="mb-3">
                   <label htmlFor="role" className="form-label">Tipo</label>
                   <select
@@ -111,7 +104,6 @@ function AdminUserEditModal({ show, onClose, onSave, userData }) {
                   </select>
                 </div>
 
-                {/* Campo Nova Senha */}
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">Nova Senha</label>
                   <input
@@ -141,7 +133,6 @@ function AdminUserEditModal({ show, onClose, onSave, userData }) {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
