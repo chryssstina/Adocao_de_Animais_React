@@ -18,21 +18,3 @@
     color: var(--azul-primario) !important;
     font-weight: bold !important;
 }
-
-.card-gallery-container:hover {
-    padding-bottom: 0 !important;
-    transition: 0.3s ease;
-}
-.card-gallery-container:hover .card-gallery {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sombra mais forte no hover */
-
-}
-.card-gallery-container:hover .card-body {
-    /* Add your desired styles here */
-    margin-top: 0 !important;
-    transition: 0.3s ease;
-}
-
-.card-gallery .card-body{
-    padding: 10px;
-}

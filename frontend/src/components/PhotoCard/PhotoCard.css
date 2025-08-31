@@ -8,11 +8,6 @@
 
 .card-gallery-container{
     width: 22vw !important;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
     padding-bottom: 15vw;
     transition: 0.3s ease;
 }
@@ -21,6 +16,23 @@
     border-radius: 10px !important;
     transition: box-shadow 0.3s ease;
     box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-gallery-container:hover {
+    padding-bottom: 0 !important;
+    transition: 0.3s ease;
+}
+.card-gallery-container:hover .card-gallery {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sombra mais forte no hover */
+}
+
+.card-gallery-container:hover .card-body {
+    margin-top: 0 !important;
+    transition: 0.3s ease;
+}
+
+.card-gallery .card-body{
+    padding: 1rem;
 }
 
 .card-img-top-photocard{

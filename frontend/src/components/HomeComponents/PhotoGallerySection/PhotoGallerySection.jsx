@@ -26,31 +26,30 @@ function PhotoGallerySection() {
         </p>
       </div>
 
-      <div className="row photo-gallery-container">
-        {loading ? (
-          <p>Carregando galeria...</p>
-        ) : (
-          // slice determina quantos cards vão aparecer (índice inicial, índice final)
-          photos.slice(0,5).map((animal) => (
-            <div
-              className="col-sm-4 col-md-4 col-lg-3 d-flex justify-content-center"
-              key={animal.id}
-            >
-              <PhotoCard
-                photo={animal.photo}
-                animalName={animal.animalName}
-                description={animal.description}
-              />
-            </div>
-          ))
-        )}
+      <div className="container-fluid text-center d-flex">
+        <div className="row photo-gallery-container align-items-center justify-content-center">
+          {loading ? (
+            <p>Carregando galeria...</p>
+          ) : (
+            // slice determina quantos cards vão aparecer (índice inicial, índice final)
+            photos.slice(0, 5).map((animal) => (
+              <div className="col-6 col-md-4 col-lg-3" key={animal.id}>
+                <PhotoCard
+                  photo={animal.photo}
+                  animalName={animal.animalName}
+                  description={animal.description}
+                />
+              </div>
+            ))
+          )}
+        </div>
       </div>
-  
+
       <CustomBtn
-          route="/animais"
-          className="custom-btn-mais-animais"
-          label="Veja mais animais disponíveis"
-          icon="bi bi-arrow-up-right-circle"
+        route="/animais"
+        className="custom-btn-mais-animais"
+        label="Veja mais animais disponíveis"
+        icon="bi bi-arrow-up-right-circle"
       />
     </section>
   );

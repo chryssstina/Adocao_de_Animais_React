@@ -2,7 +2,6 @@ import "./PhotoCard.css";
 
 function PhotoCard({ photo, animalName, description }) {
   return (
-    <>
       <div className="card-gallery-container">
         <div className="card-gallery mb-3">
           <img
@@ -16,7 +15,6 @@ function PhotoCard({ photo, animalName, description }) {
           </div>
         </div>
       </div>
-    </>
   );
 }
 
