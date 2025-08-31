@@ -11,15 +11,17 @@ const {
     deleteUserHandler
 } = require('../controllers/userController');
 
+// rota de acesso ao perfil para DEFAULT_USER (usuário padrão)
+router.get("/profile", authMiddleware, getUserProfileHandler); 
 
-router.get('/', getAllUsersHandler);
-router.get('/:user_id', authMiddleware, getUserByIdHandler);
-router.post('/', createUserHandler);
-router.put('/:user_id', updateUserHandler);
-router.delete('/:user_id', deleteUserHandler);
+router.get('/all-users', getAllUsersHandler);
+router.get('/profile/:user_id', authMiddleware, getUserByIdHandler);
+router.put('/profile/:user_id', updateUserHandler);
+router.delete('/profile/:user_id', deleteUserHandler);
 
-//rota com autentificação
-router.get("/profile", authMiddleware, getUserProfileHandler);
 
+
+// router.post('/', createUserHandler);
+// está sendo substituída pela register
 
 module.exports = router;

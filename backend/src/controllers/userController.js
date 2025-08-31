@@ -19,6 +19,7 @@ const getAllUsersHandler = async (req, res) => {
 
 
 const getUserByIdHandler = async (req, res) => {
+    
     const user_id = parseInt(req.params.user_id);
 
     try {
