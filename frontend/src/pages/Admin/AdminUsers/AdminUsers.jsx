@@ -79,6 +79,7 @@ function AdminUsers() {
                     <table className="table align-middle">
                       <thead>
                         <tr>
+                          <th scope="col">Id</th>
                           <th scope="col">Nome</th>
                           <th scope="col">Email</th>
                           <th scope="col">Tipo</th>

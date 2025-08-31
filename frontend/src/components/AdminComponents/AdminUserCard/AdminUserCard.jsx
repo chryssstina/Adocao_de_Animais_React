@@ -6,6 +6,7 @@ function AdminUserCard({ user, onEdit, onDelete }) {
 
   return (
     <tr>
+      <td>{user.id}</td>
       <td><strong>{name}</strong></td>
       <td>{email}</td>
       <td>

@@ -11,6 +11,7 @@ function RegisteredAnimalsCardAdmin({
 }) {
   return (
     <tr>
+      <td>{id}</td>
       <td><strong>{animalName}</strong></td>
       <td>{adopterName}</td>
       <td>{adopterEmail}</td>
