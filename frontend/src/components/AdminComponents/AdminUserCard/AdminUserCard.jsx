@@ -1,7 +1,7 @@
 // import "./AdminUserCard.css"; // Se tiver estilos específicos
 
 // ALTERADO: Recebe o objeto 'user' completo e a função 'onEdit'
-function AdminUserCard({ user, onEdit }) {
+function AdminUserCard({ user, onEdit, onDelete }) {
   const { name, email, role, createdAt } = user;
 
   return (
@@ -22,7 +22,7 @@ function AdminUserCard({ user, onEdit }) {
           >
             <i className="bi bi-pencil"></i>
           </button>
-          <button className="btn btn-danger btn-sm">
+          <button className="btn btn-danger btn-sm" onClick={() => onDelete(user)}>
             <i className="bi bi-trash"></i>
           </button>
         </div>
