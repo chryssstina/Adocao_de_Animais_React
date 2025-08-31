@@ -12,6 +12,7 @@ import AdminAdoptions from "./pages/Admin/AdminAdoptions/AdminAdoptions";
 import AdminAnimals from "./pages/Admin/AdminAnimals/AdminAnimals";
 import AdminUsers from "./pages/Admin/AdminUsers/AdminUsers";
 import UserAdoptionDetail from "./pages/User/UserAdoptionDetail/UserAdoptionDetail";
+import AdminWelcome from "./pages/Admin/AdminWelcome/AdminWelcome";
 
 function App() {
   return (
@@ -25,12 +26,14 @@ function App() {
           <Route path="/animais" element={<AnimalList />} />
           <Route path="/detalhes-do-animal/:id" element={<AnimalDetails route="/animais" />} />
           <Route path="/adotados/:id" element={<AnimalDetails route="/user" />} />
+          <Route path="/admin/animais/adotados/:id" element={<AnimalDetails route="/admin/animais" />} />
           <Route path="/pedido/:id" element={<UserAdoptionDetail />} />
           <Route path="/user" element={<User />} />
           <Route path="/admin" element={<Admin />}>
+            <Route index element={<AdminWelcome />} />
             <Route path="/admin/adoptions" element={<AdminAdoptions />} />
             <Route path="/admin/users" element={<AdminUsers />} />
-            <Route path="/admin/animals" element={<AdminAnimals />} />
+            <Route path="/admin/animais" element={<AdminAnimals />} />
           </Route>
           <Route path="*" element={<h1>404 - Página não encontrada</h1>} />
         </Routes>

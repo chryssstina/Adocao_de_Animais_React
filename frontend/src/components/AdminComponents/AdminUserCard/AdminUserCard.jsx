@@ -1,35 +1,25 @@
-import "./AdminUserCard.css";
+// import "./AdminUserCard.css"; // Se tiver estilos específicos
 
-function AdminUserCard({ name, email, role, status, createdAt }) {
+// ALTERADO: Recebe o objeto 'user' completo e a função 'onEdit'
+function AdminUserCard({ user, onEdit }) {
+  const { name, email, role, createdAt } = user;
+
   return (
     <tr>
       <td><strong>{name}</strong></td>
       <td>{email}</td>
       <td>
         {role === "Adotante" && <span className="badge bg-info-subtle text-primary">Adotante</span>}
-        {role === "Voluntário" && <span className="badge bg-purple-subtle text-purple">Voluntário</span>}
         {role === "Administrador" && <span className="badge bg-danger-subtle text-danger">Administrador</span>}
-      </td>
-      <td>
-        {status === "Ativo" ? (
-          <span className="badge bg-success-subtle text-success">Ativo</span>
-        ) : (
-          <span className="badge bg-secondary-subtle text-dark">Inativo</span>
-        )}
       </td>
       <td>{createdAt}</td>
       <td>
         <div className="d-flex gap-2">
-          {status === "Ativo" ? (
-            <button className="btn btn-outline-danger btn-sm">
-              <i className="bi bi-person-x"></i>
-            </button>
-          ) : (
-            <button className="btn btn-outline-success btn-sm">
-              <i className="bi bi-person-check"></i>
-            </button>
-          )}
-          <button className="btn btn-outline-dark btn-sm">
+          {/* ALTERADO: O onClick agora chama a função 'onEdit' passada pelo pai */}
+          <button 
+            className="btn btn-outline-dark btn-sm"
+            onClick={() => onEdit(user)} // Passa os dados deste usuário para o pai
+          >
             <i className="bi bi-pencil"></i>
           </button>
           <button className="btn btn-danger btn-sm">

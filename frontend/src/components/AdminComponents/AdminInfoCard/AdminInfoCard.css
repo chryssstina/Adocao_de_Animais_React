@@ -1,0 +1,27 @@
+.custom-icon-admin-info-card {
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #727986, #0a0e28);
+    padding: 0.6rem 0.8rem 0.3rem 0.8rem;
+    transition: ease-in-out 0.3s;
+}
+
+.custom-card-icon{
+    font-size: 1.3rem;
+    color: #ffffff;
+    /* margin-top: 2rem !important; */
+    
+}
+
+.admin-animated-card {
+    transition: ease-in-out 0.3s;
+}
+
+.admin-animated-card:hover {
+    transform: translateY(-0.8vh);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: ease-in-out 0.3s;
+}
+.admin-animated-card:hover .custom-icon-admin-info-card {
+    transition: ease-in-out 0.3s;
+    transform: scale(1.1);
+}

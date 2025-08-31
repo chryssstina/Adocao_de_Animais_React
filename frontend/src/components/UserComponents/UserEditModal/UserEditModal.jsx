@@ -41,7 +41,7 @@ function UserEditModal({ show, onClose, onSave, initialData = {} }) {
 
   return (
     <div className="modal fade show" id="user-edit-modal">
-      <div className="modal-dialog">
+      <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <form onSubmit={handleSubmit}>
             <div className="modal-header">

@@ -6,9 +6,9 @@ function AdminAnimals() {
   const userAdoptions = mockData;
 
   return (
-    <section className="container-fluid bg-light py-4" id="user-page">
+    <section className="container-fluid bg-light py-4" id="admin-animals-page">
       <div className="container bg-light pt-1" id="user-container">
-        <div className="user-header mb-4" id="user-header">
+        <div className="admin-animals-header mb-4" id="admin-animals-header">
           <h1 className="user-greeting fw-semibold">Gerenciar Animais</h1>
           <p className="text-muted mb-0">
             Cadastre, edite e gerencie os animais para adoção
@@ -53,6 +53,29 @@ function AdminAnimals() {
                   </div>
 
                   <div className="mb-3">
+                    <label htmlFor="sexo" className="form-label">
+                      Sexo
+                    </label>
+                    <select className="form-select" id="sexo">
+                      <option value="">Selecione</option>
+                      <option value="macho">Macho</option>
+                      <option value="femea">Fêmea</option>
+                    </select>
+                  </div>
+
+                  <div className="mb-3">
+                    <label htmlFor="peso" className="form-label">
+                      Peso (kg)
+                    </label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="peso"
+                      placeholder="Peso do animal"
+                    />
+                  </div>
+
+                  <div className="mb-3">
                     <label htmlFor="idade" className="form-label">
                       Idade
                     </label>
@@ -61,6 +84,18 @@ function AdminAnimals() {
                       className="form-control"
                       id="idade"
                       placeholder="Ex: 2 anos"
+                    />
+                  </div>
+                  
+                  <div className="mb-3">
+                    <label htmlFor="comida_favorita" className="form-label">
+                      Comida Favorita
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="comida_favorita"
+                      placeholder="Comida favorita do animal"
                     />
                   </div>
 

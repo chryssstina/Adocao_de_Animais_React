@@ -33,7 +33,7 @@ function AdoptionCardAdmin({ id, animalName, adoptionDate, status }) {
                 Desconhecido
               </span>
             )}
-            <Link className="btn btn-outline-secondary btn-sm button_black" to={`/adotados/${id}`}>
+            <Link className="btn btn-outline-secondary btn-sm button_black" to={`/admin/animais/adotados/${id}`}>
               <i className="bi bi-eye"></i>
             </Link>
             <button className="btn btn-danger btn-sm" id="DeleteButton">
