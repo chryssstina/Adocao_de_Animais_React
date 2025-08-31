@@ -7,7 +7,6 @@ function AdminUserCard({ name, email, role, createdAt }) {
       <td>{email}</td>
       <td>
         {role === "Adotante" && <span className="badge bg-info-subtle text-primary">Adotante</span>}
-        {role === "Voluntário" && <span className="badge bg-purple-subtle text-purple">Voluntário</span>}
         {role === "Administrador" && <span className="badge bg-danger-subtle text-danger">Administrador</span>}
       </td>
       
