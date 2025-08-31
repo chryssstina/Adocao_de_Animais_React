@@ -21,15 +21,12 @@ function AdminUsers() {
           </p>
         </div>
 
-        {/* Cards informativos */}
-        {/* centralizar */}
           <div className="row justify-content-center mb-4 gap-3">
             <UserStatsCard value={adopters} label="Adotantes" color="primary" />
             <UserStatsCard value={totalUsers} label="Total de Usuários" color="secondary" />
             <UserStatsCard value={totalAdmins} label="Total de Administradores" color="success" />
           </div>
 
-        {/* Tabela de usuários */}
         <div className="row g-4" id="user-panel">
           <div className="col-12">
             <div className="card shadow-sm rounded-3 border-0">
@@ -46,7 +43,6 @@ function AdminUsers() {
                         <th scope="col">Nome</th>
                         <th scope="col">Email</th>
                         <th scope="col">Tipo</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Data de Cadastro</th>
                         <th scope="col">Ações</th>
                       </tr>
@@ -66,7 +62,6 @@ function AdminUsers() {
                             name={user.name}
                             email={user.email}
                             role={user.role}
-                            status={user.status}
                             createdAt={user.createdAt}
                           />
                         ))
