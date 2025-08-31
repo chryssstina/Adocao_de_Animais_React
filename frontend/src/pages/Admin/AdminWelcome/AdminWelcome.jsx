@@ -17,17 +17,20 @@ function AdminWelcome() {
             Gerencie todos os aspectos da nossa missão de cuidar dos animais.
           </p>
         </header>
-
-        <div className="info-box text-center mb-5">
-          <p className="mb-0">
-            Use o menu lateral para navegar entre as diferentes seções
-            administrativas. Cada seção foi projetada para facilitar o
-            gerenciamento eficiente da nossa organização.
-          </p>
+        <div className="card shadow-sm rounded-3 border-0 mb-5" id="admin-info-card">
+          <div className="card-body p-4">
+            <div className="info-box text-center ">
+              <p className="mb-0">
+                Use o menu lateral para navegar entre as diferentes seções
+                administrativas. Cada seção foi projetada para facilitar o
+                gerenciamento eficiente da nossa organização.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="row g-4">
-          <div className="col-lg-6">
+        <div className="row g-4 justify-content-center">
+          <div className="col-lg-6" id="animals-info-card">
             <Link
               to="/admin/gerenciar-animais"
               className="admin-card card-blue"
@@ -45,7 +48,7 @@ function AdminWelcome() {
               </div>
             </Link>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-6" id="adoptions-info-card">
             <Link
               to="/admin/gerenciar-adocoes"
               className="admin-card card-green"
@@ -62,7 +65,7 @@ function AdminWelcome() {
               </div>
             </Link>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-6" id="users-info-card">
             <Link
               to="/admin/gerenciar-usuarios"
               className="admin-card card-purple"
@@ -75,23 +78,6 @@ function AdminWelcome() {
                 <p className="card-text">
                   Administre contas de usuários e suas permissões no sistema.
                   Controle o acesso e organize diferentes níveis de usuário.
-                </p>
-              </div>
-            </Link>
-          </div>
-          <div className="col-lg-6">
-            <Link
-              to="/admin/gerenciar-voluntarios"
-              className="admin-card card-yellow"
-            >
-              <div className="card-icon">
-                <i className="bi bi-person-workspace"></i>
-              </div>
-              <div className="card-content">
-                <h5 className="card-title">Gerenciar Voluntários</h5>
-                <p className="card-text">
-                  Organize e coordene as atividades dos voluntários da ONG,
-                  distribua tarefas, eventos e comunicação com a equipe.
                 </p>
               </div>
             </Link>

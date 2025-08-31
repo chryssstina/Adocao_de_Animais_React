@@ -1,7 +1,18 @@
 #admin-header-icon {
-  font-size: ;
+  font-size: 2rem;
   color: #ffffff;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  background-color: black;
+  font-weight: 400 !important;
+  padding: 0.8rem 1rem 0.5rem 1rem;
+  background: linear-gradient(135deg, #0a0e28, #727986);
   border-radius: 1rem;
+  width: 10px;
+}
+
+.bi::before {
+    font-weight: 500 !important;
+}
+
+#admin-info-card {
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
