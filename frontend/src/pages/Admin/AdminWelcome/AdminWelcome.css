@@ -1,11 +1,9 @@
 #admin-header-icon {
   font-size: 2rem;
   color: #ffffff;
-  font-weight: 400 !important;
   padding: 0.8rem 1rem 0.5rem 1rem;
   background: linear-gradient(135deg, #0a0e28, #727986);
   border-radius: 1rem;
-  width: 10px;
 }
 
 .bi::before {

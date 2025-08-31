@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Importe o Link se for usar para navegação
 import "./AdminWelcome.css";
+import AdminInfoCard from "../../../components/AdminComponents/AdminInfoCard/AdminInfoCard";
 
 function AdminWelcome() {
   return (
@@ -17,7 +18,11 @@ function AdminWelcome() {
             Gerencie todos os aspectos da nossa missão de cuidar dos animais.
           </p>
         </header>
-        <div className="card shadow-sm rounded-3 border-0 mb-5" id="admin-info-card">
+
+        <div
+          className="card shadow-sm rounded-3 border-0 mb-5"
+          id="admin-info-card"
+        >
           <div className="card-body p-4">
             <div className="info-box text-center ">
               <p className="mb-0">
@@ -29,66 +34,40 @@ function AdminWelcome() {
           </div>
         </div>
 
-        <div className="row g-4 justify-content-center">
-          <div className="col-lg-6" id="animals-info-card">
-            <Link
-              to="/admin/gerenciar-animais"
-              className="admin-card card-blue"
-            >
-              <div className="card-icon">
-                <i className="bi bi-clipboard-data"></i>
-              </div>
-              <div className="card-content">
-                <h5 className="card-title">Gerenciar Animais</h5>
-                <p className="card-text">
-                  Cadastre, edite e gerencie informações dos animais disponíveis
-                  para adoção. Controle o status, histórico médico e fotos de
-                  cada animal.
-                </p>
-              </div>
-            </Link>
-          </div>
-          <div className="col-lg-6" id="adoptions-info-card">
-            <Link
-              to="/admin/gerenciar-adocoes"
-              className="admin-card card-green"
-            >
-              <div className="card-icon">
-                <i className="bi bi-house-heart"></i>
-              </div>
-              <div className="card-content">
-                <h5 className="card-title">Gerenciar Adoções</h5>
-                <p className="card-text">
-                  Acompanhe o processo de adoção e gerencie solicitações dos
-                  adotantes. Monitore cada etapa do processo até a finalização.
-                </p>
-              </div>
-            </Link>
-          </div>
-          <div className="col-lg-6" id="users-info-card">
-            <Link
-              to="/admin/gerenciar-usuarios"
-              className="admin-card card-purple"
-            >
-              <div className="card-icon">
-                <i className="bi bi-people"></i>
-              </div>
-              <div className="card-content">
-                <h5 className="card-title">Gerenciar Usuários</h5>
-                <p className="card-text">
-                  Administre contas de usuários e suas permissões no sistema.
-                  Controle o acesso e organize diferentes níveis de usuário.
-                </p>
-              </div>
-            </Link>
-          </div>
+        <div className="row justify-content-center d-flex gap-3 mb-5" id="admin-cards-row">
+          <AdminInfoCard
+            id="animals-info-card"
+            title="Gerenciar Animais"
+            text="Cadastre, edite e gerencie informações dos animais disponíveis para adoção. Controle o status, histórico médico e fotos de cada animal."
+            icon="bi-clipboard-data"
+          />
+
+          <AdminInfoCard
+            id="adoptions-info-card"
+            title="Gerenciar Adoções"
+            text="Acompanhe o processo de adoção e gerencie solicitações dos adotantes. Monitore cada etapa do processo até a finalização."
+            icon="bi-house-heart"
+          />
+
+          <AdminInfoCard
+            id="users-info-card"
+            title="Gerenciar Usuários"
+            text="Administre contas de usuários e suas permissões no sistema. Controle o acesso e organize diferentes níveis de usuário."
+            icon="bi-people"
+          />
         </div>
 
-        <footer className="text-center mt-5">
-          <div className="footer-note">
-            Todas as funcionalidades estão acessíveis através do menu lateral.
+        
+        <div className="card border-0 bg-light justify-content-end align-items-center d-flex" id="admin-footer-card">
+          <div className="card-body">
+            <div className="info-box text-center">
+              <p className="mb-0 border border-2 rounded-3 p-2 px-4 bg-body-secondary text-secondary">
+                Todas as funcionalidades estão acessíveis através do menu
+                lateral.
+              </p>
+            </div>
           </div>
-        </footer>
+        </div>
       </div>
     </section>
   );
