@@ -3,11 +3,14 @@ import AdminUserCard from "../../../components/AdminComponents/AdminUserCard/Adm
 import AdminUserEditModal from "../../../components/AdminComponents/AdminUserEditModal/AdminUserEditModal";
 import UserStatsCard from "../../../components/AdminComponents/UserStatsCard/UserStatsCard";
 import { users_mock as mockData } from "../../../data/users_mock";
+import DeleteConfirmationModal from "../../../components/AdminComponents/DeleteComponentModal/DeleteComponentModal";
 // import "./AdminUsers.css";
 
 // --- COMPONENTE PRINCIPAL: AdminUsers ---
 function AdminUsers() {
   const [users, setUsers] = useState(mockData);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
 
   // Lógica do Modal de Edição
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +19,10 @@ function AdminUsers() {
   const handleEditUser = (user) => {
     setCurrentUser(user);
     setIsModalOpen(true);
+  };
+  const handleDeleteClick = (user) => {
+    setUserToDelete(user);
+    setShowDeleteModal(true);
   };
 
   const handleCloseModal = () => {
@@ -29,6 +36,15 @@ function AdminUsers() {
       user.id === userId ? { ...user, ...updatedData } : user
     ));
     // Aqui você chamaria sua API para salvar os dados no backend
+  };
+
+  const handleDeleteUser = () => {
+    if (userToDelete) {
+      console.log(`Excluindo usuário ID: ${userToDelete.id}`);
+      setUsers(users.filter(user => user.id !== userToDelete.id));
+      setShowDeleteModal(false);
+      setUserToDelete(null);
+    }
   };
 
   // Cálculos para os cards de estatísticas
@@ -79,6 +95,7 @@ function AdminUsers() {
                               key={user.id}
                               user={user}
                               onEdit={handleEditUser}
+                              onDelete={handleDeleteClick}
                             />
                           ))
                         )}
@@ -98,6 +115,13 @@ function AdminUsers() {
         onClose={handleCloseModal}
         onSave={handleSaveUser}
         userData={currentUser}
+      />
+
+      <DeleteConfirmationModal
+        show={showDeleteModal}
+        onClose={() => setShowDeleteModal(false)}
+        onDelete={handleDeleteUser}
+        userName={userToDelete ? userToDelete.name : ""}
       />
     </>
   );
