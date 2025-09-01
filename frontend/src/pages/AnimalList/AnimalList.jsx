@@ -90,7 +90,7 @@ function AnimalList() {
                         // Renderiza a lista filtrada ou uma mensagem de "não encontrado"
                         filteredAnimals.length > 0 ? (
                             filteredAnimals.map((animal) => (
-                                <div className="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center" key={animal.id}>
+                                <div className="col d-flex justify-content-center" key={animal.id}>
                                     <AnimalCardsForAdoption
                                         id={animal.id}
                                         animalName={animal.animalName}
