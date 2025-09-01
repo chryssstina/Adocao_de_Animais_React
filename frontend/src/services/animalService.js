@@ -28,7 +28,7 @@ const getAnimalById = async (animal_id) => {
 
 const createAnimal = async (payload) => {
   try {
-    const response = await api.post(`/api/animal/`, payload);
+    const response = await api.post(`/api/animal`, payload);
     return response.data;
   } catch (error) {
     console.error("Erro ao cadastrar animal.", error);
@@ -39,7 +39,7 @@ const createAnimal = async (payload) => {
 
 const updateAnimal = async (animal_id, payload) => {
   try {
-    const response = await api.put(`/api/animal/${animal_id},${payload}`);
+    const response = await api.put(`/api/animal/${animal_id}`, payload);
     return response.data;
   } catch (error) {
     console.error("Erro ao atualizar animal.", error);
