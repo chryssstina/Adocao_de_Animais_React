@@ -1,6 +1,6 @@
 import "./AnimalCardForAdoption.css";
 import CustomBtn from "../../CustomBtn/CustomBtn";
-import React, { useState } from "react"; // 👈 Não precisamos mais do useEffect aqui
+import React, { useState } from "react"; 
 
 // --- NOVA SIMULAÇÃO DE API PARA FAVORITAR ---
 // Simula uma chamada rápida para adicionar/remover um favorito.
