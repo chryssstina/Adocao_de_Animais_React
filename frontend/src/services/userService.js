@@ -74,7 +74,7 @@ export default {
   getUserProfile,
   getAllUsers,
   getUserById,
-  createUser,
+  // createUser,
   updateUser,
   deleteUser
 };
