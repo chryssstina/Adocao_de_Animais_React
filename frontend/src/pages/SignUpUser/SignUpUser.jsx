@@ -7,9 +7,9 @@ import authService from '../../services/authService'; // Ajuste o caminho se nec
 
 function SignUpUser() {
     const navigate = useNavigate();
-    const [userName, setUserName] = useState('');
-    const [userEmail, setUserEmail] = useState('');
-    const [userPassword, setUserPassword] = useState('');
+    const [user_name, setUserName] = useState('');
+    const [user_email, setUserEmail] = useState('');
+    const [user_password, setUserPassword] = useState('');
 
     // --- NOVOS ESTADOS PARA FEEDBACK ---
     const [isLoading, setIsLoading] = useState(false);
@@ -30,9 +30,9 @@ function SignUpUser() {
             // 3. Monte o payload que sua API espera
             // (Verifique se os nomes dos campos `name`, `email`, `password` batem com o seu backend)
             const payload = {
-                name: userName,
-                email: userEmail,
-                password: userPassword,
+                user_name: user_name,
+                user_email: user_email,
+                user_password: user_password,
             };
 
             // 4. Chame o serviço de registro
@@ -71,33 +71,33 @@ function SignUpUser() {
                         )}
 
                         <div className="mb-3 input-signUp">
-                            <label htmlFor="user-name" className="form-label">Nome</label>
+                            <label htmlFor="user_name" className="form-label">Nome</label>
                             <input type="text"
                                 className="form-control"
-                                id="user-name"
-                                value={userName}
+                                id="user_name"
+                                value={user_name}
                                 placeholder="Insira seu nome"
                                 onChange={(e) => setUserName(e.target.value)}
                                 required />
                         </div>
 
                         <div className="mb-3 input-signUp">
-                            <label htmlFor="user-email" className="form-label">Email</label>
+                            <label htmlFor="user_email" className="form-label">Email</label>
                             <input type="email"
                                 className="form-control"
-                                id="user-email"
-                                value={userEmail}
+                                id="user_email"
+                                value={user_email}
                                 placeholder="Insira seu e-mail"
                                 onChange={(e) => setUserEmail(e.target.value)}
                                 required />
                         </div>
 
                         <div className="mb-3 input-signUp">
-                            <label htmlFor="user-password" className="form-label">Senha</label>
+                            <label htmlFor="user_password" className="form-label">Senha</label>
                             <input type="password"
                                 className="form-control"
-                                id="user-password"
-                                value={userPassword}
+                                id="user_password"
+                                value={user_password}
                                 placeholder="Insira sua senha"
                                 onChange={(e) => setUserPassword(e.target.value)}
                                 required />
