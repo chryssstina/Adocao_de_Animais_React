@@ -13,14 +13,32 @@ function User() {
   const navigate = useNavigate();
 
   // --- 2. ESTADOS PARA GERENCIAR DADOS, CARREGAMENTO E ERROS ---
+  const [showModal, setShowModal] = useState(false);
+  const handleEditClick = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+  
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const handleDeleteAccount = () => setShowDeleteModal(true);
+  const handleCloseDeleteModal = () => setShowDeleteModal(false);
+
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const handleLogout = useCallback(() => {
     localStorage.removeItem('authToken');
     navigate('/');
     window.location.reload();
   }, [navigate]);
+  
+  const handleConfirmDelete = () => {
+    console.log("Conta excluída!");
+    setShowDeleteModal(false);
+    console.log("ID do usuário a ser excluído:", userData.id);
+    userService.deleteUser(userData.id);
+
+    handleLogout();
+  };
 
   // --- 3. BUSCAR DADOS DA API QUANDO O COMPONENTE MONTAR ---
   useEffect(() => {
@@ -51,20 +69,6 @@ function User() {
     // 3. Agora o useEffect está correto e seguro, sem loops infinitos
   }, [navigate, handleLogout]);
 
-
-  // Funções dos modais (mantidas como estavam)
-  const [showModal, setShowModal] = useState(false);
-  const handleEditClick = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
-  
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const handleDeleteAccount = () => setShowDeleteModal(true);
-  const handleCloseDeleteModal = () => setShowDeleteModal(false);
-  const handleConfirmDelete = () => {
-    console.log("Conta excluída!");
-    setShowDeleteModal(false);
-    navigate("/login");
-  };
 
   // --- RENDERIZAÇÃO DE CARREGAMENTO E ERRO ---
   if (loading) {
