@@ -1,7 +1,7 @@
 import AdoptionCard from "../../components/UserComponents/AdoptionCard/AdoptionCard";
 import "./User.css";
 import FavoritesCard from "../../components/UserComponents/FavoritesCard/FavoritesCard";
-import React, { useState, useEffect } from "react"; // 👈 Importar useEffect
+import React, { useState, useEffect, useCallback } from "react"; // 👈 Importar useEffect
 import { Link, useNavigate } from "react-router-dom";
 import UserEditModal from "../../components/UserComponents/UserEditModal/UserEditModal";
 import DeleteAccountModal from "../../components/UserComponents/DeleteAccountModal/DeleteAccountModal";
@@ -16,27 +16,30 @@ function User() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('authToken');
+    navigate('/');
+    window.location.reload();
+  }, [navigate]);
 
   // --- 3. BUSCAR DADOS DA API QUANDO O COMPONENTE MONTAR ---
   useEffect(() => {
-    // Primeiro, checamos se há um token. Se não houver, redirecionamos.
     const token = localStorage.getItem('authToken');
     if (!token) {
       navigate('/login');
-      return; // Interrompe a execução do useEffect
+      return;
     }
 
     const fetchUserProfile = async () => {
       try {
         setLoading(true);
-        // Chama a função do serviço que busca o perfil
         const profileData = await userService.getUserProfile();
         setUserData(profileData);
       } catch (err) {
         console.error("Falha ao buscar dados do usuário:", err);
         setError("Não foi possível carregar suas informações. Tente novamente mais tarde.");
-        // Se o token for inválido (erro 401/403), deslogue o usuário
         if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+          // Agora é seguro chamar handleLogout aqui
           handleLogout();
         }
       } finally {
@@ -45,13 +48,9 @@ function User() {
     };
 
     fetchUserProfile();
-  }, [navigate, handleLogout]); // Adicionamos navigate e handleLogout como dependências
+    // 3. Agora o useEffect está correto e seguro, sem loops infinitos
+  }, [navigate, handleLogout]);
 
-  const handleLogout = React.useCallback(() => {
-    localStorage.removeItem('authToken');
-    navigate('/');
-    window.location.reload();
-  }, [navigate]);
 
   // Funções dos modais (mantidas como estavam)
   const [showModal, setShowModal] = useState(false);
@@ -109,7 +108,11 @@ function User() {
                 </div>
                 <div className="mb-4">
                   <p className="text-muted small">Tipo de Usuário</p>
-                  <p className="fw-semibold">{userData?.user_type || 'Adotante'}</p>
+                  <p className="fw-semibold">{
+                    userData?.user_type === 'DEFAULT_USER' ? 'Adotante' :
+                    userData?.user_type === 'ADMIN_USER' ? 'Administrador' :
+                    'Erro: Tipo Desconhecido'
+                  }</p>
                 </div>
                 <div className="d-flex flex-column gap-2">
                   <button className="btn btn-outline-secondary ... button_black" onClick={handleEditClick}>
