@@ -13,18 +13,6 @@ function Navbar() {
   // O `!!` transforma o resultado (uma string ou null) em um booleano (true ou false).
   const isLoggedIn = !!localStorage.getItem('authToken');
 
-  // --- 2. CRIAR A FUNÇÃO DE LOGOUT ---
-  const handleLogout = () => {
-    // Remove o token do localStorage
-    localStorage.removeItem('authToken');
-    
-    // Redireciona para a página inicial
-    navigate('/');
-
-    // Força um recarregamento da página para garantir que todos os 
-    // componentes atualizem seu estado de login.
-    window.location.reload();
-  };
 
   const handleNavigateWithScroll = (sectionId) => {
     if (location.pathname !== "/") {
@@ -88,15 +76,10 @@ function Navbar() {
                   <Link className="nav-link navbar-link btn btn-link" to={"/user"}>
                     Perfil
                   </Link>
-                  <button className="nav-link navbar-link btn btn-link" onClick={handleLogout}>
-                    Sair
-                  </button>
                 </>
               ) : (
-                // Se NÃO estiver logado, mostra "Login"
-                <Link className="nav-link navbar-link btn btn-link" to={"/login"}>
-                  Login
-                </Link>
+                // Se NÃO estiver logado, mostra nada, pois o botao de login ja existe
+                <></>
               )}
             </div>
           </div>
