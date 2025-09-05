@@ -21,3 +21,11 @@ router.post('/login', userLogin);
 
 
 module.exports = router;
+
+//json para teste de criaçao de usuario usando os campos
+// {
+//   "user_name": "user_name",
+//   "user_email": "user_email",
+//   "user_password": "hashedPassword",
+//   "user_type": "user_type"
+// }

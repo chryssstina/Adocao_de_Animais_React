@@ -2,21 +2,25 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import LogoTitulo from '../../assets/LogoTitulo/LogoTitle2.png';
 import Logo3 from '../../assets/Logos/logo3.png/';
-import "./Navbar.css"
-
+import "./Navbar.css";
 
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // --- 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO ---
+  // Checamos se o token existe no localStorage.
+  // O `!!` transforma o resultado (uma string ou null) em um booleano (true ou false).
+  const isLoggedIn = !!localStorage.getItem('authToken');
+
+
   const handleNavigateWithScroll = (sectionId) => {
     if (location.pathname !== "/") {
       navigate("/");
-      // Espera o componente ser montado para rolar até a seção
       setTimeout(() => {
         const el = document.getElementById(sectionId);
         if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 100); // pequeno atraso
+      }, 100);
     } else {
       const el = document.getElementById(sectionId);
       if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -32,7 +36,6 @@ function Navbar() {
               src={LogoTitulo}
               alt="Logo Latidos&Ronrons"
             />
-
             <img
               className="navbar-img logo-pequena"
               src={Logo3}
@@ -65,10 +68,19 @@ function Navbar() {
               <button className="nav-link navbar-link btn btn-link" onClick={() => handleNavigateWithScroll("photo-gallery-section")}>
                 Galeria
               </button>
-              {/* adicionar autenticação para verificar se o usuario está logado */}
-              <Link className="nav-link navbar-link btn btn-link" to={"/user"}>
-                Perfil
-              </Link>
+              
+              {/* --- 3. RENDERIZAÇÃO CONDICIONAL DOS LINKS --- */}
+              {isLoggedIn ? (
+                // Se estiver LOGADO, mostra "Perfil" e "Sair"
+                <>
+                  <Link className="nav-link navbar-link btn btn-link" to={"/user"}>
+                    Perfil
+                  </Link>
+                </>
+              ) : (
+                // Se NÃO estiver logado, mostra nada, pois o botao de login ja existe
+                <></>
+              )}
             </div>
           </div>
         </div>
