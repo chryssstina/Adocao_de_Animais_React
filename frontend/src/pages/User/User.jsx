@@ -31,13 +31,34 @@ function User() {
     window.location.reload();
   }, [navigate]);
   
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = async () => {
+    try {
     console.log("Conta excluída!");
     setShowDeleteModal(false);
-    console.log("ID do usuário a ser excluído:", userData.id);
-    userService.deleteUser(userData.id);
-
+    await userService.deleteUser(userData.user_id);
     handleLogout();
+    } catch (err) {
+      console.error("Falha ao excluir a conta:", err);
+      setError("Não foi possível excluir sua conta. Tente novamente mais tarde.");
+    }
+  };
+
+  const handleUpdateUser = async (updatedData) => {
+    try {
+      const updatedUser = await userService.updateUser(userData.user_id, {
+        user_name: updatedData.nome,
+        user_email: updatedData.email,
+        // undefined acusa erro no back
+        ...(updatedData?.password ? { user_password: updatedData.password } : {})
+      });
+      console.log("Dados atualizados do usuário:", updatedUser);
+      // log de debug
+      setUserData(updatedUser);
+      setShowModal(false);
+    } catch (err) {
+      console.error("Falha ao atualizar dados do usuário:", err);
+      setError("Não foi possível atualizar suas informações. Tente novamente mais tarde.");
+    }
   };
 
   // --- 3. BUSCAR DADOS DA API QUANDO O COMPONENTE MONTAR ---
@@ -144,7 +165,7 @@ function User() {
       <UserEditModal
         show={showModal}
         onClose={handleCloseModal}
-        onSave={(updatedData) => console.log("Dados atualizados:", updatedData)}
+        onSave={handleUpdateUser}
         initialData={{ nome: userData.user_name, email: userData.user_email, password: '' }}
       />
       <DeleteAccountModal
