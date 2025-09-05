@@ -8,6 +8,8 @@ import DeleteAccountModal from "../../components/UserComponents/DeleteAccountMod
 
 // --- 1. IMPORTE SEU SERVIÇO DE USUÁRIO ---
 import userService from "../../services/userService"; // Ajuste o caminho se necessário
+import adoptionService from "../../services/adoptionService"; // Ajuste o caminho se necessário
+import favoriteService from "../../services/favoriteService"; // Ajuste o caminho se necessário
 
 function User() {
   const navigate = useNavigate();
@@ -24,6 +26,9 @@ function User() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [userAdoptions, setUserAdoptions] = useState([]);
+  const [userFavorites, setUserFavorites] = useState([]);
 
   const handleLogout = useCallback(() => {
     localStorage.removeItem('authToken');
@@ -73,7 +78,14 @@ function User() {
       try {
         setLoading(true);
         const profileData = await userService.getUserProfile();
+        const userAdoptions = await adoptionService.getAllAdoptionsByUser(profileData.user_id);
+        const userFavorites = await favoriteService.getAllFavoritesByUser(profileData.user_id);
         setUserData(profileData);
+        setUserAdoptions(userAdoptions);
+        setUserFavorites(userFavorites);
+        console.log("Dados do usuário:", profileData);
+        console.log("Adoções do usuário:", userAdoptions);
+        console.log("Favoritos do usuário:", userFavorites);
       } catch (err) {
         console.error("Falha ao buscar dados do usuário:", err);
         setError("Não foi possível carregar suas informações. Tente novamente mais tarde.");
@@ -89,7 +101,6 @@ function User() {
     fetchUserProfile();
     // 3. Agora o useEffect está correto e seguro, sem loops infinitos
   }, [navigate, handleLogout]);
-
 
   // --- RENDERIZAÇÃO DE CARREGAMENTO E ERRO ---
   if (loading) {
@@ -155,8 +166,71 @@ function User() {
           </div>
 
           <div className="col-12 col-md-7" id="adoption-favorites-section">
-            {/* ... Seções de Adoção e Favoritos ... */}
-            {/* TODO: Esses dados também devem vir da API, provavelmente de `userData.adoptions` e `userData.favorites` */}
+            <div className="row mb-4" id="adoption-requests">
+              <div className="card shadow-sm rounded-3 border-0">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-heart me-2 fs-4 text-danger"></i>
+                    <h5 className="card-title user_title mb-0">
+                      Meus Pedidos de Adoção
+                    </h5>
+                  </div>
+                  <div className="adoption-list">
+                    {userAdoptions.length === 0 ? (
+                      <p className="text-muted">
+                        Você ainda não fez nenhum pedido de adoção.
+                      </p>
+                    ) : (
+                      userAdoptions.map((adoption) => (
+                        <AdoptionCard
+                          key={adoption.id}
+                          id={adoption.id}
+                          animalName={adoption.animalName}
+                          adoptionDate={adoption.adoptionDate}
+                          status={adoption.statusAdoption}
+                          photo={adoption.photo}
+                        />
+                      ))
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row" id="favorites-section">
+              <div className="card shadow-sm rounded-3 border-0">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-heart me-2 fs-4 text-danger"></i>
+                    <h5 className="card-title user_title mb-0">
+                      Minha Lista de Desejos
+                    </h5>
+                  </div>
+                  <div className="adoption-list">
+                    {userFavorites.length === 0 ? (
+                      <div>
+                        <p className="text-muted">
+                          Você ainda não fez nenhum pedido de adoção.
+                        </p>
+                        <Link to="/animais" className="btn btn-link p-0">
+                          Explorar Animais
+                        </Link>
+                      </div>
+                    ) : (
+                      userFavorites.map((userFavorites) => (
+                        <FavoritesCard
+                          key={userFavorites.animal.animal_id}
+                          id={userFavorites.animal.animal_id}
+                          animalName={userFavorites.animal.animal_name}
+                          animalAge={userFavorites.animal.animal_age}
+                          animalCategory={userFavorites.animal.animal_category}
+                          photo={userFavorites.animal.photo}
+                        />
+                      ))
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
