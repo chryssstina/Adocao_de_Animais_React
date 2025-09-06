@@ -8,6 +8,7 @@ import DeleteAccountModal from "../../components/UserComponents/DeleteAccountMod
 
 // --- 1. IMPORTE SEU SERVIÇO DE USUÁRIO ---
 import userService from "../../services/userService"; // Ajuste o caminho se necessário
+import animalService from "../../services/animalService"; // Ajuste o caminho se necessário
 import adoptionService from "../../services/adoptionService"; // Ajuste o caminho se necessário
 import favoriteService from "../../services/favoriteService"; // Ajuste o caminho se necessário
 
@@ -24,11 +25,13 @@ function User() {
   const handleCloseDeleteModal = () => setShowDeleteModal(false);
 
   const [userData, setUserData] = useState(null);
+  const [allAnimals, setAllAnimals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const [userAdoptions, setUserAdoptions] = useState([]);
   const [userFavorites, setUserFavorites] = useState([]);
+
 
   const handleLogout = useCallback(() => {
     localStorage.removeItem('authToken');
@@ -66,6 +69,23 @@ function User() {
     }
   };
 
+  // nao é boa pratica
+  const handleFavorites = async (userFavorites, allAnimals) => {
+    try {
+      const enrichedFavorites = userFavorites.map(fav => {
+        const animal = allAnimals.find(animal => animal.animal_id === fav.animal.animal_id);
+        return {
+          ...fav,
+          animal
+        };
+      });
+      console.log ("Enriched Favorites:", enrichedFavorites);
+      setUserFavorites(enrichedFavorites);
+    } catch (err) {
+      console.error("Falha ao buscar animais:", err);
+    }
+  };
+
   // --- 3. BUSCAR DADOS DA API QUANDO O COMPONENTE MONTAR ---
   useEffect(() => {
     const token = localStorage.getItem('authToken');
@@ -80,9 +100,17 @@ function User() {
         const profileData = await userService.getUserProfile();
         const userAdoptions = await adoptionService.getAllAdoptionsByUser(profileData.user_id);
         const userFavorites = await favoriteService.getAllFavoritesByUser(profileData.user_id);
+        const allAnimals = await animalService.getAllAnimals();
+        console.log ("iniciando handleFavorites");
+        console.log ("userFavorites:", userFavorites);
+        console.log ("allAnimals:", allAnimals);
+        await handleFavorites(userFavorites, allAnimals);
+        // console.log("All animals:", allAnimals); // Log para verificar os dados dos animais
+        // console.log("User favorites with details:", userFavorites); // Log para verificar os favoritos enriquecidos
+        // Agora você tem todos os dados necessários
+        setAllAnimals(allAnimals);
         setUserData(profileData);
         setUserAdoptions(userAdoptions);
-        setUserFavorites(userFavorites);
         console.log("Dados do usuário:", profileData);
         console.log("Adoções do usuário:", userAdoptions);
         console.log("Favoritos do usuário:", userFavorites);
@@ -222,7 +250,7 @@ function User() {
                           id={userFavorites.animal.animal_id}
                           animalName={userFavorites.animal.animal_name}
                           animalAge={userFavorites.animal.animal_age}
-                          animalCategory={userFavorites.animal.animal_category}
+                          animalCategory={userFavorites.animal.animal_sex}
                           photo={userFavorites.animal.photo}
                         />
                       ))
