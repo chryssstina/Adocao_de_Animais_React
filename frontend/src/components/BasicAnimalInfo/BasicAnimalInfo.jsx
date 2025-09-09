@@ -120,7 +120,7 @@ function BasicAnimalInfo({ id, animalName, animalAge, animalWeight, favoriteFood
                         />
                     </div>
                 </div>
-                {/* --- 7. ADICIONAR O MODAL AO FINAL DO COMPONENTE --- */}
+
                 <UserAdoptModal
                     show={showModal}
                     onClose={handleCloseModal}

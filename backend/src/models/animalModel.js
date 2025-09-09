@@ -19,7 +19,7 @@ const getAnimalByIdModel = async(animal_id) => {
 }
 
 //falta passar o id da categoria
-const createAnimalModel = async(animal_name, animal_age, animal_sex, animal_status, animal_weight, animal_favorite_food, animal_description, fk_admin_user_id) => {
+const createAnimalModel = async(animal_name, animal_age, animal_sex, animal_status, animal_weight, animal_category, animal_favorite_food, animal_description, fk_admin_user_id) => {
     return prisma.Animals.create({
         data: {
             animal_name: animal_name,
@@ -27,6 +27,7 @@ const createAnimalModel = async(animal_name, animal_age, animal_sex, animal_stat
             animal_sex: animal_sex,
             animal_status: animal_status,
             animal_weight: animal_weight,
+            animal_category: animal_category,
             animal_favorite_food: animal_favorite_food,
             animal_description: animal_description,
             fk_admin_user_id: fk_admin_user_id
@@ -35,7 +36,7 @@ const createAnimalModel = async(animal_name, animal_age, animal_sex, animal_stat
 }
 
 
-const updateAnimalModel = async(animal_id, animal_name, animal_age, animal_sex, animal_status, animal_weight, animal_favorite_food, animal_description, fk_admin_user_id) => {
+const updateAnimalModel = async(animal_id, animal_name, animal_age, animal_sex, animal_status, animal_category, animal_weight, animal_favorite_food, animal_description, fk_admin_user_id) => {
     const animalExist = await getAnimalByIdModel(animal_id);
 
     if(!animalExist){
@@ -53,6 +54,7 @@ const updateAnimalModel = async(animal_id, animal_name, animal_age, animal_sex, 
             animal_sex: animal_sex,
             animal_status: animal_status,
             animal_weight: animal_weight,
+            animal_category: animal_category,
             animal_favorite_food: animal_favorite_food,
             animal_description: animal_description,
             fk_admin_user_id: fk_admin_user_id

@@ -1,8 +1,14 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+
 
 app.use(express.json()); //middleware para passar e receber requisições no corpo do json
 
+app.use(cors({
+  origin: 'http://localhost:5173', // Permite requisições do frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+}));
 
 const userRoutes = require('./routes/userRoute');
 const animalRoutes = require('./routes/animalRoute');

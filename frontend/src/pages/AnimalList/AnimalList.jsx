@@ -110,9 +110,7 @@ function AnimalList() {
                                         animalName={animal.animal_name}
                                         animalAge={animal.animal_age}
                                         animalCategory={animal.animal_category}
-                                        photo={animal.photo}
-                                        animalWeight={animal.animal_weight}
-                                        favoriteFood={animal.animal_favorite_food}
+                                        // photo={animal.photo}
                                     />
                                 </div>
                             ))
