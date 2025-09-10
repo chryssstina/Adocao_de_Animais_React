@@ -43,6 +43,7 @@ const createAnimalHandler = async(req, res) => {
             animal_sex,
             animal_status,
             animal_weight, 
+            animal_category,
             animal_favorite_food, 
             animal_description, 
             fk_admin_user_id
@@ -53,11 +54,12 @@ const createAnimalHandler = async(req, res) => {
         || !animal_sex 
         || !animal_status
         || !animal_weight 
+        || !animal_category
         || !animal_favorite_food
         || !animal_description
         || !fk_admin_user_id){
 
-        return res.status(400).json({error: error.message});
+        return res.status(400).json({ error: 'Todos os dados são obrigatórios.' });
     }
 
     try {
@@ -67,6 +69,7 @@ const createAnimalHandler = async(req, res) => {
             animal_sex,
             animal_status,
             animal_weight, 
+            animal_category,
             animal_favorite_food, 
             animal_description, 
             fk_admin_user_id
@@ -86,6 +89,7 @@ const updateAnimalHandler = async (req, res) => {
             animal_sex,
             animal_status,
             animal_weight, 
+            animal_category,
             animal_favorite_food, 
             animal_description, 
             fk_admin_user_id 
@@ -95,6 +99,7 @@ const updateAnimalHandler = async (req, res) => {
         || !animal_age 
         || !animal_sex 
         || !animal_weight 
+        || !animal_category
         || !animal_favorite_food
         || !animal_description
         || !fk_admin_user_id){
@@ -109,7 +114,8 @@ const updateAnimalHandler = async (req, res) => {
             animal_age, 
             animal_sex,
             animal_status,
-            animal_weight, 
+            animal_weight,
+            animal_category, 
             animal_favorite_food, 
             animal_description, 
             fk_admin_user_id

@@ -29,6 +29,7 @@ const getAllAdoptionsByUserModel = async (fk_adopting_user_id) => {
             adoption_status: true,
             order_date: true,
             processed_date: true, 
+            reason: true,
             animal: {
                 select: {
                     animal_id: true,
@@ -50,13 +51,15 @@ const createAdoptionModel = async (
     adoption_status,
     fk_animal_id,
     fk_adopting_user_id,
+    reason
 
 ) => {
     return prisma.Adoptions.create({
         data: {
-            adoption_status: adoption_status,
+            adoption_status,
             fk_animal_id: fk_animal_id,
             fk_adopting_user_id: fk_adopting_user_id,
+            reason: reason
             //processed_date: processed_date
             // data em que o pedido foi finalizado (aceito ou negado)
         }

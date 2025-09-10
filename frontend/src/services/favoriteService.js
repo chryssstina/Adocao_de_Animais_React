@@ -53,7 +53,7 @@ const addFavorite = async (payload) => {
 
 const updateFavorite = async (favorite_id, payload) => {
   try {
-    const response = await api.put(`/api/favorite/${favorite_id},${payload}`);
+    const response = await api.put(`/api/favorite/${favorite_id}`,payload);
     return response.data;
   } catch (error) {
     console.error("Erro ao atualizar favorito.", error);
@@ -65,7 +65,7 @@ const updateFavorite = async (favorite_id, payload) => {
 
 const removeFavorite = async (favorite_id) => {
   try {
-    const response = await api.delete(`/api/user/${favorite_id}`);
+    const response = await api.delete(`/api/favorite/${favorite_id}`);
     return response.data;
   } catch (error) {
     console.error("Erro ao remover da lista de favoritos.", error);

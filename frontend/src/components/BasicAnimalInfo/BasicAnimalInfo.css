@@ -9,7 +9,10 @@
 
 .main-basic-animal-info img {
     max-width: 40%;
+}
 
+.left-info{
+    width: 50%;
 }
 
 .container-basic-animal-info {

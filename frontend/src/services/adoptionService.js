@@ -64,7 +64,7 @@ const updateAdoption = async (adoption_id, payload) => {
 
 const deleteAdoption = async (adoption_id) => {
   try {
-    const response = await api.delete(`/api/adoption/${adoption_id}`);
+    const response = await api.delete(`/api/adoptions/${adoption_id}`);
     return response.data;
   } catch (error) {
     console.error("Erro ao deletar pedido de adoção.", error);
