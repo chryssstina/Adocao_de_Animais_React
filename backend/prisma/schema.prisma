@@ -89,6 +89,7 @@ model Adoptions{
   adoption_status         AdoptionStatus?      @default(IN_PROGRESS)
   order_date              DateTime            @default(now())
   processed_date          DateTime?
+  reason                  String
 
   fk_animal_id           Int
   fk_adopting_user_id    Int

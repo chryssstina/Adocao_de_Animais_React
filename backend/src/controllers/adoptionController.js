@@ -56,24 +56,27 @@ const getAllAdoptionsByUserHandler = async(req, res) => {
 const createAdoptionHandler = async(req, res) => {
     const { adoption_status, 
             fk_animal_id, 
-            fk_adopting_user_id 
+            fk_adopting_user_id,
+            reason
               
         } = req.body; 
 
-    if(!fk_animal_id || !fk_adopting_user_id){
+    if(!fk_animal_id || !fk_adopting_user_id || !reason){
         return res.status(400).json({error: 'Todos os dados são obrigatórios.'});
     }
 
     try {
         const newAdoption = await createAdoptionModel(
-            adoption_status, 
+            adoption_status || "IN_PROGRESS", 
             fk_animal_id, 
-            fk_adopting_user_id
+            fk_adopting_user_id,
+            reason
         );
         res.status(201).json(newAdoption);
     } catch (error) {
         res.status(500).json({error: error.message});
     }
+    console.log("Body recebido:", req.body);
 }
 
 

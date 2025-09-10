@@ -14,7 +14,7 @@ function UserAdoptModal({ show, onClose, onSave, animalName }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (onSave) {
-      onSave({ animal: animalName, reason });
+      onSave( reason );
     }
     handleCloseModal();
   };
@@ -30,17 +30,20 @@ function UserAdoptModal({ show, onClose, onSave, animalName }) {
     <div className="modal fade show d-block" id="user-adopt-modal">
       <div className="modal-dialog">
         <div className="modal-content">
+
           <form onSubmit={handleSubmit}>
             <div className="modal-header">
               <h5 className="modal-title">
                 Pedido de Adoção - {animalName}
               </h5>
+
               <button
                 type="button"
                 className="btn-close"
-                onClick={handleCloseModal}
-              ></button>
+                onClick={handleCloseModal}>
+              </button>
             </div>
+
             <div className="modal-body">
               <div className="mb-3">
                 <label className="form-label">
@@ -60,8 +63,7 @@ function UserAdoptModal({ show, onClose, onSave, animalName }) {
               <button
                 type="button"
                 className="btn btn-secondary"
-                onClick={handleCloseModal}
-              >
+                onClick={handleCloseModal}>
                 Cancelar
               </button>
               <button type="submit" className="btn btn-primary">
@@ -76,3 +78,4 @@ function UserAdoptModal({ show, onClose, onSave, animalName }) {
 }
 
 export default UserAdoptModal;
+
