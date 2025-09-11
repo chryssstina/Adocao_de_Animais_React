@@ -1,15 +1,69 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { animal_adoption_mock as mockData } from "../../../data/animal_adoption_mock";
+import { useState, useEffect } from "react";
 import "./AdminAnimals.css";
 import AdoptionCardAdmin from "../../../components/AdminComponents/AdoptionCardAdmin/AdoptionCardAdmin";
 import DeleteConfirmationModal from "../../../components/AdminComponents/DeleteComponentModal/DeleteComponentModal";
+import animalService from "../../../services/animalService";
 
-// --- DADOS MOCK ---
-const animal_adoption_mock = mockData;
 
 function AdminAnimals() {
-  const [animals, setAnimals] = useState(animal_adoption_mock);
+
+  const [animals, setAnimals] = useState([]);
+  const [saving, setSaving] = useState(true);
+  const [error, setError] = useState(null);
+
+  const [form, setForm] = useState({
+    animal_name: '',
+    animal_age: '',
+    animal_sex: '',
+    animal_status: '',
+    animal_weight: '',
+    animal_favorite_food: '',
+    animal_description: '',
+    animal_category: ''
+  })
+
+  function onChange(e) {
+    const { name, value } = e.target
+    setForm(prev => ({ ...prev, [name]: value }))
+  }
+
+  function onSubmit(e) {
+    e.preventDefault();
+    setError('');
+    setSaving(true);
+
+    // validaçaõ de data
+    // if(form.data_nas && !/^\d{4}-\d{2}-\d{2}$/.test(form.data_nas)){
+    //   return setError('Data de nascimento inválida')
+    // }
+
+    const admin_user_id=1;
+    const payload = {
+      animal_name: form.animal_name,
+      animal_age: form.animal_age,
+      animal_sex: form.animal_sex,
+      animal_status: form.animal_status,
+      animal_weight: form.animal_weight,
+      animal_favorite_food: form.animal_favorite_food,
+      animal_category: form.animal_category,
+      animal_description: form.animal_description,
+      fk_admin_user_id: admin_user_id
+    }
+
+    try{
+      setSaving(true);
+      animalService.createAnimal(payload);
+
+      alert("Animal cadastrado com sucesso :)");
+
+    } catch (error) {
+      setError(error.message);
+
+    } finally{
+      setSaving(false);
+    }
+  }
+
 
   // --- LÓGICA DO MODAL DE DELEÇÃO ---
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -36,6 +90,7 @@ function AdminAnimals() {
     }
   };
 
+
   return (
     <>
       <section className="container-fluid bg-light py-4" id="admin-animals-page">
@@ -53,18 +108,133 @@ function AdminAnimals() {
                   <div className="d-flex align-items-center mb-3">
                     <i className="bi bi-plus-circle me-2 fs-4 text-success"></i>
                     <h5 className="card-title user_title mb-0">Cadastrar Novo Animal</h5>
+                    {error && <p className="alert alert-danger">{error}</p>}
                   </div>
-                  <form>
-                    {/* Campos do formulário... */}
-                    <div className="mb-3"><label htmlFor="nome" className="form-label">Nome</label><input type="text" className="form-control" id="nome" placeholder="Nome do animal" /></div>
-                    <div className="mb-3"><label htmlFor="especie" className="form-label">Espécie</label><input type="text" className="form-control" id="especie" placeholder="Cão, Gato, etc." /></div>
-                    <div className="mb-3"><label htmlFor="sexo" className="form-label">Sexo</label><select className="form-select" id="sexo"><option value="">Selecione</option><option value="macho">Macho</option><option value="femea">Fêmea</option></select></div>
-                    <div className="mb-3"><label htmlFor="peso" className="form-label">Peso (kg)</label><input type="number" className="form-control" id="peso" placeholder="Peso do animal" /></div>
-                    <div className="mb-3"><label htmlFor="idade" className="form-label">Idade</label><input type="text" className="form-control" id="idade" placeholder="Ex: 2 anos" /></div>
-                    <div className="mb-3"><label htmlFor="comida_favorita" className="form-label">Comida Favorita</label><input type="text" className="form-control" id="comida_favorita" placeholder="Comida favorita do animal" /></div>
-                    <div className="mb-3"><label htmlFor="descricao" className="form-label">Descrição</label><textarea className="form-control" id="descricao" rows="3" placeholder="Descreva o temperamento e características"></textarea></div>
-                    <div className="mb-3"><label htmlFor="imagem" className="form-label">Imagem</label><input className="form-control" type="file" id="imagem" /></div>
-                    <button type="submit" className="btn btn-dark w-100">Cadastrar</button>
+
+                  <form onSubmit={onSubmit}>
+                    <div className="mb-3">
+                      <label htmlFor="animal_name" className="form-label">Nome</label>
+                      <input
+                        type="text"
+                        name="animal_name"
+                        id="animal_name"
+                        value={form.animal_name}
+                        onChange={onChange}
+                        className="form-control"
+                        placeholder="Nome do animal"
+                       
+                         />
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="animal_age" className="form-label">Idade</label>
+                      <input
+                        type="text"
+                        name="animal_age"
+                        id="animal_age"
+                        value={form.animal_age}
+                        onChange={onChange}
+                        className="form-control"
+                        placeholder="Ex: 2 anos" 
+                         />
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="animal_sex" className="form-label">Sexo</label>
+                      <select
+                       className="form-select" 
+                       name="animal_sex" 
+                       id="animal_sex" 
+                       value={form.animal_sex} 
+                       onChange={onChange}
+                       >
+                        <option value="">Selecione</option>
+                        <option value="MALE">Macho</option>
+                        <option value="FEMALE">Fêmea</option>
+                      </select>
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="animal_status" className="form-label">Status</label>
+                      <select
+                       className="form-select" 
+                       name="animal_status" 
+                       id="animal_status"
+                       value={form.animal_status} 
+                       onChange={onChange}
+                       >
+                        <option value="">Selecione</option>
+                        <option value="AVAILABLE"> Disponível para adoção </option>
+                        <option value="IN_PROCESS_ADOPTION"> Em processo de adoção </option>
+                        <option value="ADOPTED"> Adotado </option>
+                      </select>
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="animal_weight" className="form-label">Peso (Kg)</label>
+                      <input
+                        type="text"
+                        name="animal_weight"
+                        id="animal_weight"
+                        value={form.animal_weight}
+                        onChange={onChange}
+                        className="form-control"
+                        placeholder="Ex: 2Kg" />
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="animal_favorite_food" className="form-label"> Comida Favorita </label>
+                      <input
+                        type="text"
+                        name="animal_favorite_food"
+                        id="animal_favorite_food"
+                        value={form.animal_favorite_food}
+                        onChange={onChange}
+                        className="form-control"
+                        placeholder="Ex: Ração de carne" />
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="animal_category" className="form-label"> Categoria </label>
+                      <select
+                       className="form-select"
+                       name="animal_category" 
+                       id="animal_category"
+                       value={form.animal_category} 
+                       onChange={onChange}
+                       >
+                        <option value="">Selecione</option>
+                        <option value="DOG"> Cachorrinho </option>
+                        <option value="CAT"> Gatinho </option>
+                      </select>
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="animal_description" className="form-label"> Breve Descrição </label>
+                      <textarea
+                        type="text"
+                        name="animal_description"
+                        id="animal_description"
+                        value={form.animal_description}
+                        onChange={onChange}
+                        className="form-control"
+                        placeholder="Descreva o temperamento e características. Ex: 'Cão leal e protetor, ideal para casas com quintal.'">
+                      </textarea>
+                    </div>
+
+
+
+                    {/* <div className="mb-3">
+                      <label htmlFor="imagem" className="form-label">Imagem</label>
+                      <input
+                        className="form-control"
+                        type="file"
+                        id="imagem" />
+                    </div> */}
+
+                    <button type="submit" className="btn btn-dark w-100"  >
+                      {saving ? 'Cadastrar' : 'Cadastrando...'}
+                    </button>
                   </form>
                 </div>
               </div>
