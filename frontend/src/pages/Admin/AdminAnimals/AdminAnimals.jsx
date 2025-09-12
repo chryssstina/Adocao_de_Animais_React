@@ -8,8 +8,8 @@ import animalService from "../../../services/animalService";
 function AdminAnimals() {
 
   const [animals, setAnimals] = useState([]);
-  const [saving, setSaving] = useState(true);
-  const [error, setError] = useState(null);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState({});
 
   const [form, setForm] = useState({
     animal_name: '',
@@ -22,6 +22,21 @@ function AdminAnimals() {
     animal_category: ''
   })
 
+  function validateForm() {
+    const newErrors = {}; //agrupa os erros e exibe nos campos obgrigatórios que não foram preenchidos
+
+    if (!form.animal_name.trim()) newErrors.animal_name = "Nome é obrigatório";
+    if (!form.animal_age.trim()) newErrors.animal_age = "Idade é obrigatória";
+    if (!form.animal_sex) newErrors.animal_sex = "Selecione o sexo do animal";
+    if (!form.animal_status) newErrors.animal_status = "Selecione o status do animal";
+    if (!form.animal_weight.trim()) newErrors.animal_weight = "Peso é obrigatório";
+    if (!form.animal_favorite_food.trim()) newErrors.animal_favorite_food = "Comida favorita é obrigatória";
+    if (!form.animal_category) newErrors.animal_category = "Selecione a categoria do animal";
+    if (!form.animal_description.trim()) newErrors.animal_description = "Descrição é obrigatória";
+
+    return newErrors;
+  }
+
   function onChange(e) {
     const { name, value } = e.target
     setForm(prev => ({ ...prev, [name]: value }))
@@ -29,15 +44,19 @@ function AdminAnimals() {
 
   function onSubmit(e) {
     e.preventDefault();
-    setError('');
-    setSaving(true);
+    setError({}); // limpa erros anteriores
 
-    // validaçaõ de data
-    // if(form.data_nas && !/^\d{4}-\d{2}-\d{2}$/.test(form.data_nas)){
-    //   return setError('Data de nascimento inválida')
-    // }
+    const validationErrors = validateForm(); //recebe todos os erros
 
-    const admin_user_id=1;
+    if (Object.keys(validationErrors).length > 0) {
+      setError(validationErrors);
+      return;
+    }
+
+
+    const admin_user_id = 1; //apenas para teste
+
+    
     const payload = {
       animal_name: form.animal_name,
       animal_age: form.animal_age,
@@ -50,16 +69,27 @@ function AdminAnimals() {
       fk_admin_user_id: admin_user_id
     }
 
-    try{
+    try {
       setSaving(true);
       animalService.createAnimal(payload);
-
       alert("Animal cadastrado com sucesso :)");
+
+      //limpa os campos do form após o envio
+      setForm({
+        animal_name: '',
+        animal_age: '',
+        animal_sex: '',
+        animal_status: '',
+        animal_weight: '',
+        animal_favorite_food: '',
+        animal_description: '',
+        animal_category: ''
+      });
 
     } catch (error) {
       setError(error.message);
 
-    } finally{
+    } finally {
       setSaving(false);
     }
   }
@@ -108,7 +138,7 @@ function AdminAnimals() {
                   <div className="d-flex align-items-center mb-3">
                     <i className="bi bi-plus-circle me-2 fs-4 text-success"></i>
                     <h5 className="card-title user_title mb-0">Cadastrar Novo Animal</h5>
-                    {error && <p className="alert alert-danger">{error}</p>}
+                    {/* {error && <p className="alert alert-danger">{error}</p>} */}
                   </div>
 
                   <form onSubmit={onSubmit}>
@@ -122,8 +152,9 @@ function AdminAnimals() {
                         onChange={onChange}
                         className="form-control"
                         placeholder="Nome do animal"
-                       
-                         />
+                      />
+                      {error.animal_name && <p className="text-danger">{error.animal_name}</p>}
+
                     </div>
 
                     <div className="mb-3">
@@ -135,39 +166,42 @@ function AdminAnimals() {
                         value={form.animal_age}
                         onChange={onChange}
                         className="form-control"
-                        placeholder="Ex: 2 anos" 
-                         />
+                        placeholder="Ex: 2 anos"
+                      />
+                      {error.animal_age && <p className="text-danger">{error.animal_age}</p>}
                     </div>
 
                     <div className="mb-3">
                       <label htmlFor="animal_sex" className="form-label">Sexo</label>
                       <select
-                       className="form-select" 
-                       name="animal_sex" 
-                       id="animal_sex" 
-                       value={form.animal_sex} 
-                       onChange={onChange}
-                       >
+                        className="form-select"
+                        name="animal_sex"
+                        id="animal_sex"
+                        value={form.animal_sex}
+                        onChange={onChange}
+                      >
                         <option value="">Selecione</option>
                         <option value="MALE">Macho</option>
                         <option value="FEMALE">Fêmea</option>
                       </select>
+                      {error.animal_sex && <p className="text-danger">{error.animal_sex}</p>}
                     </div>
 
                     <div className="mb-3">
                       <label htmlFor="animal_status" className="form-label">Status</label>
                       <select
-                       className="form-select" 
-                       name="animal_status" 
-                       id="animal_status"
-                       value={form.animal_status} 
-                       onChange={onChange}
-                       >
+                        className="form-select"
+                        name="animal_status"
+                        id="animal_status"
+                        value={form.animal_status}
+                        onChange={onChange}
+                      >
                         <option value="">Selecione</option>
                         <option value="AVAILABLE"> Disponível para adoção </option>
                         <option value="IN_PROCESS_ADOPTION"> Em processo de adoção </option>
                         <option value="ADOPTED"> Adotado </option>
                       </select>
+                      {error.animal_status && <p className="text-danger">{error.animal_status}</p>}
                     </div>
 
                     <div className="mb-3">
@@ -179,7 +213,9 @@ function AdminAnimals() {
                         value={form.animal_weight}
                         onChange={onChange}
                         className="form-control"
-                        placeholder="Ex: 2Kg" />
+                        placeholder="Ex: 2Kg"
+                      />
+                      {error.animal_weight && <p className="text-danger">{error.animal_weight}</p>}
                     </div>
 
                     <div className="mb-3">
@@ -191,22 +227,25 @@ function AdminAnimals() {
                         value={form.animal_favorite_food}
                         onChange={onChange}
                         className="form-control"
-                        placeholder="Ex: Ração de carne" />
+                        placeholder="Ex: Ração de carne"
+                      />
+                      {error.animal_favorite_food && <p className="text-danger">{error.animal_favorite_food}</p>}
                     </div>
 
                     <div className="mb-3">
                       <label htmlFor="animal_category" className="form-label"> Categoria </label>
                       <select
-                       className="form-select"
-                       name="animal_category" 
-                       id="animal_category"
-                       value={form.animal_category} 
-                       onChange={onChange}
-                       >
+                        className="form-select"
+                        name="animal_category"
+                        id="animal_category"
+                        value={form.animal_category}
+                        onChange={onChange}
+                      >
                         <option value="">Selecione</option>
                         <option value="DOG"> Cachorrinho </option>
                         <option value="CAT"> Gatinho </option>
                       </select>
+                      {error.animal_category && <p className="text-danger">{error.animal_category}</p>}
                     </div>
 
                     <div className="mb-3">
@@ -218,8 +257,10 @@ function AdminAnimals() {
                         value={form.animal_description}
                         onChange={onChange}
                         className="form-control"
-                        placeholder="Descreva o temperamento e características. Ex: 'Cão leal e protetor, ideal para casas com quintal.'">
+                        placeholder="Descreva o temperamento e características. Ex: 'Cão leal e protetor, ideal para casas com quintal.'"
+                      >
                       </textarea>
+                      {error.animal_description && <p className="text-danger">{error.animal_description}</p>}
                     </div>
 
 
@@ -232,8 +273,8 @@ function AdminAnimals() {
                         id="imagem" />
                     </div> */}
 
-                    <button type="submit" className="btn btn-dark w-100"  >
-                      {saving ? 'Cadastrar' : 'Cadastrando...'}
+                    <button type="submit" className="btn btn-dark w-100" disabled={saving} >
+                      {saving ? 'Cadastrando...' : 'Cadastrar'}
                     </button>
                   </form>
                 </div>
