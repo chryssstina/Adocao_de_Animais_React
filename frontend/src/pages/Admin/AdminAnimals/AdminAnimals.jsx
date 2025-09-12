@@ -9,6 +9,7 @@ function AdminAnimals() {
 
   const [animals, setAnimals] = useState([]);
   const [saving, setSaving] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
 
   const [form, setForm] = useState({
@@ -20,7 +21,25 @@ function AdminAnimals() {
     animal_favorite_food: '',
     animal_description: '',
     animal_category: ''
-  })
+  });
+
+  async function loadAnimals() {
+    try {
+      setLoading(true);
+      setError({});
+      const data = await animalService.getAllAnimals();
+      setAnimals(data);
+    } catch (error) {
+      setError("Erro ao carregar animais:" + error.message);
+    } finally {
+      setLoading(false);
+
+    }
+  }
+
+  useEffect(() => {
+    loadAnimals();
+  }, []);
 
   function validateForm() {
     const newErrors = {}; //agrupa os erros e exibe nos campos obgrigatórios que não foram preenchidos
@@ -56,7 +75,7 @@ function AdminAnimals() {
 
     const admin_user_id = 1; //apenas para teste
 
-    
+
     const payload = {
       animal_name: form.animal_name,
       animal_age: form.animal_age,
@@ -295,7 +314,7 @@ function AdminAnimals() {
                     ) : (
                       animals.map((animal) => (
                         <AdoptionCardAdmin
-                          key={animal.id}
+                          key={animal.animal_id}
                           animal={animal}
                           onDeleteClick={handleDeleteClick}
                         />
