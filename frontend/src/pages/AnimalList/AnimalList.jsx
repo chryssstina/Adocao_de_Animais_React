@@ -37,7 +37,7 @@ function AnimalList() {
 
     useEffect(() => {
         load();
-    },[])
+    },[]);
 
 
     // --- EFEITO PARA APLICAR OS FILTROS ---

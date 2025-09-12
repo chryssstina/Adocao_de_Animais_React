@@ -5,6 +5,27 @@ const getAllAdoptionsModel = async () => {
     return prisma.Adoptions.findMany({
         orderBy: {
             adoption_id: 'asc'
+        },
+        select: {
+            adoption_id: true,
+            adoption_status: true,
+            order_date: true,
+            processed_date: true, 
+            reason: true,
+            animal: {
+                select: {
+                    animal_id: true,
+                    animal_name: true, // só o nome do animal
+                    animal_status: true
+                }
+            },
+            adopting_user: {
+                select: {
+                    user_id: true,
+                    user_name: true,
+                    user_email: true
+                }
+            }
         }
     })
 }
@@ -33,7 +54,8 @@ const getAllAdoptionsByUserModel = async (fk_adopting_user_id) => {
             animal: {
                 select: {
                     animal_id: true,
-                    animal_name: true // só o nome do animal
+                    animal_name: true, 
+                    animal_status: true
                 }
             },
             adopting_user: {
