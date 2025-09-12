@@ -1,9 +1,56 @@
 import "./AdminAdoptions.css";
-import { animal_adoption_mock as mockData } from "../../../data/animal_adoption_mock";
+import { useEffect, useState } from "react";
+import adoptionService from '../../../services/adoptionService'
 import RegisteredAnimalsCardAdmin from "../../../components/RegisteredAnimalsCardAdmin/RegisteredAnimalsCardAdmin";
 
 function AdminAdoptions() {
-  const userAdoptions = mockData;
+  const [userAdoptions, setUserAdoptions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchAdoptions();
+  }, []);
+
+  const fetchAdoptions = async () => {
+    try {
+      const data = await adoptionService.getAllAdoptions();
+      setUserAdoptions(data);
+    } catch (error) {
+      console.error("Erro ao buscar adoções:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleStatusChange = async (adoption_id, newStatus) => {
+
+    const payload = {
+      adoption_status: newStatus,
+      fk_animal_id: adoption.animal.animal_id,
+      fk_adopting_user_id: adoption.adopting_user.user_id,
+    }
+    try {
+      await adoptionService.updateAdoption(adoption_id, payload);
+
+      setUserAdoptions((prevAdoptions) =>
+        prevAdoptions.map((a) =>
+          a.adoption_id === adoption.adoption_id
+            ? { ...a, adoption_status: newStatus, processed_date: new Date().toISOString() }
+            : a
+        )
+      );
+      if (newStatus == 'ACCEPTED') {
+        alert("Pedido aceito!")
+      } else {
+        alert("Pedido recusado")
+      }
+    } catch (error) {
+      console.error("Erro ao atualizar status da adoção:", error);
+    }
+  };
+
+
+
 
   return (
     <section className="container-fluid bg-light py-4" id="admin-adoptions-page">
@@ -30,32 +77,40 @@ function AdminAdoptions() {
                   <table className="table align-middle">
                     <thead>
                       <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Animal</th>
-                        <th scope="col">Adotante</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Data do pedido</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Data do pedido</th>
+                        <th scope="col">Data de aceite/recusa</th>
+                        <th scope="col">Razão</th>
+                        <th scope="col">Animal ID</th>
+                        <th scope="col">Adotante</th>
                         <th scope="col">Ações</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {userAdoptions.length === 0 ? (
+                      {loading ? (
                         <tr>
-                          <td colSpan="6" className="text-center text-muted">
+                          <td colSpan="7" className="text-center">Carregando...</td>
+                        </tr>
+                      ) : userAdoptions.length === 0 ? (
+                        <tr>
+                          <td colSpan="8" className="text-center text-muted">
                             Nenhum pedido de adoção encontrado.
                           </td>
                         </tr>
                       ) : (
-                        userAdoptions.map((adoption) => (
+                        userAdoptions.map(adoption => (
                           <RegisteredAnimalsCardAdmin
-                            key={adoption.id}
-                            id={adoption.id}
-                            animalName={adoption.animalName}
-                            adopterName={adoption.adopterName}
-                            adopterEmail={adoption.adopterEmail}
-                            adoptionDate={adoption.adoptionDate}
-                            status={adoption.statusAdoption}
+                            key={adoption.adoption_id}
+                            adoption_id={adoption.adoption_id}
+                            adoption_status={adoption.adoption_status}
+                            order_date={adoption.order_date}
+                            processed_date={adoption.processed_date}
+                            reason={adoption.reason}
+                            animal={adoption.animal}
+                            adopting_user={adoption.adopting_user}
+                            onAccept={() => handleStatusChange(adoption.adoption_id, "ACCEPTED")}
+                            onReject={() => handleStatusChange(adoption.adoption_id, "DECLINED")}
                           />
                         ))
                       )}

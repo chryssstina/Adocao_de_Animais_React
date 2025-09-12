@@ -17,6 +17,7 @@ function AdoptionCardAdmin({ animal, onDeleteClick }) {
     });
   }
 
+  //exibe a data de acordo com o status do animal
   function getDisplayDate(animal) {
     const firstAdoption = animal.adoptions[0];
 

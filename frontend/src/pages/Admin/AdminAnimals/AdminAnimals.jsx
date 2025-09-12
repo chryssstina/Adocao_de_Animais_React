@@ -3,9 +3,13 @@ import "./AdminAnimals.css";
 import AdoptionCardAdmin from "../../../components/AdminComponents/AdoptionCardAdmin/AdoptionCardAdmin";
 import DeleteConfirmationModal from "../../../components/AdminComponents/DeleteComponentModal/DeleteComponentModal";
 import animalService from "../../../services/animalService";
-
+import { useNavigate, useParams } from "react-router-dom";
 
 function AdminAnimals() {
+
+  //para editar os dados do animal 
+  const { id } = useParams()
+  const editing = Boolean(id)
 
   const [animals, setAnimals] = useState([]);
   const [saving, setSaving] = useState(false);
@@ -23,6 +27,7 @@ function AdminAnimals() {
     animal_category: ''
   });
 
+  //carrega a lista de animais cadastrados
   async function loadAnimals() {
     try {
       setLoading(true);

@@ -22,7 +22,8 @@ const getAllAdoptionsModel = async () => {
             adopting_user: {
                 select: {
                     user_id: true,
-                    user_name: true
+                    user_name: true,
+                    user_email: true
                 }
             }
         }
