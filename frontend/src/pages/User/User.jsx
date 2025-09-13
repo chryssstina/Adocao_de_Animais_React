@@ -105,9 +105,6 @@ function User() {
         console.log ("userFavorites:", userFavorites);
         console.log ("allAnimals:", allAnimals);
         await handleFavorites(userFavorites, allAnimals);
-        // console.log("All animals:", allAnimals); // Log para verificar os dados dos animais
-        // console.log("User favorites with details:", userFavorites); // Log para verificar os favoritos enriquecidos
-        // Agora você tem todos os dados necessários
         setAllAnimals(allAnimals);
         setUserData(profileData);
         setUserAdoptions(userAdoptions);
