@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
+const cors = require('cors');
+
 
 // habilita CORS para o frontend em http://localhost:5173
 app.use(cors({
@@ -11,7 +13,10 @@ app.use(cors({
 // se quiser liberar para qualquer origem durante o desenvolvimento, use:
 // app.use(cors());
 
-app.use(express.json()); // middleware para trabalhar com JSON
+app.use(cors({
+  origin: 'http://localhost:5173', // Permite requisições do frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+}));
 
 // rotas
 const userRoutes = require('./routes/userRoute');

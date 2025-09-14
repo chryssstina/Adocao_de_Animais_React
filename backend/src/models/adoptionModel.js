@@ -5,6 +5,27 @@ const getAllAdoptionsModel = async () => {
     return prisma.Adoptions.findMany({
         orderBy: {
             adoption_id: 'asc'
+        },
+        select: {
+            adoption_id: true,
+            adoption_status: true,
+            order_date: true,
+            processed_date: true, 
+            reason: true,
+            animal: {
+                select: {
+                    animal_id: true,
+                    animal_name: true, // só o nome do animal
+                    animal_status: true
+                }
+            },
+            adopting_user: {
+                select: {
+                    user_id: true,
+                    user_name: true,
+                    user_email: true
+                }
+            }
         }
     })
 }
@@ -29,10 +50,12 @@ const getAllAdoptionsByUserModel = async (fk_adopting_user_id) => {
             adoption_status: true,
             order_date: true,
             processed_date: true, 
+            reason: true,
             animal: {
                 select: {
                     animal_id: true,
-                    animal_name: true // só o nome do animal
+                    animal_name: true, 
+                    animal_status: true
                 }
             },
             adopting_user: {
@@ -50,13 +73,15 @@ const createAdoptionModel = async (
     adoption_status,
     fk_animal_id,
     fk_adopting_user_id,
+    reason
 
 ) => {
     return prisma.Adoptions.create({
         data: {
-            adoption_status: adoption_status,
+            adoption_status,
             fk_animal_id: fk_animal_id,
             fk_adopting_user_id: fk_adopting_user_id,
+            reason: reason
             //processed_date: processed_date
             // data em que o pedido foi finalizado (aceito ou negado)
         }

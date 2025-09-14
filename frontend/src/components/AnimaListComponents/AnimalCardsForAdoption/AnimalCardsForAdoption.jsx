@@ -1,6 +1,6 @@
 import "./AnimalCardForAdoption.css";
 import CustomBtn from "../../CustomBtn/CustomBtn";
-import React, { useState } from "react"; // 👈 Não precisamos mais do useEffect aqui
+import React, { useState } from "react"; 
 
 // --- NOVA SIMULAÇÃO DE API PARA FAVORITAR ---
 // Simula uma chamada rápida para adicionar/remover um favorito.
@@ -30,7 +30,6 @@ function AnimalCardsForAdoption({
   animalAge,
   animalCategory,
   photo,
-  // Opcional: receber o estado inicial do componente pai no futuro
   initialIsFavorited = false, 
 }) {
   // --- ESTADOS SIMPLIFICADOS ---
@@ -83,7 +82,6 @@ function AnimalCardsForAdoption({
           />
         </div>
       </div>
-      {/* O Modal foi removido, não é mais necessário aqui */}
     </section>
   );
 }

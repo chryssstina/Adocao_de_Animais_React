@@ -1,31 +1,44 @@
 import { useState, useEffect } from "react";
 import './AnimalList.css';
 import AnimalCardsForAdoption from "../../components/AnimaListComponents/AnimalCardsForAdoption/AnimalCardsForAdoption";
-import { animal_adoption_mock as mockData } from "../../data/animal_adoption_mock";
+import animalService from "../../services/animalService";
 
 function AnimalList() {
-    // Estado para guardar todos os animais carregados do mock
-    const [allAnimals, setAllAnimals] = useState([]);
-    // Estado para a lista de animais que será de fato exibida na tela (já filtrada)
-    const [filteredAnimals, setFilteredAnimals] = useState([]);
     
+    const [allAnimals, setAllAnimals] = useState([]); // Estado para guardar todos os animais carregados do banco
+    const [filteredAnimals, setFilteredAnimals] = useState([]); // Estado para a lista filtrada de animais
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     // --- NOVOS ESTADOS PARA OS FILTROS ---
     const [searchTerm, setSearchTerm] = useState("");
     const [filterCategory, setFilterCategory] = useState("Todos"); // 'Todos', 'Cachorro', 'Gato'
 
-    // Efeito para carregar os dados iniciais do mock (apenas uma vez)
-    useEffect(() => {
-        setTimeout(() => {
-            // Pré-filtramos para pegar apenas animais disponíveis para adoção
-            const availableAnimals = mockData.filter(
-                (animal) => animal.statusAdoption === 'disponivel'
+
+    async function load(){
+        try{
+            setLoading(true);
+            setError(null);
+            const data = await animalService.getAllAnimals();
+            // setAllAnimals(data);
+
+            //EXIBE APENAS OS ANIMAIS MARCADOS COMO DISPONÍVEL NO BD
+            const availableAnimals = data.filter(
+                (animal) => animal.animal_status === 'AVAILABLE'
             );
             setAllAnimals(availableAnimals);
+        }catch(error){
+            setError("Erro ao carregar animais:" +error.message);
+        }finally{
             setLoading(false);
-        }, 1000);
-    }, []);
+
+        }
+    }
+
+    useEffect(() => {
+        load();
+    },[]);
+
 
     // --- EFEITO PARA APLICAR OS FILTROS ---
     // Roda sempre que a lista original, o termo de busca ou a categoria mudarem
@@ -34,13 +47,14 @@ function AnimalList() {
 
         // 1. Filtro por categoria
         if (filterCategory !== "Todos") {
-            result = result.filter(animal => animal.animalCategory === filterCategory);
+            result = result.filter(
+                animal => animal.animal_category === filterCategory);
         }
 
-        // 2. Filtro por termo de busca (nome)
+        // 2. Filtro por nome
         if (searchTerm.trim() !== "") {
             result = result.filter(animal =>
-                animal.animalName.toLowerCase().includes(searchTerm.toLowerCase())
+                animal.animal_name.toLowerCase().includes(searchTerm.toLowerCase())
             );
         }
 
@@ -75,8 +89,8 @@ function AnimalList() {
                                 onChange={(e) => setFilterCategory(e.target.value)}
                             >
                                 <option value="Todos">Todas as categorias</option>
-                                <option value="Cachorro">Apenas Cachorros</option>
-                                <option value="Gato">Apenas Gatos</option>
+                                <option value="DOG">Apenas Cachorros</option>
+                                <option value="CAT">Apenas Gatos</option>
                             </select>
                         </div>
                     </div>
@@ -90,16 +104,13 @@ function AnimalList() {
                         // Renderiza a lista filtrada ou uma mensagem de "não encontrado"
                         filteredAnimals.length > 0 ? (
                             filteredAnimals.map((animal) => (
-                                <div className="col d-flex justify-content-center" key={animal.id}>
+                                <div className="col-sm-12 col-md-6 col-lg-3 d-flex justify-content-center" key={animal.animal_id}>
                                     <AnimalCardsForAdoption
-                                        id={animal.id}
-                                        animalName={animal.animalName}
-                                        animalAge={animal.animalAge}
-                                        animalCategory={animal.animalCategory}
-                                        photo={animal.photo}
-                                        // Passando todas as props para manter compatibilidade
-                                        animalWeight={animal.animalWeight}
-                                        favoriteFood={animal.favoriteFood}
+                                        id={animal.animal_id}
+                                        animalName={animal.animal_name}
+                                        animalAge={animal.animal_age}
+                                        animalCategory={animal.animal_category}
+                                        // photo={animal.photo}
                                     />
                                 </div>
                             ))

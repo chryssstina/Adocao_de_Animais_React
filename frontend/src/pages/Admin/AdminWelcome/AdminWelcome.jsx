@@ -1,9 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom"; // Importe o Link se for usar para navegação
 import "./AdminWelcome.css";
 import AdminInfoCard from "../../../components/AdminComponents/AdminInfoCard/AdminInfoCard";
+import { useEffect, useState } from "react";
+
 
 function AdminWelcome() {
+
+  const [adminName, setAdminName] = useState("");
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      if (user.user_type === "ADMIN_USER") {
+        setAdminName(user.user_name); // pega o nome do admin
+      }
+    }
+  }, []);
+
+
   return (
     <section className="container-fluid bg-light py-4" id="admin-user-page">
       <div className="container bg-light pt-1" id="user-container">
@@ -12,8 +26,9 @@ function AdminWelcome() {
             <i className="bi bi-heart" id="admin-header-icon"></i>
           </div>
           <h1 className="fw-bold mt-3">Painel Administrativo</h1>
+          <h3>{adminName && <strong>{adminName}</strong>}  </h3>
           <p className="lead text-muted">
-            Bem-vindo ao sistema de administração da ONG Latidos&Ronrons.
+            Bem-vindo(a) ao sistema de administração da ONG Latidos&Ronrons.
             <br />
             Gerencie todos os aspectos da nossa missão de cuidar dos animais.
           </p>
@@ -57,7 +72,7 @@ function AdminWelcome() {
           />
         </div>
 
-        
+
         <div className="card border-0 bg-light justify-content-end align-items-center d-flex" id="admin-footer-card">
           <div className="card-body">
             <div className="info-box text-center">
