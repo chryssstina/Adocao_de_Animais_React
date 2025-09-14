@@ -1,6 +1,6 @@
 import './BasicAnimalInfo.css';
 
-function BasicAnimalInfo({ animalName, animalAge, animalWeight, favoriteFood, animalCategory, photo, description, route }) {
+function BasicAnimalInfo({ animalName, animalAge, animalWeight, favoriteFood, animalCategory, photo, description }) {
     return (
             <main className="main-basic-animal-info">
                 <img src={photo} alt={animalName} />
