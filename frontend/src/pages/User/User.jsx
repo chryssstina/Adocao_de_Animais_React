@@ -41,7 +41,6 @@ function User() {
   
   const handleConfirmDelete = async () => {
     try {
-    console.log("Conta excluída!");
     setShowDeleteModal(false);
     await userService.deleteUser(userData.user_id);
     handleLogout();
@@ -59,7 +58,6 @@ function User() {
         // undefined acusa erro no back
         ...(updatedData?.password ? { user_password: updatedData.password } : {})
       });
-      console.log("Dados atualizados do usuário:", updatedUser);
       // log de debug
       setUserData(updatedUser);
       setShowModal(false);
@@ -79,7 +77,6 @@ function User() {
           animal
         };
       });
-      console.log ("Enriched Favorites:", enrichedFavorites);
       setUserFavorites(enrichedFavorites);
     } catch (err) {
       console.error("Falha ao buscar animais:", err);
@@ -101,16 +98,10 @@ function User() {
         const userAdoptions = await adoptionService.getAllAdoptionsByUser(profileData.user_id);
         const userFavorites = await favoriteService.getAllFavoritesByUser(profileData.user_id);
         const allAnimals = await animalService.getAllAnimals();
-        console.log ("iniciando handleFavorites");
-        console.log ("userFavorites:", userFavorites);
-        console.log ("allAnimals:", allAnimals);
         await handleFavorites(userFavorites, allAnimals);
         setAllAnimals(allAnimals);
         setUserData(profileData);
         setUserAdoptions(userAdoptions);
-        console.log("Dados do usuário:", profileData);
-        console.log("Adoções do usuário:", userAdoptions);
-        console.log("Favoritos do usuário:", userFavorites);
       } catch (err) {
         console.error("Falha ao buscar dados do usuário:", err);
         setError("Não foi possível carregar suas informações. Tente novamente mais tarde.");

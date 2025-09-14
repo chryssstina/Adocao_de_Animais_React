@@ -77,7 +77,6 @@ const createAdoptionHandler = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
-    console.log("Body recebido:", req.body);
 }
 
 
