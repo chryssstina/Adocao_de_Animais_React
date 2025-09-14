@@ -23,7 +23,6 @@ const getAllUsers = async () => {
 };
 
 
-
 const getUserById = async (user_id) => {
   try {
     const response = await api.get(`/api/user/profile/${user_id}`);
@@ -74,7 +73,7 @@ export default {
   getUserProfile,
   getAllUsers,
   getUserById,
-  createUser,
+  // createUser,
   updateUser,
   deleteUser
 };

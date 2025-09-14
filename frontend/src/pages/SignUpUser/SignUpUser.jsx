@@ -1,12 +1,14 @@
 import './SignUpUser.css';
-import DogAdocao from '../../assets/PhotoGallery/dog_feira_adocao.jpg'
-import { Link, useNavigate } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import DogAdocao from '../../assets/PhotoGallery/dog_feira_adocao.jpg';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import authService from '../../services/authService';
 
 function SignUpUser() {
-
+    const navigate = useNavigate();
+    const [user_name, setUserName] = useState('');
+    const [user_email, setUserEmail] = useState('');
+    const [user_password, setUserPassword] = useState('');
     const navigate = useNavigate(); //para fazer o redirecionamento para a página de login
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
@@ -83,8 +85,6 @@ function SignUpUser() {
 
                 </div>
             </main>
-
-
         </>
     );
 }

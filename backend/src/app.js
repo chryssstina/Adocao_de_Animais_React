@@ -1,15 +1,24 @@
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
 const cors = require('cors');
 
 
-app.use(express.json()); //middleware para passar e receber requisições no corpo do json
+// habilita CORS para o frontend em http://localhost:5173
+app.use(cors({
+    origin: "http://localhost:5173"
+}));
+
+// se quiser liberar para qualquer origem durante o desenvolvimento, use:
+// app.use(cors());
 
 app.use(cors({
   origin: 'http://localhost:5173', // Permite requisições do frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
 }));
 
+// rotas
 const userRoutes = require('./routes/userRoute');
 const animalRoutes = require('./routes/animalRoute');
 const adoptionRoutes = require('./routes/adoptionRoute');
@@ -20,12 +29,12 @@ const authRoutes = require('./routes/authRoute');
 app.use('/api/user', userRoutes);
 app.use('/api/animal', animalRoutes);
 app.use('/api', adoptionRoutes);
-app.use(favoriteRoutes); //passando a rota mais detalhada em favoriteRoutes
+app.use(favoriteRoutes);
 app.use("/api/auth", authRoutes);
 
 // apenas teste
 app.get('/', (req, res) => {
-    res.send('Rodando a API da ONG!')
+    res.send('Rodando a API da ONG!');
 });
 
 module.exports = app;

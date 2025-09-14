@@ -138,7 +138,6 @@ function AdminAnimals() {
   // Confirma a exclusão e atualiza a lista
   const handleConfirmDelete = () => {
     if (animalToDelete) {
-      console.log(`Excluindo animal ID: ${animalToDelete.id}`);
       setAnimals(animals.filter(animal => animal.id !== animalToDelete.id));
       handleCloseDeleteModal();
     }

@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import authService from '../../services/authService';
 
 function Login() {
-
     const navigate = useNavigate();
 
     const {
@@ -22,6 +21,7 @@ function Login() {
             };
 
             const response = await authService.userLogin(payload);
+
 
             // salva token no localStorage
             localStorage.setItem("token", response.token);
@@ -41,7 +41,6 @@ function Login() {
 
     return (
         <>
-
             <main className="login-main">
                 <div className="container-login">
                     <form className="input-fields">
@@ -49,6 +48,7 @@ function Login() {
                             <h1>Login</h1>
                             <p>Entre na sua conta</p>
                         </div>
+
                         <div className="mb-3 input-login">
                             <label htmlFor="user-email" className="form-label">Email</label>
                             <input type="email"
@@ -77,8 +77,6 @@ function Login() {
 
                 </div>
             </main>
-
-
         </>
     );
 }

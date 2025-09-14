@@ -31,7 +31,6 @@ function AdminUsers() {
   };
 
   const handleSaveUser = (userId, updatedData) => {
-    console.log("Salvando dados para o usuário ID:", userId, updatedData);
     setUsers(users.map(user =>
       user.id === userId ? { ...user, ...updatedData } : user
     ));
@@ -40,7 +39,6 @@ function AdminUsers() {
 
   const handleDeleteUser = () => {
     if (userToDelete) {
-      console.log(`Excluindo usuário ID: ${userToDelete.id}`);
       setUsers(users.filter(user => user.id !== userToDelete.id));
       setShowDeleteModal(false);
       setUserToDelete(null);

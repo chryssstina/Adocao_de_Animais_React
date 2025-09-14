@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function AdoptionCardAdmin({ animal, onDeleteClick }) {
   const { animal_id, animal_name, animal_status } = animal;
-  // console.log("Animal recebido:", animal);
 
 
   function formatDate(dateString) {
