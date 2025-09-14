@@ -3,17 +3,16 @@ import "./AdminAnimals.css";
 import AdoptionCardAdmin from "../../../components/AdminComponents/AdoptionCardAdmin/AdoptionCardAdmin";
 import DeleteConfirmationModal from "../../../components/AdminComponents/DeleteComponentModal/DeleteComponentModal";
 import animalService from "../../../services/animalService";
-import { useNavigate, useParams } from "react-router-dom";
+// import { useNavigate, useParams } from "react-router-dom";
 
 function AdminAnimals() {
 
   //para editar os dados do animal 
-  const { id } = useParams()
-  const editing = Boolean(id)
+  // const { id } = useParams()
 
   const [animals, setAnimals] = useState([]);
   const [saving, setSaving] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
 
   const [form, setForm] = useState({
@@ -30,14 +29,14 @@ function AdminAnimals() {
   //carrega a lista de animais cadastrados
   async function loadAnimals() {
     try {
-      setLoading(true);
+      // setLoading(true);
       setError({});
       const data = await animalService.getAllAnimals();
       setAnimals(data);
     } catch (error) {
       setError("Erro ao carregar animais:" + error.message);
     } finally {
-      setLoading(false);
+      // setLoading(false);
 
     }
   }
