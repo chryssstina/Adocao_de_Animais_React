@@ -17,27 +17,20 @@ import AdminWelcome from "./pages/Admin/AdminWelcome/AdminWelcome";
 function App() {
   return (
     <BrowserRouter>
+      {/* 1. Crie um container flexível que ocupe a altura mínima da tela */}
       <div className="d-flex flex-column min-vh-100">
         <Navbar />
 
+        {/* 2. Faça o conteúdo principal crescer para preencher o espaço */}
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/sign-up" element={<SignUpUser />} />
             <Route path="/animais" element={<AnimalList />} />
-            <Route
-              path="/detalhes-do-animal/:id"
-              element={<AnimalDetails route="/animais" />}
-            />
-            <Route
-              path="/adotados/:id"
-              element={<AnimalDetails route="/user" />}
-            />
-            <Route
-              path="/admin/animais/adotados/:id"
-              element={<AnimalDetails route="/admin/animais" />}
-            />
+            <Route path="/detalhes-do-animal/:id" element={<AnimalDetails route="/animais" />} />
+            <Route path="/adotados/:id" element={<AnimalDetails route="/user" />} />
+            <Route path="/admin/animais/adotados/:id" element={<AnimalDetails route="/admin/animais" />} />
             <Route path="/pedido/:id" element={<UserAdoptionDetail />} />
             <Route path="/user" element={<User />} />
             <Route path="/admin" element={<Admin />}>
@@ -49,7 +42,7 @@ function App() {
             <Route path="*" element={<h1>404 - Página não encontrada</h1>} />
           </Routes>
         </main>
-
+        
         <Footer />
       </div>
     </BrowserRouter>
