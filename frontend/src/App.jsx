@@ -20,8 +20,6 @@ function App() {
       {/* 1. Crie um container flexível que ocupe a altura mínima da tela */}
       <div className="d-flex flex-column min-vh-100">
         <Navbar />
-
-        {/* 2. Faça o conteúdo principal crescer para preencher o espaço */}
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -42,7 +40,6 @@ function App() {
             <Route path="*" element={<h1>404 - Página não encontrada</h1>} />
           </Routes>
         </main>
-        
         <Footer />
       </div>
     </BrowserRouter>
