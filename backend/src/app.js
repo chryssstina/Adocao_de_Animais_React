@@ -3,6 +3,9 @@ const cors = require('cors');
 
 const app = express();
 
+// Middleware para parsear JSON no corpo das requisições
+app.use(express.json());
+
 
 // habilita CORS para o frontend em http://localhost:5173
 app.use(cors({

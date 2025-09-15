@@ -8,15 +8,15 @@ function AdoptionDetailInfo({ animalName, animalAge, animalWeight, favoriteFood,
             <main className="main-basic-animal-info">
                 <img src={photo} />
                 <div className="left-info">
-                    <h1 className="card-title"><i class="bi bi-hearts"></i>{animalName}</h1>
+                    <h1 className="card-title"><i className="bi bi-hearts"></i>{animalName}</h1>
 
                     <div className="container-basic-animal-info">
                         <h3 className="card-title custom-title-basic-animal">Informações básicas</h3>
-                        <p class="card-text">Nome: {animalName}</p>
-                        <p class="card-text">Idade: {animalAge}</p>
-                        <p class="card-text">Peso: {animalWeight}</p>
-                        <p class="card-text">Comida favorita: {favoriteFood}</p>
-                        <p class="card-text">Categoria: {animalCategory}</p>
+                        <p className="card-text">Nome: {animalName}</p>
+                        <p className="card-text">Idade: {animalAge}</p>
+                        <p className="card-text">Peso: {animalWeight}</p>
+                        <p className="card-text">Comida favorita: {favoriteFood}</p>
+                        <p className="card-text">Categoria: {animalCategory}</p>
                     </div>
 
                     <div className="container-basic-animal-info">
@@ -31,9 +31,9 @@ function AdoptionDetailInfo({ animalName, animalAge, animalWeight, favoriteFood,
 
                     <div className="container-basic-animal-info">
                         <h3 className="card-title custom-title-basic-animal">Informações básicas</h3>
-                        <p class="card-text">Nome: José</p>
-                        <p class="card-text">Email: jose@example.com</p>
-                        <p class="card-text">Data do pedido: 01/01/2022</p>
+                        <p className="card-text">Nome: José</p>
+                        <p className="card-text">Email: jose@example.com</p>
+                        <p className="card-text">Data do pedido: 01/01/2022</p>
                     </div>
 
                     <div className="container-basic-animal-info">

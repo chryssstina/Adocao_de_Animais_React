@@ -8,7 +8,6 @@ import DeleteAccountModal from "../../components/UserComponents/DeleteAccountMod
 
 // --- 1. IMPORTE SEU SERVIÇO DE USUÁRIO ---
 import userService from "../../services/userService"; // Ajuste o caminho se necessário
-import animalService from "../../services/animalService"; // Ajuste o caminho se necessário
 import adoptionService from "../../services/adoptionService"; // Ajuste o caminho se necessário
 import favoriteService from "../../services/favoriteService"; // Ajuste o caminho se necessário
 
@@ -67,25 +66,9 @@ function User() {
     }
   };
 
-  // nao é boa pratica
-  const handleFavorites = async (userFavorites, allAnimals) => {
-    try {
-      const enrichedFavorites = userFavorites.map(fav => {
-        const animal = allAnimals.find(animal => animal.animal_id === fav.animal.animal_id);
-        return {
-          ...fav,
-          animal
-        };
-      });
-      setUserFavorites(enrichedFavorites);
-    } catch (err) {
-      console.error("Falha ao buscar animais:", err);
-    }
-  };
-
   // --- 3. BUSCAR DADOS DA API QUANDO O COMPONENTE MONTAR ---
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('token');
     if (!token) {
       navigate('/login');
       return;
@@ -96,26 +79,22 @@ function User() {
         setLoading(true);
         const profileData = await userService.getUserProfile();
         const userAdoptions = await adoptionService.getAllAdoptionsByUser(profileData.user_id);
-        const userFavorites = await favoriteService.getAllFavoritesByUser(profileData.user_id);
-        const allAnimals = await animalService.getAllAnimals();
-        await handleFavorites(userFavorites, allAnimals);
-        // Removido: setAllAnimals(allAnimals);
+        
+        const enrichedUserFavorites = await favoriteService.getAllFavoritesByUser(profileData.user_id);
+        
         setUserData(profileData);
         setUserAdoptions(userAdoptions);
+        setUserFavorites(enrichedUserFavorites); // Define o estado diretamente com a resposta da API
+
       } catch (err) {
-        console.error("Falha ao buscar dados do usuário:", err);
-        setError("Não foi possível carregar suas informações. Tente novamente mais tarde.");
-        if (err.response && (err.response.status === 401 || err.response.status === 403)) {
-          // Agora é seguro chamar handleLogout aqui
-          handleLogout();
-        }
+        console.error("Erro ao buscar dados do usuário:", err);
+        setError("Não foi possível carregar os dados do usuário. Tente novamente mais tarde.");
       } finally {
         setLoading(false);
       }
     };
 
     fetchUserProfile();
-    // 3. Agora o useEffect está correto e seguro, sem loops infinitos
   }, [navigate, handleLogout]);
 
   // --- RENDERIZAÇÃO DE CARREGAMENTO E ERRO ---

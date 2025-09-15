@@ -35,7 +35,7 @@ function SignUpUser() {
         <>
             <main className="signUp-main">
                 <div className="container-signUp">
-                    <form class="input-fields" onSubmit={handleSubmit}>
+                    <form className="input-fields" onSubmit={handleSubmit}>
                         <div className="custom-title">
                             <h1>Cadastre-se</h1>
                             <p>Crie sua conta e conheça nossos AUmigos</p>
@@ -43,30 +43,34 @@ function SignUpUser() {
 
                         {error && <p className="text-danger">{error}</p>}
 
-                        <div class="mb-3 input-signUp">
-                            <label for="user-name" class="form-label">Nome</label>
+                        <div className="mb-3 input-signUp">
+                            <label htmlFor="user-name" className="form-label">Nome</label>
                             <input type="text"
-                                class="form-control"
+                                className="form-control"
                                 value={userName}
                                 placeholder="Insira seu nome"
                                 onChange={(e) => setUserName(e.target.value)}
                                 required />
                         </div>
 
-                        <div class="mb-3 input-signUp">
-                            <label for="user-email" class="form-label">Email</label>
-                            <input type="email"
-                                class="form-control"
+                        <div className="mb-3 input-signUp">
+                            <label htmlFor="user-email" className="form-label">Email</label>
+                            <input
+                                type="email"
+                                id="user-email"
+                                name="user_email"
+                                className="form-control"
                                 value={userEmail}
                                 placeholder="Insira seu e-mail"
                                 onChange={(e) => setUserEmail(e.target.value)}
-                                required />
+                                required
+                            />
                         </div>
 
-                        <div class="mb-3 input-signUp">
-                            <label for="user-passsword" class="form-label">Senha</label>
+                        <div className="mb-3 input-signUp">
+                            <label htmlFor="user-password" className="form-label">Senha</label>
                             <input type="password"
-                                class="form-control"
+                                className="form-control"
                                 value={userPassword}
                                 placeholder="Insira sua senha"
                                 onChange={(e) => setUserPassword(e.target.value)}

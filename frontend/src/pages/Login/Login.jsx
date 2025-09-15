@@ -22,7 +22,6 @@ function Login() {
 
             const response = await authService.userLogin(payload);
 
-
             // salva token no localStorage
             localStorage.setItem("token", response.token);
             localStorage.setItem("user", JSON.stringify(response.user));
@@ -43,7 +42,7 @@ function Login() {
         <>
             <main className="login-main">
                 <div className="container-login">
-                    <form className="input-fields">
+                    <form className="input-fields" onSubmit={handleSubmit(onSubmit)}>
                         <div className="custom-title">
                             <h1>Login</h1>
                             <p>Entre na sua conta</p>
@@ -70,7 +69,7 @@ function Login() {
                                 })} />
                             {errors.userPassword && <span>{errors.userPassword.message}</span>}
                         </div>
-                        <button onClick={handleSubmit(onSubmit)} className="btn btn-lg btn-login">Entrar</button>
+                        <button type="submit" className="btn btn-lg btn-login">Entrar</button>
                     </form>
 
                     <img src={DogAdocao} alt="Dog Trovão" />
