@@ -25,7 +25,7 @@ function User() {
   const handleCloseDeleteModal = () => setShowDeleteModal(false);
 
   const [userData, setUserData] = useState(null);
-  const [allAnimals, setAllAnimals] = useState([]);
+  // Removido: const [allAnimals, setAllAnimals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -99,7 +99,7 @@ function User() {
         const userFavorites = await favoriteService.getAllFavoritesByUser(profileData.user_id);
         const allAnimals = await animalService.getAllAnimals();
         await handleFavorites(userFavorites, allAnimals);
-        setAllAnimals(allAnimals);
+        // Removido: setAllAnimals(allAnimals);
         setUserData(profileData);
         setUserAdoptions(userAdoptions);
       } catch (err) {
