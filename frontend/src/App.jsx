@@ -19,7 +19,7 @@ function App() {
     <BrowserRouter>
       <div className="d-flex flex-column min-vh-100">
         <Navbar />
-
+{/* tyeste */}
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -49,7 +49,10 @@ function App() {
             <Route path="*" element={<h1>404 - Página não encontrada</h1>} />
           </Routes>
         </main>
+{/* teste */}
 
+
+{/* teste */}
         <Footer />
       </div>
     </BrowserRouter>
