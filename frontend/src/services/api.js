@@ -8,7 +8,7 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     // 1. Pega o token do localStorage
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('token');
 
     // 2. Se o token existir, adiciona ao cabeçalho de autorização
     if (token) {
