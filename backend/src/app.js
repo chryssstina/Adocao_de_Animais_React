@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 
+const app = express();
+
 
 // habilita CORS para o frontend em http://localhost:5173
 app.use(cors({
