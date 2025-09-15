@@ -21,7 +21,7 @@ function Footer() {
   ];
 
   return (
-    <div className="container-fluid" id="footer">
+    <div className="container-fluid " id="footer">
       <footer className="py-5">
         <div className="row">
           <div className="col-md-4 mb-4">
