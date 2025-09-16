@@ -1,8 +1,21 @@
 import "./AdoptionCardAdmin.css";
 import { Link } from "react-router-dom";
 
-function AdoptionCardAdmin({ animal, onDeleteClick }) {
-  const { animal_id, animal_name, animal_status } = animal;
+
+function AdoptionCardAdmin({ animal, onDeleteClick, onEditClick }) {
+  const { animal_id, 
+          animal_name,
+          animal_status,
+          animal_age,
+          animal_sex,
+          animal_weight,
+          animal_favorite_food,
+          animal_category, 
+          animal_description, 
+          animal_registration_date,
+          fk_admin_user_id
+         } = animal;
+
 
 
   function formatDate(dateString) {
@@ -18,7 +31,7 @@ function AdoptionCardAdmin({ animal, onDeleteClick }) {
 
   //exibe a data de acordo com o status do animal
   function getDisplayDate(animal) {
-    const firstAdoption = animal.adoptions[0];
+    const firstAdoption = animal.adoptions?.[0];
 
     if (animal.animal_status === "ADOPTED") {
       const date = formatDate(firstAdoption?.processed_date);
@@ -54,6 +67,11 @@ function AdoptionCardAdmin({ animal, onDeleteClick }) {
           <Link className="btn btn-outline-secondary btn-sm" to={`/admin/animais/adotados/${animal_id}`}>
             <i className="bi bi-eye"></i>
           </Link>
+
+          <button className="btn btn-warning btn-sm" onClick={() => onEditClick(animal)}>
+            <i className="bi bi-pencil"></i>
+          </button>
+
           <button className="btn btn-danger btn-sm" onClick={() => onDeleteClick(animal)}>
             <i className="bi bi-trash"></i>
           </button>

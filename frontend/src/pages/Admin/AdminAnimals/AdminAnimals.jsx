@@ -14,6 +14,8 @@ function AdminAnimals() {
   const [saving, setSaving] = useState(false);
   // const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
+  const [editingAnimalById, setEditingAnimalById] = useState(null);
+
 
   const [form, setForm] = useState({
     animal_name: '',
@@ -23,7 +25,8 @@ function AdminAnimals() {
     animal_weight: '',
     animal_favorite_food: '',
     animal_description: '',
-    animal_category: ''
+    animal_category: '',
+    fk_admin_user_id: ''
   });
 
   //carrega a lista de animais cadastrados
@@ -65,20 +68,36 @@ function AdminAnimals() {
     setForm(prev => ({ ...prev, [name]: value }))
   }
 
-  function onSubmit(e) {
+   // função de edição
+  const handleEditClick = (animal) => {
+    //console.log("Animal para editar:", animal); 
+
+    setForm({
+      animal_name: animal.animal_name,
+      animal_age: animal.animal_age,
+      animal_sex: animal.animal_sex,
+      animal_status: animal.animal_status,
+      animal_weight: animal.animal_weight,
+      animal_favorite_food: animal.animal_favorite_food,
+      animal_category: animal.animal_category,
+      animal_description: animal.animal_description,
+      fk_admin_user_id: 1,
+    });
+
+    setEditingAnimalById(animal.animal_id);
+  };
+
+
+
+  const onSubmit = async (e) => {
     e.preventDefault();
     setError({}); // limpa erros anteriores
-
     const validationErrors = validateForm(); //recebe todos os erros
 
     if (Object.keys(validationErrors).length > 0) {
       setError(validationErrors);
       return;
     }
-
-
-    const admin_user_id = 1; //apenas para teste
-
 
     const payload = {
       animal_name: form.animal_name,
@@ -89,15 +108,26 @@ function AdminAnimals() {
       animal_favorite_food: form.animal_favorite_food,
       animal_category: form.animal_category,
       animal_description: form.animal_description,
-      fk_admin_user_id: admin_user_id
+      fk_admin_user_id: 1
     }
 
     try {
       setSaving(true);
-      animalService.createAnimal(payload);
-      alert("Animal cadastrado com sucesso :)");
+      if (editingAnimalById) {
+        // Edição
+        const updatedAnimal = await animalService.updateAnimal(editingAnimalById, payload);
+        console.log(updatedAnimal);
 
-      //limpa os campos do form após o envio
+        // Atualiza a lista local
+        setAnimals(prev => prev.map(a => a.animal_id === editingAnimalById ? updatedAnimal : a));
+        alert("Animal atualizado com sucesso :)");
+      } else {
+        // Criação
+        const newAnimal = await animalService.createAnimal(payload);
+        setAnimals(prev => [...prev, newAnimal]);
+        alert("Animal cadastrado com sucesso :)");
+      }
+      // Limpa formulário e reseta edição
       setForm({
         animal_name: '',
         animal_age: '',
@@ -108,10 +138,9 @@ function AdminAnimals() {
         animal_description: '',
         animal_category: ''
       });
-
+      setEditingAnimalById(null);
     } catch (error) {
       setError(error.message);
-
     } finally {
       setSaving(false);
     }
@@ -134,13 +163,23 @@ function AdminAnimals() {
     setAnimalToDelete(null);
   };
 
-  // Confirma a exclusão e atualiza a lista
-  const handleConfirmDelete = () => {
-    if (animalToDelete) {
-      setAnimals(animals.filter(animal => animal.id !== animalToDelete.id));
+ // Confirma a exclusão e atualiza a lista
+  const handleConfirmDelete = async () => {
+    if (!animalToDelete) return;
+
+    try {
+      await animalService.deleteAnimal(animalToDelete.animal_id);
+      setAnimals(prev => prev.filter(a => a.animal_id !== animalToDelete.animal_id));
       handleCloseDeleteModal();
+
+    } catch (err) {
+      console.error("Erro ao excluir animal:", err);
+      alert("Erro ao excluir animal. Tente novamente.");
     }
   };
+
+
+ 
 
 
   return (
@@ -295,8 +334,8 @@ function AdminAnimals() {
                         id="imagem" />
                     </div> */}
 
-                    <button type="submit" className="btn btn-dark w-100" disabled={saving} >
-                      {saving ? 'Cadastrando...' : 'Cadastrar'}
+                    <button type="submit" className="btn btn-dark w-100"  >
+                      {saving ? 'Salvando...' : 'Salvar'}
                     </button>
                   </form>
                 </div>
@@ -319,6 +358,7 @@ function AdminAnimals() {
                         <AdoptionCardAdmin
                           key={animal.animal_id}
                           animal={animal}
+                          onEditClick={handleEditClick}
                           onDeleteClick={handleDeleteClick}
                         />
                       ))
@@ -336,7 +376,7 @@ function AdminAnimals() {
         show={showDeleteModal}
         onClose={handleCloseDeleteModal}
         onDelete={handleConfirmDelete}
-        itemName={animalToDelete ? animalToDelete.animalName : ""}
+        itemName={animalToDelete ? animalToDelete.animal_name : ""}
       />
     </>
   );

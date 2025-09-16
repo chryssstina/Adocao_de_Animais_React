@@ -6,12 +6,16 @@ import './AnimalDetails.css'
 import animalService from "../../services/animalService";
 import adoptionService from "../../services/adoptionService";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 function AnimalDetails({ route }) {
 
     const { id } = useParams();
     const animalId = parseInt(id);
+    const { user, isAuthenticated } = useAuth();
+    const navigate = useNavigate();
 
     const [animal, setAnimal] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -37,15 +41,29 @@ function AnimalDetails({ route }) {
         load();
     }, [animalId]);
 
-    const userId = 2;
+    //const userId = 2;
 
+    const handleOpenModal = () => {
+        if (!isAuthenticated) {
+            alert("Você precisa estar logado para solicitar uma adoção!");
+            navigate("/login");
+            return;
+        }
 
+        if (!user || !user.user_id) {
+            alert("Erro ao identificar usuário. Por favor, faça login novamente.");
+            navigate("/login");
+            return;
+        }
+
+        setShowModal(true);
+    };
     // reason = motivo de adoção
     const handleSaveAdoption = async (reason) => {
         try {
             const payload = {
                 fk_animal_id: animalId,
-                fk_adopting_user_id: userId,
+                fk_adopting_user_id: user.user_id,
                 reason: reason
             };
             await adoptionService.createAdoption(payload);
@@ -87,18 +105,20 @@ function AnimalDetails({ route }) {
                     label='Quero Adotar'
                     icon="bi bi-arrow-down-left-circle"
                     className="ms-2"
-                    onClick={() => setShowModal(true)}
+                    onClick={handleOpenModal}
                 />
 
 
             </div>
 
-            <UserAdoptModal
-                show={showModal}
-                onClose={() => setShowModal(false)}
-                onSave={handleSaveAdoption}
-                animalName={animal.animal_name}
-            />
+            {isAuthenticated && (
+                <UserAdoptModal
+                    show={showModal}
+                    onClose={() => setShowModal(false)}
+                    onSave={handleSaveAdoption}
+                    animalName={animal.animal_name}
+                />
+            )}
         </>
     );
 }
