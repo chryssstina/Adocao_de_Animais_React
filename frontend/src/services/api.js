@@ -13,5 +13,3 @@ api.interceptors.request.use((config) => {
 });
 
 export default api;
-
-// VITE_API_URL -> corresponde ao endereço do back

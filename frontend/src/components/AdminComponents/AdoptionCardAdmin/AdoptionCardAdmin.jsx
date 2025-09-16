@@ -1,6 +1,7 @@
 import "./AdoptionCardAdmin.css";
 import { Link } from "react-router-dom";
 
+
 function AdoptionCardAdmin({ animal, onDeleteClick, onEditClick }) {
   const { animal_id, 
           animal_name,
@@ -14,7 +15,7 @@ function AdoptionCardAdmin({ animal, onDeleteClick, onEditClick }) {
           animal_registration_date,
           fk_admin_user_id
          } = animal;
-  // console.log("Animal recebido:", animal);
+
 
 
   function formatDate(dateString) {

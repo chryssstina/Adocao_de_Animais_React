@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
+import {formatDate} from "../../../utils/formatters";
 import "./AdoptionCard.css";
 
 function AdoptionCard({id, animalName, adoptionDate, status, photo }) {
-  return status === "disponivel" ? (
-    <></>
-  ) : (
+  return (
     <section className="adoption-card" id="adoption-card-section">
       <div className="card mb-3" id="adoption-card-content">
         <div className="row g-0 align-items-center">
@@ -24,19 +23,19 @@ function AdoptionCard({id, animalName, adoptionDate, status, photo }) {
               {adoptionDate === "" ? (
                 <span className="text-warning">Aguardando Adoção</span>
               ) : (
-                <span className="no-underline">{adoptionDate}</span>
+                <span className="no-underline">{formatDate(adoptionDate)}</span>
               )}
             </div>
           </div>
 
           <div className="col-md-6 d-flex justify-content-end align-items-center gap-2 flex-wrap">
-            {status === "pendente" ? (
+            {status === "IN_PROGRESS" ? (
               <span className="badge bg-warning text-dark no-underline">
                 Pendente
               </span>
-            ) : status === "aprovado" ? (
+            ) : status === "ACCEPTED" ? (
               <span className="badge bg-success no-underline">Aprovado</span>
-            ) : status === "rejeitado" ? (
+            ) : status === "DECLINED" ? (
               <span className="badge bg-danger no-underline">Rejeitado</span>
             ) : (
               <span className="badge bg-secondary no-underline">

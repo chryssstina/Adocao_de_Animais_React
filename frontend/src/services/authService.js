@@ -5,6 +5,7 @@ import api from './api';
 
 const userRegister = async (payload) => {
   try {
+    // Debug log removed
     const response = await api.post(`/api/auth/register`, payload);
     return response.data;
   } catch (error) {

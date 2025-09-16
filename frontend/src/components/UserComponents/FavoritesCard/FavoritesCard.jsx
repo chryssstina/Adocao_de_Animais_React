@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import "./FavoritesCard.css";
 
-function FavoritesCard({ id, animalName, animalAge, animalCategory, photo }) {
-  return  (
+function FavoritesCard({ id, animalName, animalAge, animalGender, photo }) {
+  return (
     <section className="adoption-card" id="adoption-card-section">
       <div className="card mb-3" id="adoption-card-content">
         <div className="row g-0 align-items-center">
@@ -19,11 +19,21 @@ function FavoritesCard({ id, animalName, animalAge, animalCategory, photo }) {
             <h5 className="card-title mb-1">{animalName}</h5>
             <div className="text-muted small">
               <i className="bi bi-house-heart me-1"></i>
-                <span className="no-underline">{animalCategory}</span>
+              <div>
+                {animalGender === "MALE" ? (
+                  <span className="no-underline">Macho</span>
+                ) : animalGender === "FEMALE" ? (
+                  <span className="no-underline">Fêmea</span>
+                ) : (
+                  <span className="badge bg-danger no-underline">
+                    Desconhecido
+                  </span>
+                )}
+              </div>
             </div>
             <div className="text-muted small">
               <i className="bi bi-cake me-1"></i>
-                <span className="no-underline">{animalAge}</span>
+              <span className="no-underline">{animalAge}</span>
             </div>
           </div>
 

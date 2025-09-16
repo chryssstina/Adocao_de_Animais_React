@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import authService from '../../services/authService';
 
 function Login() {
-
     const navigate = useNavigate();
 
     const {
@@ -41,14 +40,14 @@ function Login() {
 
     return (
         <>
-
             <main className="login-main">
                 <div className="container-login">
-                    <form className="input-fields">
+                    <form className="input-fields" onSubmit={handleSubmit(onSubmit)}>
                         <div className="custom-title">
                             <h1>Login</h1>
                             <p>Entre na sua conta</p>
                         </div>
+
                         <div className="mb-3 input-login">
                             <label htmlFor="user-email" className="form-label">Email</label>
                             <input type="email"
@@ -70,15 +69,13 @@ function Login() {
                                 })} />
                             {errors.userPassword && <span>{errors.userPassword.message}</span>}
                         </div>
-                        <button onClick={handleSubmit(onSubmit)} className="btn btn-lg btn-login">Entrar</button>
+                        <button type="submit" className="btn btn-lg btn-login">Entrar</button>
                     </form>
 
                     <img src={DogAdocao} alt="Dog Trovão" />
 
                 </div>
             </main>
-
-
         </>
     );
 }

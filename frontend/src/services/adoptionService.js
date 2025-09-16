@@ -26,7 +26,6 @@ const getAllAdoptionsByUser = async (fk_adopting_user_id) => {
 
 
 
-
 const getAdoptionById = async (adoption_id) => {
   try {
     const response = await api.get(`/api/adoption/${adoption_id}`);
