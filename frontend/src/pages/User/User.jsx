@@ -212,7 +212,7 @@ function User() {
                           id={userAdoptions.adoption_id}
                           animalName={userAdoptions.animal.animal_name}
                           adoptionDate={userAdoptions.order_date}
-                          status={userAdoptions.animal.animal_status}
+                          status={userAdoptions.adoption_status}
                         />
                       ))
                     )}
@@ -246,7 +246,7 @@ function User() {
                           id={userFavorites.animal.animal_id}
                           animalName={userFavorites.animal.animal_name}
                           animalAge={userFavorites.animal.animal_age}
-                          animalCategory={userFavorites.animal.animal_sex}
+                          animalGender={userFavorites.animal.animal_sex}
                           photo={userFavorites.animal.photo}
                         />
                       ))
