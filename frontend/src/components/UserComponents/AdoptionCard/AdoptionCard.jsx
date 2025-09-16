@@ -29,13 +29,13 @@ function AdoptionCard({id, animalName, adoptionDate, status, photo }) {
           </div>
 
           <div className="col-md-6 d-flex justify-content-end align-items-center gap-2 flex-wrap">
-            {status === "pendente" ? (
+            {status === "IN_PROGRESS" ? (
               <span className="badge bg-warning text-dark no-underline">
                 Pendente
               </span>
-            ) : status === "aprovado" ? (
+            ) : status === "ACCEPTED" ? (
               <span className="badge bg-success no-underline">Aprovado</span>
-            ) : status === "rejeitado" ? (
+            ) : status === "DECLINED" ? (
               <span className="badge bg-danger no-underline">Rejeitado</span>
             ) : (
               <span className="badge bg-secondary no-underline">
