@@ -42,6 +42,7 @@ function RegisteredAnimalsCardAdmin({
       <td>{processed_date ? formatDate(processed_date) : <span>-</span>}</td>
       <td>{reason}</td>
       <td>{animal.animal_id}</td>
+      <td>{animal.animal_name}</td>
       <td>{adopting_user.user_email}</td>
       <td>
         <div className="d-flex gap-2">
@@ -55,12 +56,7 @@ function RegisteredAnimalsCardAdmin({
               </button>
             </>
           )}
-          {/* <Link
-            className="btn btn-outline-secondary btn-sm"
-            to={`/adotados/${id}`}
-          >
-            <i className="bi bi-eye" id="view-icon"></i>
-          </Link> */}
+          
         </div>
       </td>
     </tr>

@@ -22,7 +22,7 @@ function AdminAdoptions() {
     }
   };
 
-  const handleStatusChange = async (adoption_id, newStatus) => {
+  const handleStatusChange = async (adoption, newStatus) => {
 
     const payload = {
       adoption_status: newStatus,
@@ -30,7 +30,7 @@ function AdminAdoptions() {
       fk_adopting_user_id: adoption.adopting_user.user_id,
     }
     try {
-      await adoptionService.updateAdoption(adoption_id, payload);
+      await adoptionService.updateAdoption(adoption.adoption_id, payload);
 
       setUserAdoptions((prevAdoptions) =>
         prevAdoptions.map((a) =>
@@ -82,7 +82,8 @@ function AdminAdoptions() {
                         <th scope="col">Data do pedido</th>
                         <th scope="col">Data de aceite/recusa</th>
                         <th scope="col">Razão</th>
-                        <th scope="col">Animal ID</th>
+                        <th scope="col">ID(Animal)</th>
+                        <th scope="col">Nome (animal)</th>
                         <th scope="col">Adotante</th>
                         <th scope="col">Ações</th>
                       </tr>
@@ -109,8 +110,8 @@ function AdminAdoptions() {
                             reason={adoption.reason}
                             animal={adoption.animal}
                             adopting_user={adoption.adopting_user}
-                            onAccept={() => handleStatusChange(adoption.adoption_id, "ACCEPTED")}
-                            onReject={() => handleStatusChange(adoption.adoption_id, "DECLINED")}
+                            onAccept={() => handleStatusChange(adoption, "ACCEPTED")}
+                            onReject={() => handleStatusChange(adoption, "DECLINED")}
                           />
                         ))
                       )}
