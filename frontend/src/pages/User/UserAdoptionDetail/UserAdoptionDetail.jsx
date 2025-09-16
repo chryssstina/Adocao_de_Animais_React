@@ -1,5 +1,3 @@
-// Arquivo: /src/pages/User/UserAdoptionDetail/UserAdoptionDetail.jsx
-
 import { useState, useEffect } from "react"; // 1. Importamos os hooks do React
 import { useParams } from "react-router-dom";
 import adoptionService from "../../../services/adoptionService"; // 2. Importamos seu serviço de adoção
@@ -18,7 +16,9 @@ function UserAdoptionDetail() {
         const fetchAdoptionDetails = async () => {
             try {
                 // Usamos o serviço para buscar um processo de adoção específico pelo ID
+                console.log("Buscando detalhes da adoção para ID:", id); // Log para depuração
                 const data = await adoptionService.getAdoptionById(id);
+                console.log("Dados da adoção recebidos:", data); // Log para depuração
                 setAdoptionData(data);
             } catch (err) {
                 console.error("Erro ao buscar detalhes da adoção:", err);
