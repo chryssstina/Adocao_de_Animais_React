@@ -23,8 +23,8 @@ function DeleteConfirmationModal({ show, onClose, onDelete, itemName = "" }) {
             </div>
             <div className="modal-body">
               <p>
-                Tem certeza que deseja <span className="fw-bold text-danger">excluir</span>
-                {itemName && <> o item <span className="fw-semibold">"{itemName}"</span></>}?
+                Tem certeza que deseja <span className="text-danger">excluir</span>
+                {itemName && <> o animalzinho <span className="fw-semibold">"{itemName}"</span></>}?
                 <br />
                 <span className="text-danger">Essa ação não pode ser desfeita.</span>
               </p>
