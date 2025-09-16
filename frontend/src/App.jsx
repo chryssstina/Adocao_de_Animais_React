@@ -17,10 +17,7 @@ import AdminWelcome from "./pages/Admin/AdminWelcome/AdminWelcome";
 function App() {
   return (
     <BrowserRouter>
-      {/* 1. Crie um container flexível que ocupe a altura mínima da tela */}
-      <div className="d-flex flex-column min-vh-100">
         <Navbar />
-        <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -39,9 +36,7 @@ function App() {
             </Route>
             <Route path="*" element={<h1>404 - Página não encontrada</h1>} />
           </Routes>
-        </main>
         <Footer />
-      </div>
     </BrowserRouter>
   );
 }
