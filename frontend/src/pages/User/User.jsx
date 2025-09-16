@@ -93,6 +93,9 @@ function User() {
         setUserData(profileData);
         setUserAdoptions(userAdoptions);
         setUserFavorites(enrichedUserFavorites); // Define o estado diretamente com a resposta da API
+        console.log ("Dados do usuário:", profileData);
+        console.log ("Adoções do usuário:", userAdoptions);
+        console.log ("Favoritos do usuário:", enrichedUserFavorites);
       } catch (err) {
         console.error("Erro ao buscar dados do usuário:", err);
         setError(
@@ -206,14 +209,13 @@ function User() {
                         Você ainda não fez nenhum pedido de adoção.
                       </p>
                     ) : (
-                      userAdoptions.map((adoption) => (
+                      userAdoptions.map((userAdoptions) => (
                         <AdoptionCard
-                          key={adoption.id}
-                          id={adoption.id}
-                          animalName={adoption.animalName}
-                          adoptionDate={adoption.adoptionDate}
-                          status={adoption.statusAdoption}
-                          photo={adoption.photo}
+                          key={userAdoptions.adoption_id}
+                          id={userAdoptions.adoption_id}
+                          animalName={userAdoptions.animal.animal_name}
+                          adoptionDate={userAdoptions.order_date}
+                          status={userAdoptions.animal.animal_status}
                         />
                       ))
                     )}
