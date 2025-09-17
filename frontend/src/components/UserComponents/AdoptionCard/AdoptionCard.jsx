@@ -52,7 +52,7 @@ function AdoptionCard({id, animalName, adoptionDate, status, photo, onCancel }) 
               Ver Detalhes
             </Link>
             {
-              status === "rejeitado" ? (
+              status === "DECLINED" ? (
                 <button className="btn btn-danger btn-sm" id="DeleteButton" onClick={handleCancelClick}>Remover</button>
               ) : (
                 <button className="btn btn-danger btn-sm" id="CancelButton" onClick={handleCancelClick}>Cancelar</button>
