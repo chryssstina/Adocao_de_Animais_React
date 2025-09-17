@@ -70,7 +70,7 @@ model Animals{
   animal_description          String
   animal_category             AnimalsCategories  @default(ANIMAL)
   animal_registration_date    DateTime  @default(now())
-  animal_photo                String?   @default("/images/DEFAULTIIMAGE.png")
+  animal_photo                String?   @default("/images/DEFAULTIMAGE.png")
 
   fk_admin_user_id            Int
 
