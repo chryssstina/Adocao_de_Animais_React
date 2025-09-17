@@ -24,20 +24,20 @@ function AnimalDetails({ route }) {
     const [showModal, setShowModal] = useState(false);
 
 
-    async function load() {
-        try {
-            setLoading(true);
-            setError(null);
-            const data = await animalService.getAnimalById(animalId);
-            setAnimal(data);
-        } catch (error) {
-            setError("Erro ao carregar animal: " + error.message);
-        } finally {
-            setLoading(false);
-        }
-    }
-
     useEffect(() => {
+        async function load() {
+            try {
+                console.log("Carregando detalhes do animal com ID:", animalId);
+                setLoading(true);
+                setError(null);
+                const data = await animalService.getAnimalById(animalId);
+                setAnimal(data);
+            } catch (error) {
+                setError("Erro ao carregar animal: " + error.message);
+            } finally {
+                setLoading(false);
+            }
+        }
         load();
     }, [animalId]);
 
@@ -70,6 +70,7 @@ function AnimalDetails({ route }) {
             alert("Pedido de adoção enviado com sucesso!");
             setShowModal(false);
         } catch (error) {
+            console.error("Erro ao criar adoção:", error);
             alert("Erro ao enviar pedido de adoção.");
         }
     };
