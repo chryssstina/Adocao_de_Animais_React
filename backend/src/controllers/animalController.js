@@ -58,8 +58,7 @@ const createAnimalHandler = async(req, res) => {
         || !animal_category
         || !animal_favorite_food
         || !animal_description
-        || !fk_admin_user_id
-        || !animal_photo){
+        || !fk_admin_user_id){
 
         return res.status(400).json({ error: 'Todos os dados são obrigatórios.' });
     }
