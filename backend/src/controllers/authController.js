@@ -12,7 +12,7 @@ const jwt = require("jsonwebtoken");
 const userRegister = async (req, res) => {
 
     try {
-        const { user_name, user_email, user_password } = req.body;
+        const { user_name, user_email, user_password, user_type } = req.body;
 
         if (!user_name || !user_email || !user_password) {
             return res.status(400).json({ error: "Todos os campos são obrigatórios" });
@@ -23,7 +23,7 @@ const userRegister = async (req, res) => {
             return res.status(400).json({ error: "E-mail já cadastrado" });
         }
 
-        const newUser = await createUserModel(user_name, user_email, user_password);
+        const newUser = await createUserModel(user_name, user_email, user_password, user_type);
         res.status(201).json({ message: "Usuário cadastrado com sucesso", newUser });
     } catch (error) {
         res.status(500).json({ error: "Erro ao registrar usuário" });
