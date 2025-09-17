@@ -3,132 +3,18 @@ import "./AdminAnimals.css";
 import AdoptionCardAdmin from "../../../components/AdminComponents/AdoptionCardAdmin/AdoptionCardAdmin";
 import DeleteConfirmationModal from "../../../components/AdminComponents/DeleteComponentModal/DeleteComponentModal";
 import animalService from "../../../services/animalService";
-// import { useNavigate, useParams } from "react-router-dom";
 
 function AdminAnimals() {
+    // NOVO: Pega os dados do usuário logado do localStorage
+    // Lembre-se que você pode ter a chave "user" em uma variável de ambiente
+    const loggedInUser = JSON.parse(localStorage.getItem("user"));
 
-  //para editar os dados do animal 
-  // const { id } = useParams()
+    const [animals, setAnimals] = useState([]);
+    const [saving, setSaving] = useState(false);
+    const [error, setError] = useState({});
+    const [editingAnimalById, setEditingAnimalById] = useState(null);
 
-  const [animals, setAnimals] = useState([]);
-  const [saving, setSaving] = useState(false);
-  // const [loading, setLoading] = useState(false);
-  const [error, setError] = useState({});
-  const [editingAnimalById, setEditingAnimalById] = useState(null);
-
-
-  const [form, setForm] = useState({
-    animal_name: '',
-    animal_age: '',
-    animal_sex: '',
-    animal_status: '',
-    animal_weight: '',
-    animal_favorite_food: '',
-    animal_description: '',
-    animal_category: '',
-    fk_admin_user_id: ''
-  });
-
-  //carrega a lista de animais cadastrados
-  async function loadAnimals() {
-    try {
-      // setLoading(true);
-      setError({});
-      const data = await animalService.getAllAnimals();
-      setAnimals(data);
-    } catch (error) {
-      setError("Erro ao carregar animais:" + error.message);
-    } finally {
-      // setLoading(false);
-
-    }
-  }
-
-  useEffect(() => {
-    loadAnimals();
-  }, []);
-
-  function validateForm() {
-    const newErrors = {}; //agrupa os erros e exibe nos campos obgrigatórios que não foram preenchidos
-
-    if (!form.animal_name.trim()) newErrors.animal_name = "Nome é obrigatório";
-    if (!form.animal_age.trim()) newErrors.animal_age = "Idade é obrigatória";
-    if (!form.animal_sex) newErrors.animal_sex = "Selecione o sexo do animal";
-    if (!form.animal_status) newErrors.animal_status = "Selecione o status do animal";
-    if (!form.animal_weight.trim()) newErrors.animal_weight = "Peso é obrigatório";
-    if (!form.animal_favorite_food.trim()) newErrors.animal_favorite_food = "Comida favorita é obrigatória";
-    if (!form.animal_category) newErrors.animal_category = "Selecione a categoria do animal";
-    if (!form.animal_description.trim()) newErrors.animal_description = "Descrição é obrigatória";
-
-    return newErrors;
-  }
-
-  function onChange(e) {
-    const { name, value } = e.target
-    setForm(prev => ({ ...prev, [name]: value }))
-  }
-
-   // função de edição
-  const handleEditClick = (animal) => {
-    //console.log("Animal para editar:", animal); 
-
-    setForm({
-      animal_name: animal.animal_name,
-      animal_age: animal.animal_age,
-      animal_sex: animal.animal_sex,
-      animal_status: animal.animal_status,
-      animal_weight: animal.animal_weight,
-      animal_favorite_food: animal.animal_favorite_food,
-      animal_category: animal.animal_category,
-      animal_description: animal.animal_description,
-      fk_admin_user_id: 1,
-    });
-
-    setEditingAnimalById(animal.animal_id);
-  };
-
-
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setError({}); // limpa erros anteriores
-    const validationErrors = validateForm(); //recebe todos os erros
-
-    if (Object.keys(validationErrors).length > 0) {
-      setError(validationErrors);
-      return;
-    }
-
-    const payload = {
-      animal_name: form.animal_name,
-      animal_age: form.animal_age,
-      animal_sex: form.animal_sex,
-      animal_status: form.animal_status,
-      animal_weight: form.animal_weight,
-      animal_favorite_food: form.animal_favorite_food,
-      animal_category: form.animal_category,
-      animal_description: form.animal_description,
-      fk_admin_user_id: 1
-    }
-
-    try {
-      setSaving(true);
-      if (editingAnimalById) {
-        // Edição
-        const updatedAnimal = await animalService.updateAnimal(editingAnimalById, payload);
-        console.log(updatedAnimal);
-
-        // Atualiza a lista local
-        setAnimals(prev => prev.map(a => a.animal_id === editingAnimalById ? updatedAnimal : a));
-        alert("Animal atualizado com sucesso :)");
-      } else {
-        // Criação
-        const newAnimal = await animalService.createAnimal(payload);
-        setAnimals(prev => [...prev, newAnimal]);
-        alert("Animal cadastrado com sucesso :)");
-      }
-      // Limpa formulário e reseta edição
-      setForm({
+    const [form, setForm] = useState({
         animal_name: '',
         animal_age: '',
         animal_sex: '',
@@ -136,52 +22,142 @@ function AdminAnimals() {
         animal_weight: '',
         animal_favorite_food: '',
         animal_description: '',
-        animal_category: ''
-      });
-      setEditingAnimalById(null);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setSaving(false);
+        animal_category: '',
+        fk_admin_user_id: ''
+    });
+
+    async function loadAnimals() {
+        try {
+            setError({});
+            const data = await animalService.getAllAnimals();
+            setAnimals(data);
+        } catch (error) {
+            setError({ general: "Erro ao carregar animais: " + error.message });
+        }
     }
-  }
 
+    useEffect(() => {
+        loadAnimals();
+    }, []);
 
-  // --- LÓGICA DO MODAL DE DELEÇÃO ---
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [animalToDelete, setAnimalToDelete] = useState(null);
-
-  // Abre o modal e define qual animal será deletado
-  const handleDeleteClick = (animal) => {
-    setAnimalToDelete(animal);
-    setShowDeleteModal(true);
-  };
-
-  // Fecha o modal
-  const handleCloseDeleteModal = () => {
-    setShowDeleteModal(false);
-    setAnimalToDelete(null);
-  };
-
- // Confirma a exclusão e atualiza a lista
-  const handleConfirmDelete = async () => {
-    if (!animalToDelete) return;
-
-    try {
-      await animalService.deleteAnimal(animalToDelete.animal_id);
-      setAnimals(prev => prev.filter(a => a.animal_id !== animalToDelete.animal_id));
-      handleCloseDeleteModal();
-
-    } catch (err) {
-      console.error("Erro ao excluir animal:", err);
-      alert("Erro ao excluir animal. Tente novamente.");
+    function validateForm() {
+        const newErrors = {};
+        if (!form.animal_name.trim()) newErrors.animal_name = "Nome é obrigatório";
+        if (!form.animal_age.trim()) newErrors.animal_age = "Idade é obrigatória";
+        if (!form.animal_sex) newErrors.animal_sex = "Selecione o sexo do animal";
+        if (!form.animal_status) newErrors.animal_status = "Selecione o status do animal";
+        if (!form.animal_weight.trim()) newErrors.animal_weight = "Peso é obrigatório";
+        if (!form.animal_favorite_food.trim()) newErrors.animal_favorite_food = "Comida favorita é obrigatória";
+        if (!form.animal_category) newErrors.animal_category = "Selecione a categoria do animal";
+        if (!form.animal_description.trim()) newErrors.animal_description = "Descrição é obrigatória";
+        return newErrors;
     }
-  };
 
+    function onChange(e) {
+        const { name, value } = e.target;
+        setForm(prev => ({ ...prev, [name]: value }));
+    }
 
- 
+    const handleEditClick = (animal) => {
+        setForm({
+            animal_name: animal.animal_name,
+            animal_age: animal.animal_age,
+            animal_sex: animal.animal_sex,
+            animal_status: animal.animal_status,
+            animal_weight: animal.animal_weight,
+            animal_favorite_food: animal.animal_favorite_food,
+            animal_category: animal.animal_category,
+            animal_description: animal.animal_description,
+            // NOVO: Usa o ID do usuário logado ao editar
+            fk_admin_user_id: loggedInUser.user_id,
+        });
+        setEditingAnimalById(animal.animal_id);
+    };
 
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        setError({});
+        const validationErrors = validateForm();
 
+        if (Object.keys(validationErrors).length > 0) {
+            setError(validationErrors);
+            return;
+        }
+
+        // NOVO: Garante que temos um usuário logado antes de submeter
+        if (!loggedInUser || !loggedInUser.user_id) {
+            setError({ general: "Erro: Usuário administrador não identificado. Faça login novamente." });
+            return;
+        }
+
+        const payload = {
+            animal_name: form.animal_name,
+            animal_age: form.animal_age,
+            animal_sex: form.animal_sex,
+            animal_status: form.animal_status,
+            animal_weight: form.animal_weight,
+            animal_favorite_food: form.animal_favorite_food,
+            animal_category: form.animal_category,
+            animal_description: form.animal_description,
+            // NOVO: Usa o ID do usuário logado ao criar/editar
+            fk_admin_user_id: loggedInUser.user_id
+        };
+
+        try {
+            setSaving(true);
+            if (editingAnimalById) {
+                const updatedAnimal = await animalService.updateAnimal(editingAnimalById, payload);
+                setAnimals(prev => prev.map(a => a.animal_id === editingAnimalById ? updatedAnimal : a));
+                alert("Animal atualizado com sucesso!");
+            } else {
+                const newAnimal = await animalService.createAnimal(payload);
+                setAnimals(prev => [...prev, newAnimal]);
+                alert("Animal cadastrado com sucesso!");
+            }
+            setForm({
+                animal_name: '',
+                animal_age: '',
+                animal_sex: '',
+                animal_status: '',
+                animal_weight: '',
+                animal_favorite_food: '',
+                animal_description: '',
+                animal_category: ''
+            });
+            setEditingAnimalById(null);
+        } catch (error) {
+            setError({ general: "Erro ao salvar animal: " + (error.response?.data?.error || error.message) });
+        } finally {
+            setSaving(false);
+        }
+    };
+
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [animalToDelete, setAnimalToDelete] = useState(null);
+
+    const handleDeleteClick = (animal) => {
+        setAnimalToDelete(animal);
+        setShowDeleteModal(true);
+    };
+
+    const handleCloseDeleteModal = () => {
+        setShowDeleteModal(false);
+        setAnimalToDelete(null);
+    };
+
+    const handleConfirmDelete = async () => {
+        if (!animalToDelete) return;
+        try {
+            await animalService.deleteAnimal(animalToDelete.animal_id);
+            setAnimals(prev => prev.filter(a => a.animal_id !== animalToDelete.animal_id));
+            handleCloseDeleteModal();
+        } catch (err) {
+            console.error("Erro ao excluir animal:", err);
+            alert("Erro ao excluir animal. Tente novamente.");
+        }
+    };
+
+    
   return (
     <>
       <section className="container-fluid bg-light py-4" id="admin-animals-page">
