@@ -91,6 +91,28 @@ function User() {
     }
   };
 
+  const handleRemoveFavorite = async (favoriteId) => {
+    try {
+      // Chama o serviço para deletar o favorito no backend
+      console.log("Removendo favorito com ID:", favoriteId);
+      await favoriteService.removeFavorite(favoriteId);
+      console.log("Favorito removido com sucesso no backend.");
+
+      // Atualiza a lista de favoritos na tela, removendo o que foi cancelado
+      // Isso evita a necessidade de recarregar a página
+      setUserFavorites((currentFavorites) =>
+        currentFavorites.filter(
+          (favorite) => favorite.favorite_id !== favoriteId
+        )
+      );
+
+      alert("Favorito removido com sucesso!");
+    } catch (err) {
+      console.error("Erro ao remover favorito:", err);
+      alert("Não foi possível remover o favorito. Tente novamente.");
+    }
+  };
+
   // --- 3. BUSCAR DADOS DA API QUANDO O COMPONENTE MONTAR ---
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -265,10 +287,12 @@ function User() {
                         <FavoritesCard
                           key={userFavorites.animal.animal_id}
                           id={userFavorites.animal.animal_id}
+                          favoriteId={userFavorites.favorite_id}
                           animalName={userFavorites.animal.animal_name}
                           animalAge={userFavorites.animal.animal_age}
                           animalGender={userFavorites.animal.animal_sex}
                           photo={userFavorites.animal.photo}
+                          onCancel={handleRemoveFavorite}
                         />
                       ))
                     )}
