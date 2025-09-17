@@ -17,7 +17,7 @@ const getAllAdoptionsModel = async () => {
                     animal_id: true,
                     animal_name: true, // só o nome do animal
                     animal_status: true,
-                    aimal_photo: true
+                    animal_photo: true
                 }
             },
             adopting_user: {

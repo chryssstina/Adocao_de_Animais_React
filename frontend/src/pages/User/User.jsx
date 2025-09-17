@@ -133,9 +133,6 @@ function User() {
         setUserData(profileData);
         setUserAdoptions(userAdoptions);
         setUserFavorites(enrichedUserFavorites); // Define o estado diretamente com a resposta da API
-        console.log("Dados do usuário:", profileData);
-        console.log("Adoções do usuário:", userAdoptions);
-        console.log("Favoritos do usuário:", enrichedUserFavorites);
       } catch (err) {
         console.error("Erro ao buscar dados do usuário:", err);
         setError(
