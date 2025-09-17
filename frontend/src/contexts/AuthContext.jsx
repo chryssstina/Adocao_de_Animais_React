@@ -9,7 +9,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true); // Começa como true
+    const [loading, setLoading] = useState(true); // Starts as true
 
     // Este useEffect agora vai validar o token na inicialização
     useEffect(() => {
