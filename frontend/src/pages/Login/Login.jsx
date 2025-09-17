@@ -23,9 +23,9 @@ function Login() {
             const response = await authService.userLogin(payload);
 
             // salva token no localStorage
-            localStorage.setItem("token", response.token);
+            localStorage.setItem(import.meta.env.VITE_TOKEN_KEY, response.token);
             localStorage.setItem("user", JSON.stringify(response.user));
-
+            
             alert("Login realizado com sucesso!");
             if (response.user.user_type === "ADMIN_USER") {
                 navigate("/admin"); // painel de admin

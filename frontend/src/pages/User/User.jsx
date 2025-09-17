@@ -113,7 +113,7 @@ function User() {
 
   // --- 3. BUSCAR DADOS DA API QUANDO O COMPONENTE MONTAR ---
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
     if (!token) {
       navigate("/login");
       return;

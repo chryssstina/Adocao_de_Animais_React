@@ -15,7 +15,7 @@ function AnimalList() {
     const [filterCategory, setFilterCategory] = useState("Todos");
     
     // 2. Precisamos saber se o usuário está logado para o botão de favoritar
-    const isLoggedIn = !!localStorage.getItem("token");
+    const isLoggedIn = !!localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
     const user = JSON.parse(localStorage.getItem("user")); // Pegamos os dados do usuário
 
     useEffect(() => {
