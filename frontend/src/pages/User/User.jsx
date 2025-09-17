@@ -53,24 +53,28 @@ function User() {
   const handleUpdateUser = async (updatedData) => {
     // 'updatedData' is now an object like { nome: "New Name" }
     try {
-        const payload = {
-            user_name: updatedData.nome,
-        };
+      const payload = {
+        user_name: updatedData.nome,
+      };
 
-        const updatedUser = await userService.updateUser(userData.user_id, payload);
-        
-        // Atualiza os dados do usuário na tela com a resposta da API
-        setUserData(updatedUser);
-        
-        // Fecha o modal
-        setShowModal(false);
-        alert("Nome atualizado com sucesso!");
+      const updatedUser = await userService.updateUser(
+        userData.user_id,
+        payload
+      );
 
+      // Atualiza os dados do usuário na tela com a resposta da API
+      setUserData(updatedUser);
+
+      // Fecha o modal
+      setShowModal(false);
+      alert("Nome atualizado com sucesso!");
     } catch (err) {
-        console.error("Falha ao atualizar dados do usuário:", err);
-        setError("Não foi possível atualizar suas informações. Tente novamente mais tarde.");
+      console.error("Falha ao atualizar dados do usuário:", err);
+      setError(
+        "Não foi possível atualizar suas informações. Tente novamente mais tarde."
+      );
     }
-};
+  };
 
   const handleCancelAdoption = async (adoptionId) => {
     try {
@@ -207,6 +211,16 @@ function User() {
                   </p>
                 </div>
                 <div className="d-flex flex-column gap-2">
+                  {userData?.user_type === "ADMIN_USER" && (
+                    <Link
+                      className="btn btn-primary" // Usei uma classe diferente para destacar
+                      to="/admin"
+                    >
+                      <i className="bi bi-shield-lock"></i> Painel do
+                      Administrador
+                    </Link>
+                  )}
+
                   <button
                     className="btn btn-outline-secondary ... button_black"
                     onClick={handleEditClick}

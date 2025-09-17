@@ -27,11 +27,8 @@ function Login() {
             localStorage.setItem(import.meta.env.VITE_USER_KEY, JSON.stringify(response.user));
             
             alert("Login realizado com sucesso!");
-            if (response.user.user_type === "ADMIN_USER") {
-                navigate("/admin"); // painel de admin
-            } else {
-                navigate("/user"); // perfil de usuário comum
-            }
+            navigate("/user"); // perfil de usuário comum
+            
         } catch (erro) {
             console.error(erro);
             alert("E-mail ou senha inválidos.");

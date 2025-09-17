@@ -43,6 +43,7 @@ function AnimalList() {
 
         } catch (error) {
             // Propaga o erro para quem chamou a função
+            console.error("Erro ao carregar animais:", error);
             throw new Error("Erro ao carregar animais: " + error.message);
         }
     }, [isLoggedIn, user?.user_id]); // Dependências da função
