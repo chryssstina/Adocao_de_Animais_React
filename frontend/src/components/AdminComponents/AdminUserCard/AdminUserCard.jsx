@@ -1,25 +1,29 @@
-// import "./AdminUserCard.css"; // Se tiver estilos específicos
+// Arquivo: /src/components/AdminComponents/AdminUserCard/AdminUserCard.jsx
 
-// ALTERADO: Recebe o objeto 'user' completo e a função 'onEdit'
-function AdminUserCard({ user, onEdit, onDelete }) {
-  const { name, email, role, createdAt } = user;
+// 1. Recebe a nova prop 'formatDate' que passamos no AdminUsers.jsx
+function AdminUserCard({ user, onEdit, onDelete, formatDate }) {
+  
+  // 2. Desestrutura os campos com os NOMES CORRETOS vindos da sua API
+  const { user_id, user_name, user_email, user_type, user_registration_date } = user;
 
   return (
     <tr>
-      <td>{user.id}</td>
-      <td><strong>{name}</strong></td>
-      <td>{email}</td>
+      {/* 3. Usa os novos nomes de campos no JSX */}
+      <td>{user_id}</td>
+      <td><strong>{user_name}</strong></td>
+      <td>{user_email}</td>
       <td>
-        {role === "Adotante" && <span className="badge bg-info-subtle text-primary">Adotante</span>}
-        {role === "Administrador" && <span className="badge bg-danger-subtle text-danger">Administrador</span>}
+        {/* 4. A lógica agora verifica 'user_type' e os valores do ENUM do seu backend */}
+        {user_type === "DEFAULT_USER" && <span className="badge bg-info-subtle text-primary">Adotante</span>}
+        {user_type === "ADMIN_USER" && <span className="badge bg-danger-subtle text-danger">Administrador</span>}
       </td>
-      <td>{createdAt}</td>
-      <td>
-        <div className="d-flex gap-2">
-          {/* ALTERADO: O onClick agora chama a função 'onEdit' passada pelo pai */}
+      {/* 5. Usa a função formatDate para exibir a data corretamente */}
+      <td>{formatDate(user_registration_date)}</td>
+      <td className="text-center">
+        <div className="d-flex gap-2 justify-content-center">
           <button 
             className="btn btn-outline-dark btn-sm"
-            onClick={() => onEdit(user)} // Passa os dados deste usuário para o pai
+            onClick={() => onEdit(user)} // Passa o objeto 'user' completo para a função de editar
           >
             <i className="bi bi-pencil"></i>
           </button>
