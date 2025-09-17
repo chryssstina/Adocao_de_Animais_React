@@ -1,6 +1,5 @@
-import api from '../services/api';
-
 import { createContext, useContext, useState, useEffect } from 'react';
+import userService from '../services/userService'; // Import your userService here!
 
 const AuthContext = createContext();
 
@@ -10,23 +9,35 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); // Starts as true
 
+    // Este useEffect agora vai validar o token na inicialização
     useEffect(() => {
-        const savedUser = localStorage.getItem(import.meta.env.VITE_USER_KEY);
-        const token = localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
+        const validateToken = async () => {
+            const token = localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
 
-        if (savedUser && token) {
-            try {
-                setUser(JSON.parse(savedUser));
-            } catch (error) {
-                console.error('Erro ao parsear usuário do localStorage:', error);
-                localStorage.removeItem(import.meta.env.VITE_USER_KEY);
-                localStorage.removeItem(import.meta.env.VITE_TOKEN_KEY);
+            if (token) {
+                try {
+                    // O interceptor do axios já vai adicionar o token no header
+                    // Tentamos buscar o perfil do usuário
+                    const profileData = await userService.getUserProfile();
+                    
+                    // Se a chamada funcionou, o token é válido e o usuário existe
+                    // We use the login function to ensure consistency
+                    login(profileData, token);
+
+                } catch (error) {
+                    // Se deu erro (401, etc.), o token é inválido ou o usuário foi deletado
+                    console.error("Token inválido, fazendo logout:", error);
+                    logout(); // Limpa o localStorage
+                }
             }
-        }
-        setLoading(false);
-    }, []);
+            // Só finalizamos o carregamento depois de tudo
+            setLoading(false); 
+        };
+
+        validateToken();
+    }, []); // O array vazio [] garante que isso só rode UMA VEZ quando a app carrega
 
     const login = (userData, token) => {
         setUser(userData);
@@ -40,8 +51,10 @@ export function AuthProvider({ children }) {
         localStorage.removeItem(import.meta.env.VITE_TOKEN_KEY);
     };
 
+    // Adicionamos 'loading' ao valor do contexto
     const value = {
         user,
+        loading,
         login,
         logout,
         isAuthenticated: !!user
