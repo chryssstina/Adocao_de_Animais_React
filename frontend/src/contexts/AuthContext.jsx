@@ -23,7 +23,7 @@ export function AuthProvider({ children }) {
                     const profileData = await userService.getUserProfile();
                     
                     // Se a chamada funcionou, o token é válido e o usuário existe
-                    // Usamos a função login para garantir consistência
+                    // We use the login function to ensure consistency
                     login(profileData, token);
 
                 } catch (error) {
