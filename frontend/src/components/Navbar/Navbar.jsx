@@ -11,7 +11,7 @@ function Navbar() {
   // --- 1. VERIFICAR SE O USUÁRIO ESTÁ LOGADO ---
   // Checamos se o token existe no localStorage.
   // O `!!` transforma o resultado (uma string ou null) em um booleano (true ou false).
-  const isLoggedIn = !!localStorage.getItem('token');
+  const isLoggedIn = !!localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
 
 
   const handleNavigateWithScroll = (sectionId) => {

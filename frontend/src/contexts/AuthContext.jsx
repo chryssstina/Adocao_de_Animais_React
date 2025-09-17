@@ -13,16 +13,16 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const savedUser = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
+        const savedUser = localStorage.getItem(import.meta.env.VITE_USER_KEY);
+        const token = localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
 
         if (savedUser && token) {
             try {
                 setUser(JSON.parse(savedUser));
             } catch (error) {
                 console.error('Erro ao parsear usuário do localStorage:', error);
-                localStorage.removeItem('user');
-                localStorage.removeItem('token');
+                localStorage.removeItem(import.meta.env.VITE_USER_KEY);
+                localStorage.removeItem(import.meta.env.VITE_TOKEN_KEY);
             }
         }
         setLoading(false);
@@ -30,14 +30,14 @@ export function AuthProvider({ children }) {
 
     const login = (userData, token) => {
         setUser(userData);
-        localStorage.setItem('user', JSON.stringify(userData));
-        localStorage.setItem('token', token);
+        localStorage.setItem(import.meta.env.VITE_USER_KEY, JSON.stringify(userData));
+        localStorage.setItem(import.meta.env.VITE_TOKEN_KEY, token);
     };
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
+        localStorage.removeItem(import.meta.env.VITE_USER_KEY);
+        localStorage.removeItem(import.meta.env.VITE_TOKEN_KEY);
     };
 
     const value = {
