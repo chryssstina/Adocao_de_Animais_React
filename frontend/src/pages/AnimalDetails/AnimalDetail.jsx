@@ -27,7 +27,6 @@ function AnimalDetails({ route }) {
     useEffect(() => {
         async function load() {
             try {
-                console.log("Carregando detalhes do animal com ID:", animalId);
                 setLoading(true);
                 setError(null);
                 const data = await animalService.getAnimalById(animalId);
