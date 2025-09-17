@@ -35,6 +35,10 @@ const getAdoptionByIdModel = async (adoption_id) => {
     return prisma.Adoptions.findUnique({
         where: {
             adoption_id: adoption_id
+        },
+        include: {
+            animal: true,
+            adopting_user: true // Isso diz ao Prisma: "Traga todos os dados do usuário adotante relacionado"
         }
     })
 }
