@@ -144,7 +144,7 @@ function AnimalList() {
                                         animalName={animal.animal_name}
                                         animalAge={animal.animal_age}
                                         animalCategory={animal.animal_category}
-                                        // photo={animal.animal_photo}
+                                        photo={animal.animal_photo}
                                         
                                         // 6. PASSA AS NOVAS PROPS PARA O CARD
                                         isLoggedIn={isLoggedIn}
