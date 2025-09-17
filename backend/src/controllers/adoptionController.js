@@ -62,7 +62,7 @@ const createAdoptionHandler = async (req, res) => {
     }
 
     try {
-        // ✨ PASSO 1: VERIFICAR SE JÁ EXISTE UM PEDIDO ✨
+        // STEP 1: CHECK IF REQUEST ALREADY EXISTS
         const existingAdoption = await prisma.Adoptions.findFirst({
             where: {
                 fk_animal_id: fk_animal_id,
