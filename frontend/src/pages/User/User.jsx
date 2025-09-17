@@ -32,7 +32,7 @@ function User() {
   const [userFavorites, setUserFavorites] = useState([]);
 
   const handleLogout = useCallback(() => {
-    localStorage.removeItem("authToken");
+    localStorage.removeItem(import.meta.env.VITE_TOKEN_KEY);
     navigate("/");
     window.location.reload();
   }, [navigate]);

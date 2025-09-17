@@ -8,7 +8,7 @@ function AdminWelcome() {
   const [adminName, setAdminName] = useState("");
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem(import.meta.env.VITE_USER_KEY);
     if (storedUser) {
       const user = JSON.parse(storedUser);
       if (user.user_type === "ADMIN_USER") {
