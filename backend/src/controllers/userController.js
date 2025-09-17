@@ -70,23 +70,37 @@ const createUserHandler = async (req, res) => {
 
 
 const updateUserHandler = async (req, res) => {
-    const user_id = parseInt(req.params.user_id);
-    const { user_name, user_email, user_password, user_type } = req.body;
+    const { user_id } = req.params;
+    const { user_name, user_email, user_password } = req.body;
 
-    if (!user_name || !user_email || !user_password) {
-        return res.status(400).json({ error: 'Todos os dados são obrigatórios.' });
+    // 1. Crie um objeto vazio para os dados da atualização
+    const dataToUpdate = {};
+
+    // 2. Adicione ao objeto APENAS os campos que foram enviados na requisição
+    if (user_name) {
+        dataToUpdate.user_name = user_name;
+    }
+    if (user_email) {
+        dataToUpdate.user_email = user_email;
+    }
+    if (user_password) {
+        // Lembre-se de fazer o hash da senha aqui antes de salvar, se necessário!
+        // Ex: dataToUpdate.user_password = await bcrypt.hash(user_password, 10);
+    }
+
+    // 3. Verifique se pelo menos UM campo foi enviado para atualização
+    if (Object.keys(dataToUpdate).length === 0) {
+        return res.status(400).json({ error: "Nenhum dado para atualizar foi fornecido." });
     }
 
     try {
-        const updatedUser = await updateUserModel(user_id, user_name, user_email, user_password, user_type);
+        // 4. Passe o objeto dinâmico para a função do model
+        const updatedUser = await updateUserModel(parseInt(user_id), dataToUpdate);
         res.status(200).json(updatedUser);
     } catch (error) {
-        if (error.message == 'Usuário não encontrado.') {
-            res.status(404).json({ error: 'Usuário não encontrado.' });
-        }
-        res.status(500).json({ error: 'Erro ao adicionar usuário.' });
+        res.status(500).json({ error: error.message });
     }
-}
+};
 
 
 const deleteUserHandler = async (req, res) => {

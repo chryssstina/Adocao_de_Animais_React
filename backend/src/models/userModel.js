@@ -60,34 +60,25 @@ const createUserModel = async (user_name, user_email, user_password, user_type) 
 }
 
 
-const updateUserModel = async (user_id, user_name, user_email, user_password, user_type) => {
+const updateUserModel = async (user_id, dataToUpdate) => { // 1. Recebe o ID e um objeto com os dados
     const userExist = await getUserByIdModel(user_id);
 
     if (!userExist) {
         throw new Error("Usuário não encontrado");
     }
 
-    let updatedPassword = userExist.user_password; // mantém a mesma senha
-    if (user_password) {
-        updatedPassword = await bcrypt.hash(user_password, 10);
-        // recriptografa a senha se o usuário tiver alterado/atualizado
+    // 2. Se uma nova senha foi enviada no objeto, criptografa ela
+    if (dataToUpdate.user_password) {
+        dataToUpdate.user_password = await bcrypt.hash(dataToUpdate.user_password, 10);
     }
 
     return prisma.Users.update({
         where: {
             user_id: user_id
         },
-
-        data: {
-            user_name: user_name,
-            user_email: user_email,
-            user_password: updatedPassword,
-            user_type: user_type,
-            // user_registration_date: new Date(user_registration_date)
-            // trocar talvez para data de atualização do cadastro
-        }
-    })
-}
+        data: dataToUpdate // 3. Passa o objeto de dados diretamente para o Prisma
+    });
+};
 
 
 const deleteUserModel = async (user_id) => {
