@@ -1,7 +1,11 @@
 import './AdoptionDetailInfo.css'
 import CustomBtn from '../../CustomBtn/CustomBtn';
+import {formatDate} from "../../../utils/formatters";
 
-function AdoptionDetailInfo({ animalName, animalAge, animalWeight, favoriteFood, animalCategory, photo, description }) {
+function AdoptionDetailInfo({ 
+    userName, userEmail, orderDate, reason,
+    animalName, animalAge, animalWeight, favoriteFood, animalCategory, photo, description 
+}) {
 
     return (
         <>
@@ -31,14 +35,14 @@ function AdoptionDetailInfo({ animalName, animalAge, animalWeight, favoriteFood,
 
                     <div className="container-basic-animal-info">
                         <h3 className="card-title custom-title-basic-animal">Informações básicas</h3>
-                        <p className="card-text">Nome: José</p>
-                        <p className="card-text">Email: jose@example.com</p>
-                        <p className="card-text">Data do pedido: 01/01/2022</p>
+                        <p className="card-text">Nome: {userName}</p>
+                        <p className="card-text">Email: {userEmail}</p>
+                        <p className="card-text">Data do pedido: {formatDate(orderDate)}</p>
                     </div>
 
                     <div className="container-basic-animal-info">
                         <h3 className="card-title custom-title-basic-animal">Descrição</h3>
-                        <p>Quero adotar por que amo animais e quero proporcionar um lar feliz para {animalName}.</p>
+                        <p>{reason}</p>
                     </div>
                     <CustomBtn
                     label='Voltar'

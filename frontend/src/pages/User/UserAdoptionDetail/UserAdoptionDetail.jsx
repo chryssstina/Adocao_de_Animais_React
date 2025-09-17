@@ -59,6 +59,8 @@ function UserAdoptionDetail() {
             // photo={adoptionData.animal.animal_photo} // Deixei comentado, como planejado
             
             // Você também pode passar dados da própria adoção, se o componente precisar
+            userName={adoptionData.adopting_user.user_name}
+            userEmail={adoptionData.adopting_user.user_email}
             adoptionStatus={adoptionData.adoption_status}
             orderDate={adoptionData.order_date}
             reason={adoptionData.reason}
