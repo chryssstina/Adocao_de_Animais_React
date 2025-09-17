@@ -22,7 +22,6 @@ function AnimalList() {
     const getEnrichedAnimals = useCallback(async () => {
         try {
             const animalsData = await animalService.getAllAnimals();
-            console.log("Dados brutos dos animais:", animalsData);
             const availableAnimals = animalsData.filter(
                 (animal) => animal.animal_status === 'AVAILABLE'
             );
