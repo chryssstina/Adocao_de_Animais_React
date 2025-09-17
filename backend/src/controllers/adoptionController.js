@@ -75,7 +75,7 @@ const createAdoptionHandler = async (req, res) => {
             return res.status(409).json({ error: "Você já solicitou a adoção deste animal." });
         }
 
-        // Se não existir, continua para criar o novo pedido...
+        // If it doesn't exist, continue to create the new request...
         const newAdoption = await createAdoptionModel(
             "IN_PROGRESS",
             fk_animal_id,
