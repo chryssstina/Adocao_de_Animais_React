@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import "./FavoritesCard.css";
 
-function FavoritesCard({ id, animalName, animalAge, animalGender, photo }) {
+function FavoritesCard({ id, favoriteId, animalName, animalAge, animalGender, photo, onCancel }) {
+
+  const handleCancelClick = () => {
+        // Chama a função que veio do componente pai, passando o ID deste card
+        onCancel(favoriteId);
+  };
+
   return (
     <section className="adoption-card" id="adoption-card-section">
       <div className="card mb-3" id="adoption-card-content">
@@ -44,7 +50,7 @@ function FavoritesCard({ id, animalName, animalAge, animalGender, photo }) {
             >
               Ver Detalhes
             </Link>
-            <button className="btn btn-danger btn-sm" id="DeleteButton">
+            <button className="btn btn-danger btn-sm" id="DeleteButton" onClick={handleCancelClick}>
               Remover
             </button>
           </div>

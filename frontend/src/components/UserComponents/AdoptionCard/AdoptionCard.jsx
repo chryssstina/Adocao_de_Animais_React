@@ -2,7 +2,13 @@ import { Link } from "react-router-dom";
 import {formatDate} from "../../../utils/formatters";
 import "./AdoptionCard.css";
 
-function AdoptionCard({id, animalName, adoptionDate, status, photo }) {
+function AdoptionCard({id, animalName, adoptionDate, status, photo, onCancel }) {
+
+  const handleCancelClick = () => {
+        // Chama a função que veio do componente pai, passando o ID deste card
+        onCancel(id);
+  };
+
   return (
     <section className="adoption-card" id="adoption-card-section">
       <div className="card mb-3" id="adoption-card-content">
@@ -46,10 +52,10 @@ function AdoptionCard({id, animalName, adoptionDate, status, photo }) {
               Ver Detalhes
             </Link>
             {
-              status === "rejeitado" ? (
-                <button className="btn btn-danger btn-sm" id="DeleteButton">Remover</button>
+              status === "DECLINED" ? (
+                <button className="btn btn-danger btn-sm" id="DeleteButton" onClick={handleCancelClick}>Remover</button>
               ) : (
-                <button className="btn btn-danger btn-sm" id="CancelButton">Cancelar</button>
+                <button className="btn btn-danger btn-sm" id="CancelButton" onClick={handleCancelClick}>Cancelar</button>
               )
             }
             
