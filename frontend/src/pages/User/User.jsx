@@ -71,6 +71,26 @@ function User() {
     }
   };
 
+  const handleCancelAdoption = async (adoptionId) => {
+    try {
+      // Chama o serviço para deletar o pedido no backend
+      await adoptionService.deleteAdoption(adoptionId);
+
+      // Atualiza a lista de adoções na tela, removendo a que foi cancelada
+      // Isso evita a necessidade de recarregar a página
+      setUserAdoptions((currentAdoptions) =>
+        currentAdoptions.filter(
+          (adoption) => adoption.adoption_id !== adoptionId
+        )
+      );
+
+      alert("Pedido de adoção cancelado com sucesso!");
+    } catch (err) {
+      console.error("Erro ao cancelar o pedido de adoção:", err);
+      alert("Não foi possível cancelar o pedido. Tente novamente.");
+    }
+  };
+
   // --- 3. BUSCAR DADOS DA API QUANDO O COMPONENTE MONTAR ---
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -213,6 +233,7 @@ function User() {
                           animalName={userAdoptions.animal.animal_name}
                           adoptionDate={userAdoptions.order_date}
                           status={userAdoptions.adoption_status}
+                          onCancel={handleCancelAdoption}
                         />
                       ))
                     )}
