@@ -15,8 +15,8 @@ function AnimalList() {
     const [searchTerm, setSearchTerm] = useState("");
     const [filterCategory, setFilterCategory] = useState("Todos");
     
-    const isLoggedIn = !!localStorage.getItem("token");
-    const user = JSON.parse(localStorage.getItem("user"));
+    const isLoggedIn = !!localStorage.getItem(import.meta.env.VITE_TOKEN_KEY);
+    const user = JSON.parse(localStorage.getItem(import.meta.env.VITE_USER_KEY));
 
     // Usamos useCallback para otimizar e evitar recriações desnecessárias da função
     const getEnrichedAnimals = useCallback(async () => {
