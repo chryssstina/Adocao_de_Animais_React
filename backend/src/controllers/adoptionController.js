@@ -55,30 +55,45 @@ const getAllAdoptionsByUserHandler = async (req, res) => {
 
 
 const createAdoptionHandler = async (req, res) => {
-    const { adoption_status,
-        fk_animal_id,
-        fk_adopting_user_id,
-        reason
-
-    } = req.body;
+    const { fk_animal_id, fk_adopting_user_id, reason } = req.body;
 
     if (!fk_animal_id || !fk_adopting_user_id || !reason) {
         return res.status(400).json({ error: 'Todos os dados são obrigatórios.' });
     }
 
     try {
+        // STEP 1: CHECK IF REQUEST ALREADY EXISTS
+        const existingAdoption = await prisma.Adoptions.findFirst({
+            where: {
+                fk_animal_id: fk_animal_id,
+                fk_adopting_user_id: fk_adopting_user_id
+            }
+        });
+
+        if (existingAdoption) {
+            // Usa o código 409 Conflict, que é mais específico para este caso
+            return res.status(409).json({ error: "Você já solicitou a adoção deste animal." });
+        }
+
+        // If it doesn't exist, continue to create the new request...
         const newAdoption = await createAdoptionModel(
-            adoption_status || "IN_PROGRESS",
+            "IN_PROGRESS",
             fk_animal_id,
             fk_adopting_user_id,
             reason
         );
+
+        await prisma.Animals.update({
+            where: { animal_id: fk_animal_id },
+            data: { animal_status: "IN_PROCESS_ADOPTION" }
+        });
+
         res.status(201).json(newAdoption);
+
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
-}
-
+};
 
 const updateAdoptionHandler = async (req, res) => {
     const adoption_id = parseInt(req.params.adoption_id);
