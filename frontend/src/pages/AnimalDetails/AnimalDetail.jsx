@@ -89,7 +89,7 @@ function AnimalDetails({ route }) {
                 favoriteFood={animal.animal_favorite_food}
                 animalCategory={animal.animal_category}
                 description={animal.animal_description}
-                photo={animal.photo}
+                photo={animal.animal_photo}
                 route={route} //para retornar a página de Todos os Animais
             />
 

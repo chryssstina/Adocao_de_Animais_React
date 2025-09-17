@@ -16,7 +16,8 @@ const getAllAdoptionsModel = async () => {
                 select: {
                     animal_id: true,
                     animal_name: true, // só o nome do animal
-                    animal_status: true
+                    animal_status: true,
+                    aimal_photo: true
                 }
             },
             adopting_user: {
@@ -59,7 +60,8 @@ const getAllAdoptionsByUserModel = async (fk_adopting_user_id) => {
                 select: {
                     animal_id: true,
                     animal_name: true, 
-                    animal_status: true
+                    animal_status: true,
+                    animal_photo: true
                 }
             },
             adopting_user: {

@@ -16,6 +16,7 @@ const getAllFavoritesByUserModel = async (fk_user_id) => {
                     animal_name: true,
                     animal_age: true,     // Campo que o front-end precisa
                     animal_sex: true,     // Campo que o front-end precisa
+                    animal_photo: true    // Campo que o front-end precisa
                 }
             },
             user: {
