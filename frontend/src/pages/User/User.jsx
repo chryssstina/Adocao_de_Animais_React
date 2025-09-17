@@ -51,7 +51,7 @@ function User() {
   };
 
   const handleUpdateUser = async (updatedData) => {
-    // A 'updatedData' agora será um objeto como { nome: "Novo Nome" }
+    // 'updatedData' is now an object like { nome: "New Name" }
     try {
         const payload = {
             user_name: updatedData.nome,
