@@ -94,10 +94,7 @@ function User() {
   const handleRemoveFavorite = async (favoriteId) => {
     try {
       // Chama o serviço para deletar o favorito no backend
-      console.log("Removendo favorito com ID:", favoriteId);
       await favoriteService.removeFavorite(favoriteId);
-      console.log("Favorito removido com sucesso no backend.");
-
       // Atualiza a lista de favoritos na tela, removendo o que foi cancelado
       // Isso evita a necessidade de recarregar a página
       setUserFavorites((currentFavorites) =>
