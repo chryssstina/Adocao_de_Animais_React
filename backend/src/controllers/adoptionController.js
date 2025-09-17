@@ -83,13 +83,17 @@ const createAdoptionHandler = async (req, res) => {
             reason
         );
 
+        await prisma.Animals.update({
+            where: { animal_id: fk_animal_id },
+            data: { animal_status: "IN_PROCESS_ADOPTION" }
+        });
+
         res.status(201).json(newAdoption);
 
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
-
 
 const updateAdoptionHandler = async (req, res) => {
     const adoption_id = parseInt(req.params.adoption_id);
