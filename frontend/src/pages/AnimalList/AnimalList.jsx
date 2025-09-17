@@ -64,7 +64,6 @@ function AnimalList() {
         loadAnimalsAndFavorites();
     }, [isLoggedIn, user?.user_id]); // Roda o efeito se o status de login mudar
 
-    // ... (O useEffect de filtros continua o mesmo) ...
     useEffect(() => {
         let result = allAnimals;
         if (filterCategory !== "Todos") {
@@ -112,7 +111,37 @@ function AnimalList() {
     return (
         <>
             <main className="animal-adoption-main">
-                {/* ... seu código de título e filtros ... */}
+                <div className="custom-title">
+                    <h1>Pets para adoção</h1>
+                    <p>Conheça alguns dos nossos amigos de quatro patas que estão disponíveis para adoção.</p>
+                </div>
+
+                {/* ======================= ÁREA DE FILTROS ======================= */}
+                <div className="container mb-4 filter-container">
+                    <div className="row g-3 justify-content-center align-items-center">
+                        <div className="col-md-6">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Buscar por nome..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                        </div>
+                        <div className="col-md-3">
+                            <select
+                                className="form-select"
+                                value={filterCategory}
+                                onChange={(e) => setFilterCategory(e.target.value)}
+                            >
+                                <option value="Todos">Todas as categorias</option>
+                                <option value="DOG">Apenas Cachorros</option>
+                                <option value="CAT">Apenas Gatos</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                {/* ============================================================= */}
 
                 <div className="row custom-row-animal-adoption justify-content-center">
                     {loading ? (
