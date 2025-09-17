@@ -133,6 +133,9 @@ function User() {
         setUserData(profileData);
         setUserAdoptions(userAdoptions);
         setUserFavorites(enrichedUserFavorites); // Define o estado diretamente com a resposta da API
+        console.log("Dados do usuário:", profileData);
+        console.log("Adoções do usuário:", userAdoptions);
+        console.log("Favoritos do usuário:", enrichedUserFavorites);
       } catch (err) {
         console.error("Erro ao buscar dados do usuário:", err);
         setError(
@@ -254,6 +257,7 @@ function User() {
                           adoptionDate={userAdoptions.order_date}
                           status={userAdoptions.adoption_status}
                           onCancel={handleCancelAdoption}
+                          photo={userAdoptions.animal.animal_photo}
                         />
                       ))
                     )}
@@ -289,7 +293,7 @@ function User() {
                           animalName={userFavorites.animal.animal_name}
                           animalAge={userFavorites.animal.animal_age}
                           animalGender={userFavorites.animal.animal_sex}
-                          photo={userFavorites.animal.photo}
+                          photo={userFavorites.animal.animal_photo}
                           onCancel={handleRemoveFavorite}
                         />
                       ))
