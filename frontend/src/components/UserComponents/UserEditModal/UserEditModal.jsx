@@ -70,7 +70,6 @@ function UserEditModal({ show, onClose, onSave, initialData = {} }) {
                 </div>
             </div>
         </div>
-    </div>
     );
 }
 
