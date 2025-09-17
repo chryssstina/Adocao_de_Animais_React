@@ -51,25 +51,26 @@ function User() {
   };
 
   const handleUpdateUser = async (updatedData) => {
+    // A 'updatedData' agora será um objeto como { nome: "Novo Nome" }
     try {
-      const updatedUser = await userService.updateUser(userData.user_id, {
-        user_name: updatedData.nome,
-        user_email: updatedData.email,
-        // undefined acusa erro no back
-        ...(updatedData?.password
-          ? { user_password: updatedData.password }
-          : {}),
-      });
-      // log de debug
-      setUserData(updatedUser);
-      setShowModal(false);
+        const payload = {
+            user_name: updatedData.nome,
+        };
+
+        const updatedUser = await userService.updateUser(userData.user_id, payload);
+        
+        // Atualiza os dados do usuário na tela com a resposta da API
+        setUserData(updatedUser);
+        
+        // Fecha o modal
+        setShowModal(false);
+        alert("Nome atualizado com sucesso!");
+
     } catch (err) {
-      console.error("Falha ao atualizar dados do usuário:", err);
-      setError(
-        "Não foi possível atualizar suas informações. Tente novamente mais tarde."
-      );
+        console.error("Falha ao atualizar dados do usuário:", err);
+        setError("Não foi possível atualizar suas informações. Tente novamente mais tarde.");
     }
-  };
+};
 
   const handleCancelAdoption = async (adoptionId) => {
     try {
@@ -309,7 +310,6 @@ function User() {
         initialData={{
           nome: userData.user_name,
           email: userData.user_email,
-          password: "",
         }}
       />
       <DeleteAccountModal
