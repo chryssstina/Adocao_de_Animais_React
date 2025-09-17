@@ -22,6 +22,7 @@ function AnimalList() {
     const getEnrichedAnimals = useCallback(async () => {
         try {
             const animalsData = await animalService.getAllAnimals();
+            console.log("Dados brutos dos animais:", animalsData);
             const availableAnimals = animalsData.filter(
                 (animal) => animal.animal_status === 'AVAILABLE'
             );
@@ -144,7 +145,7 @@ function AnimalList() {
                                         animalName={animal.animal_name}
                                         animalAge={animal.animal_age}
                                         animalCategory={animal.animal_category}
-                                        // photo={animal.animal_photo}
+                                        photo={animal.animal_photo}
                                         
                                         // 6. PASSA AS NOVAS PROPS PARA O CARD
                                         isLoggedIn={isLoggedIn}

@@ -22,7 +22,7 @@ const getAnimalByIdModel = async (animal_id) => {
 }
 
 
-const createAnimalModel = async (animal_name, animal_age, animal_sex, animal_status, animal_weight, animal_category, animal_favorite_food, animal_description, fk_admin_user_id) => {
+const createAnimalModel = async (animal_name, animal_age, animal_sex, animal_status, animal_weight, animal_category, animal_favorite_food, animal_description, fk_admin_user_id, animal_photo) => {
     return prisma.Animals.create({
         data: {
             animal_name: animal_name,
@@ -33,13 +33,14 @@ const createAnimalModel = async (animal_name, animal_age, animal_sex, animal_sta
             animal_category: animal_category,
             animal_favorite_food: animal_favorite_food,
             animal_description: animal_description,
-            fk_admin_user_id: fk_admin_user_id
+            fk_admin_user_id: fk_admin_user_id,
+            animal_photo: animal_photo
         }
     })
 }
 
 
-const updateAnimalModel = async (animal_id, animal_name, animal_age, animal_sex, animal_status, animal_category, animal_weight, animal_favorite_food, animal_description, fk_admin_user_id) => {
+const updateAnimalModel = async (animal_id, animal_name, animal_age, animal_sex, animal_status, animal_weight, animal_category, animal_favorite_food, animal_description, fk_admin_user_id, animal_photo) => {
     const animalExist = await getAnimalByIdModel(animal_id);
 
     if (!animalExist) {
@@ -50,17 +51,17 @@ const updateAnimalModel = async (animal_id, animal_name, animal_age, animal_sex,
         where: {
             animal_id: animal_id
         },
-
         data: {
             animal_name: animal_name,
             animal_age: animal_age,
             animal_sex: animal_sex,
             animal_status: animal_status,
-            animal_weight: animal_weight,
-            animal_category: animal_category,
+            animal_weight: animal_weight,       
+            animal_category: animal_category,  
             animal_favorite_food: animal_favorite_food,
             animal_description: animal_description,
-            fk_admin_user_id: fk_admin_user_id
+            fk_admin_user_id: fk_admin_user_id,
+            animal_photo: animal_photo
         }
     })
 }

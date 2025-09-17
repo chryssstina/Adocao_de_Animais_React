@@ -60,18 +60,19 @@ model Users{
 
 
 model Animals{
-  animal_id                 Int         @id @default(autoincrement())
-  animal_name               String
-  animal_age                String
-  animal_sex                AnimalSex
-  animal_status             AnimalStatus  @default(AVAILABLE)
-  animal_weight             String
-  animal_favorite_food      String
-  animal_description        String
-  animal_category           AnimalsCategories  @default(ANIMAL)
+  animal_id                   Int      @id @default(autoincrement())
+  animal_name                 String
+  animal_age                  String
+  animal_sex                  AnimalSex
+  animal_status               AnimalStatus  @default(AVAILABLE)
+  animal_weight               String
+  animal_favorite_food        String
+  animal_description          String
+  animal_category             AnimalsCategories  @default(ANIMAL)
   animal_registration_date    DateTime  @default(now())
+  animal_photo                String?
 
-  fk_admin_user_id        Int
+  fk_admin_user_id            Int
 
   admin_user Users @relation(fields: [fk_admin_user_id], references: [user_id]) 
   @@index([fk_admin_user_id])

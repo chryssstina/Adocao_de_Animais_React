@@ -46,7 +46,8 @@ const createAnimalHandler = async(req, res) => {
             animal_category,
             animal_favorite_food, 
             animal_description, 
-            fk_admin_user_id
+            fk_admin_user_id,
+            animal_photo
         } = req.body; 
 
     if(!animal_name 
@@ -57,7 +58,8 @@ const createAnimalHandler = async(req, res) => {
         || !animal_category
         || !animal_favorite_food
         || !animal_description
-        || !fk_admin_user_id){
+        || !fk_admin_user_id
+        || !animal_photo){
 
         return res.status(400).json({ error: 'Todos os dados são obrigatórios.' });
     }
@@ -72,7 +74,8 @@ const createAnimalHandler = async(req, res) => {
             animal_category,
             animal_favorite_food, 
             animal_description, 
-            fk_admin_user_id
+            fk_admin_user_id,
+            animal_photo
         );    
         res.status(201).json(newAnimal);
 
@@ -92,7 +95,8 @@ const updateAnimalHandler = async (req, res) => {
             animal_category,
             animal_favorite_food, 
             animal_description, 
-            fk_admin_user_id 
+            fk_admin_user_id,
+            animal_photo
         } = req.body;
 
     if(!animal_name 
@@ -102,7 +106,8 @@ const updateAnimalHandler = async (req, res) => {
         || !animal_category
         || !animal_favorite_food
         || !animal_description
-        || !fk_admin_user_id){
+        || !fk_admin_user_id
+        || !animal_photo){
 
         return res.status(400).json({error: 'Todos os dados são obrigatórios.'});
     }
@@ -118,7 +123,8 @@ const updateAnimalHandler = async (req, res) => {
             animal_category, 
             animal_favorite_food, 
             animal_description, 
-            fk_admin_user_id
+            fk_admin_user_id,
+            animal_photo
         );
         res.status(200).json(updatedAnimal);
 
