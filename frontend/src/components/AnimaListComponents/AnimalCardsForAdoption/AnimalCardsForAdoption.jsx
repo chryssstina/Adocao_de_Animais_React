@@ -37,7 +37,7 @@ function AnimalCardsForAdoption({
                 <div className="card-body">
                     <h5 className="card-title">{animalName}</h5>
                     <p className="card-text"> Idade: {animalAge}</p>
-                    <p className="card-text"> Categoria: {animalCategory}</p>
+                    <p className="card-text"> Espécie: {animalCategory === "DOG" ? "Cachorro" : "Gato"}</p>
                 </div>
                 <div className="card-buttons">
                     {/* O botão de favoritar só aparece se o usuário estiver logado */}
